@@ -7,6 +7,7 @@ namespace FlightAppApi.Model
 {
     public interface IStewardRepository
     {
-        Steward GetSteward(string firsTName,string lastName);
+        Steward GetStewardByEmail(string email);
+        void SaveChanges();
     }
 }
