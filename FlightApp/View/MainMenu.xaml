@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="823,407,0,0" Text="MainMenu" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="Token" HorizontalAlignment="Left" Margin="823,407,0,0" Text="MainMenu" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>
