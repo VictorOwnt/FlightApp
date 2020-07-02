@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace FlightAppApi.Data
@@ -24,29 +25,38 @@ namespace FlightAppApi.Data
             {
                 Steward steward1 = new Steward { Email = "sebastienwojtyla@gmail.com", FirstName = "Sebastien", LastName = "Wojtyla" };
 
-                await CreateUser(steward1.Email, "Azertyuiop@1");
+                await CreateSteward(steward1.Email, "Azertyuiop@1");
 
                 Steward steward2 = new Steward { Email = "julienwojtyla@gmail.com", FirstName = "Julien", LastName = "Wojtyla" };
 
-                await CreateUser(steward2.Email, "Azertyuiop@1");
+                await CreateSteward(steward2.Email, "Azertyuiop@1");
 
-                Passenger passenger1 = new Passenger { Email = "marielouise@gmail.com", FirstName = "Marie", LastName = "Louise" };
+                _dbContext.Stewards.AddRange(steward1, steward2);
 
-                await CreateUser(passenger1.Email, "Azertyuiop@1");
+                Passenger passenger1 = new Passenger { Email = "marielouise@gmail.com", FirstName = "Marie", LastName = "Louise", SeatNumber = 1 };
 
-                Passenger passenger2 = new Passenger { Email = "georgefloyd@gmail.com", FirstName = "George", LastName = "Floyd" };
+                await CreatePassenger(passenger1.Email, "Azertyuiop@1");
 
-                await CreateUser(passenger2.Email, "Azertyuiop@1");
+                Passenger passenger2 = new Passenger { Email = "georgefloyd@gmail.com", FirstName = "George", LastName = "Floyd", SeatNumber = 2 };
 
+                await CreatePassenger(passenger2.Email, "Azertyuiop@1");
 
+                _dbContext.Passengers.AddRange(passenger1, passenger2);
                 _dbContext.SaveChanges();
             }
 
         }
-        private async Task CreateUser(string email, string password)
+        private async Task CreateSteward(string email, string password)
         {
             var user = new IdentityUser { UserName = email, Email = email };
             await _userManager.CreateAsync(user, password);
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "steward"));
+        }
+        private async Task CreatePassenger(string email, string password)
+        {
+            var user = new IdentityUser { UserName = email, Email = email };
+            await _userManager.CreateAsync(user, password);
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "passenger"));
         }
     }
 }

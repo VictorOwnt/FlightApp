@@ -14,6 +14,7 @@ using FlightAppApi.Model;
 using FlightAppApi.Repository;
 using NSwag.SwaggerGeneration.Processors.Security;
 using NSwag;
+using System.Security.Claims;
 
 namespace FlightAppApi
 {
@@ -31,9 +32,9 @@ namespace FlightAppApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
-            services.AddScoped<DataInit>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IStewardRepository, StewardRepository>();
+            services.AddScoped<DataInit>();
 
             services.AddOpenApiDocument(c =>
             {
@@ -97,6 +98,12 @@ namespace FlightAppApi
             });
 
             services.AddCors(options => options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin()));
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("StewardOnly", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
+                options.AddPolicy("Passenger", policy => policy.RequireClaim(ClaimTypes.Role, "passenger"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
