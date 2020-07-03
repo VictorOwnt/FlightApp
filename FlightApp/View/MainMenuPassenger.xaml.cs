@@ -21,14 +21,14 @@ namespace FlightApp.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainMenu : Page
+    public sealed partial class MainMenuPassenger : Page
     {
-        public MainMenu()
+        public MainMenuPassenger()
         {
             this.InitializeComponent();
             ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            String localValue = localSettings.Values["Token"] as string;
-            Token.Text = localValue;
+            string token = localSettings.Values["Token"] as string;
+
         }
     }
 }

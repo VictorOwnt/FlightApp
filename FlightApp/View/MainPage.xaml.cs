@@ -45,7 +45,7 @@ namespace FlightApp
             ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Object value = localSettings.Values["Token"] = token;
             string help = "";
-            Frame.Navigate(typeof(MainMenu));
+            Frame.Navigate(typeof(MainMenuPassenger));
         }
 
 
