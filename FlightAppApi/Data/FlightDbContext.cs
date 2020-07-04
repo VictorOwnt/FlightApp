@@ -10,6 +10,9 @@ namespace FlightAppApi.Data
 {
     public class FlightDbContext : IdentityDbContext
     {
+        public DbSet<Steward> Stewards { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+
         public FlightDbContext(DbContextOptions<FlightDbContext> options)
             : base(options)
         {
@@ -22,8 +25,7 @@ namespace FlightAppApi.Data
 
         }
 
-        public DbSet<Steward> Stewards { get; set; }
-        public DbSet<Passenger> Passengers { get; set; }
+
     }
 }
 

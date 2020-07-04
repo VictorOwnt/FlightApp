@@ -43,8 +43,8 @@ namespace FlightApp
             var res = await client.PostAsync("http://localhost:5000/api/account/", new StringContent(loginJson, System.Text.Encoding.UTF8, "application/json"));
             var token = await res.Content.ReadAsStringAsync();
             ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            Object value = localSettings.Values["Token"] = token;
-            string help = "";
+            localSettings.Values["Token"] = token;
+            // TODO Check if user = passenger or steward
             Frame.Navigate(typeof(MainMenuPassenger));
         }
 

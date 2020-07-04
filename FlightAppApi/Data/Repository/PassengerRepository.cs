@@ -13,6 +13,11 @@ namespace FlightAppApi.Repository
         private readonly FlightDbContext _context;
         private readonly DbSet<Passenger> _passengers;
 
+        public PassengerRepository(FlightDbContext dbContext)
+        {
+            _context = dbContext;
+            _passengers = dbContext.Passengers;
+        }
         public Passenger GetPassengerByEmail(string email)
         {
             return _passengers.SingleOrDefault(p => p.Email == email);

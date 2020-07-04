@@ -41,7 +41,7 @@ namespace FlightAppApi.Controllers
         /// <param name="model">the login details</param>
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<String>> CreateToken(LoginDTO model)
+        public async Task<ActionResult<string>> CreateToken(LoginDTO model)
         {
             var user = await _userManager.FindByNameAsync(model.Email);
 

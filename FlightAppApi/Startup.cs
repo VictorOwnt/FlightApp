@@ -30,18 +30,19 @@ namespace FlightAppApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddScoped<DataInit>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IStewardRepository, StewardRepository>();
-            services.AddScoped<DataInit>();
+
 
             services.AddOpenApiDocument(c =>
             {
                 c.DocumentName = "apidocs";
-                c.Title = "Recipe API";
+                c.Title = "FlightApp API";
                 c.Version = "v1";
-                c.Description = "The Recipe API documentation description.";
+                c.Description = "The FlightApp API documentation description.";
                 c.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT Token", new SwaggerSecurityScheme
                 {
                     Type = SwaggerSecuritySchemeType.ApiKey,

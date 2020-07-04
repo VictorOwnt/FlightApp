@@ -13,6 +13,12 @@ namespace FlightAppApi.Repository
         private readonly FlightDbContext _context;
         private readonly DbSet<Steward> _stewards;
 
+        public StewardRepository(FlightDbContext dbContext)
+        {
+            _context = dbContext;
+            _stewards = dbContext.Stewards;
+        }
+
         public Steward GetStewardByEmail(string email)
         {
             return _stewards.FirstOrDefault(s => s.Email == email);
