@@ -1,4 +1,5 @@
 ﻿using FlightApp.Models;
+using FlightApp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -27,25 +29,17 @@ namespace FlightApp.View
     /// </summary>
     public sealed partial class MainMenuPassenger : Page
     {
+
+        public MainMenuPassengerViewModel ViewModel = new MainMenuPassengerViewModel();
         public MainMenuPassenger()
         {
-            this.InitializeComponent();
-            GetPassenger();
+            InitializeComponent();
+
 
         }
 
-        private async void GetPassenger()
-        {
-            // TODO move to Viewmodel
-            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            string token = localSettings.Values["Token"] as string;
-            HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            var json = await httpClient.GetStringAsync(new Uri("http://localhost:5000/api/passenger/"));
-            var passenger = JsonConvert.DeserializeObject<Passenger>(json);
 
-            PassengerName.Text = "Welcome" + passenger.FirstName + passenger.LastName;
-        }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlightApp.Models
 {
-    class Passenger
+    public class Passenger
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

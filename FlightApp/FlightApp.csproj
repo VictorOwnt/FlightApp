@@ -119,8 +119,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataService\PassengerService.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="Models\Passenger.cs" />
+    <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="View\MainMenuPassenger.xaml.cs">
       <DependentUpon>MainMenuPassenger.xaml</DependentUpon>
     </Compile>
