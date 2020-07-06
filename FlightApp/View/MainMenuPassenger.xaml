@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <muxc:NavigationView x:Name="navigationViewPassenger">
+    <muxc:NavigationView x:Name="navigationViewPassenger" IsSettingsVisible="False">
         <muxc:NavigationView.MenuItems>
             <NavigationViewItem Content="Flight info" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>
