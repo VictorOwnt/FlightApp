@@ -16,8 +16,9 @@
                 <muxc:NavigationViewItem  Content="Drinks" Tag="SamplePage2" />
                 <muxc:NavigationViewItem  Content="Other" Tag="SamplePage3" />
                 <muxc:NavigationViewItem  Content="Order history" Tag="SamplePage4" />
-            </muxc:NavigationView.MenuItems>
-            <Frame x:Name="contentFrame"/>
+            </muxc:NavigationView.MenuItems>          
+
+
         </muxc:NavigationView>
     </Grid>
 </Page>
