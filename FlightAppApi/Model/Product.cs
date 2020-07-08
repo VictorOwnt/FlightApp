@@ -14,7 +14,9 @@ namespace FlightAppApi.Model
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Category { get; set; }
-        public Bitmap Image { get; set; }
+        public string Category { get; set; } // Enum?
+        //public Bitmap Image { get; set; }
+
+        public ICollection<PassengerProduct> PassengerProducts { get; set; }
     }
 }

@@ -15,6 +15,7 @@ using FlightAppApi.Repository;
 using NSwag.SwaggerGeneration.Processors.Security;
 using NSwag;
 using System.Security.Claims;
+using FlightAppApi.Data.Repository;
 
 namespace FlightAppApi
 {
@@ -35,6 +36,7 @@ namespace FlightAppApi
             services.AddScoped<DataInit>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IStewardRepository, StewardRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
 
             services.AddOpenApiDocument(c =>

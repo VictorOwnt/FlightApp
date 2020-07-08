@@ -12,6 +12,11 @@ namespace FlightAppApi.Data.Repository
         private readonly FlightDbContext _context;
         private readonly DbSet<Product> _products;
 
+        public ProductRepository(FlightDbContext dbContext)
+        {
+            _context = dbContext;
+            _products = dbContext.Products;
+        }
         public IEnumerable<Product> GetAllProducts()
         {
             return _products;

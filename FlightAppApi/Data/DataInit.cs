@@ -23,6 +23,7 @@ namespace FlightAppApi.Data
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
+                #region init users
                 Steward steward1 = new Steward { Email = "sebastienwojtyla@gmail.com", FirstName = "Sebastien", LastName = "Wojtyla" };
 
                 await CreateSteward(steward1.Email, "Azertyuiop@1");
@@ -42,6 +43,16 @@ namespace FlightAppApi.Data
                 await CreatePassenger(passenger2.Email, "Azertyuiop@1");
 
                 _dbContext.Passengers.AddRange(passenger1, passenger2);
+                #endregion
+                #region init products
+                Product water = new Product { Name = "water", Category = "Drinks" };
+                Product cola = new Product { Name = "cola", Category = "Drinks" };
+                Product tea = new Product { Name = "tea", Category = "Drinks" };
+
+                Product hotdog = new Product { Name = "hotdog", Category = "Food" };
+
+                _dbContext.Products.AddRange(water, cola, tea, hotdog);
+                #endregion
                 _dbContext.SaveChanges();
             }
 
