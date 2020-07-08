@@ -45,7 +45,7 @@ namespace FlightApp
             ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values["Token"] = token;
             // TODO Check if user = passenger or steward
-            Frame.Navigate(typeof(ProductsOverview));
+            Frame.Navigate(typeof(MainMenuPassenger));
         }
 
 

@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <muxc:NavigationView x:Name="ShoppingMenu" PaneDisplayMode="Top" IsSettingsVisible="False">
+        <muxc:NavigationView x:Name="ShoppingMenu" PaneDisplayMode="Top" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem  Content="Food" Tag="SamplePage1" />
                 <muxc:NavigationViewItem  Content="Drinks" Tag="SamplePage2" />

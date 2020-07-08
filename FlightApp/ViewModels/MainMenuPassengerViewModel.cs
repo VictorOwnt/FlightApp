@@ -20,9 +20,7 @@ namespace FlightApp.ViewModels
 
         private async void SetLoggedInPassenger()
         {
-            var passenger = await PassengerService.GetLoggedInPassengerAsync();
-            LoggedInPassenger = passenger;
-
+            LoggedInPassenger = await PassengerService.GetLoggedInPassengerAsync();
         }
     }
 }

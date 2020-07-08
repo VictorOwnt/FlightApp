@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <muxc:NavigationView x:Name="navigationViewPassenger" IsSettingsVisible="False">
+    <muxc:NavigationView x:Name="navigationViewPassenger" IsSettingsVisible="False" SelectionChanged="navigationViewPassenger_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <NavigationViewItem Content="Flight info" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>
@@ -19,7 +19,7 @@
             <muxc:NavigationViewItem
                 Content="Order products"
                 Icon="Shop"
-                Tag="SamplePage1" />
+                Tag="ProductsOverview" />
             <NavigationViewItem Content="Music" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;" />
@@ -31,15 +31,15 @@
                 Tag="SamplePage3" />
         </muxc:NavigationView.MenuItems>
 
-        <StackPanel>
+        <Frame x:Name="ContentFrame">
             <TextBlock
                 x:Name="PassengerName"
                 Margin="10,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Text="{x:Bind ViewModel.LoggedInPassenger.FirstName}"
-                TextWrapping="Wrap" />
-        </StackPanel>
+                />
+        </Frame>
     </muxc:NavigationView>
 
 

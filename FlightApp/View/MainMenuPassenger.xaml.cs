@@ -38,8 +38,23 @@ namespace FlightApp.View
 
         }
 
+        private void navigationViewPassenger_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                //Settingspage needed?
+            }
+            else
+            {
+                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
-
-
+                switch (item.Tag.ToString())
+                {
+                    case "ProductsOverview":
+                        ContentFrame.Navigate(typeof(ProductsOverview));
+                        break;
+                }
+            }
+        }
     }
 }

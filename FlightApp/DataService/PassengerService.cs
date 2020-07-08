@@ -13,7 +13,7 @@ namespace FlightApp.DataService
 {
     public class PassengerService
     {
-        private readonly ApplicationDataContainer LocalSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        private readonly ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
 
         public async Task<Passenger> GetLoggedInPassengerAsync()
         {
