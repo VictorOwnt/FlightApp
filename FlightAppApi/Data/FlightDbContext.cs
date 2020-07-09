@@ -13,6 +13,7 @@ namespace FlightAppApi.Data
         public DbSet<Steward> Stewards { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public FlightDbContext(DbContextOptions<FlightDbContext> options)
             : base(options)
@@ -23,7 +24,12 @@ namespace FlightAppApi.Data
             base.OnModelCreating(builder);
             builder.Entity<Steward>();
             builder.Entity<Passenger>();
-            builder.Entity<Product>();
+
+            builder.Entity<Product>().HasKey(p => p.Id);
+            builder.Entity<Product>().HasOne(p => p.Category).WithMany(c => c.Products);
+
+            builder.Entity<Category>().HasKey(c => c.Id);
+
             builder.Entity<PassengerProduct>().HasKey(pp => new { pp.PassengerId, pp.ProductId });
             builder.Entity<PassengerProduct>().HasOne(pp => pp.Passenger).WithMany(p => p.PassengerProducts);
             builder.Entity<PassengerProduct>().HasOne(pp => pp.Product).WithMany(p => p.PassengerProducts);

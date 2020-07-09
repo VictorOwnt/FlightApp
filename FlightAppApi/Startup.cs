@@ -37,6 +37,7 @@ namespace FlightAppApi
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IStewardRepository, StewardRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 
             services.AddOpenApiDocument(c =>

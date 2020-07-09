@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace FlightAppApi.Model
 {
-    public interface IProductRepository
+    public interface ICategoryRepository
     {
-        IEnumerable<Product> GetAllProducts();
-        IEnumerable<Product> GetProductsByCategory(Category category);
+        IEnumerable<Category> GetCategories();
         void SaveChanges();
     }
 }

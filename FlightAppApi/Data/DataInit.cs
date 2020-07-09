@@ -44,12 +44,20 @@ namespace FlightAppApi.Data
 
                 _dbContext.Passengers.AddRange(passenger1, passenger2);
                 #endregion
-                #region init products
-                Product water = new Product { Name = "water", Category = "Drinks" };
-                Product cola = new Product { Name = "cola", Category = "Drinks" };
-                Product tea = new Product { Name = "tea", Category = "Drinks" };
 
-                Product hotdog = new Product { Name = "hotdog", Category = "Food" };
+                #region init categories
+                Category drinks = new Category { Name = "Drinks" };
+                Category food = new Category { Name = "Food" };
+
+                _dbContext.Categories.AddRange(drinks, food);
+                #endregion
+
+                #region init products
+                Product water = new Product { Name = "water", Category = drinks };
+                Product cola = new Product { Name = "cola", Category = drinks };
+                Product tea = new Product { Name = "tea", Category = drinks };
+
+                Product hotdog = new Product { Name = "hotdog", Category = food };
 
                 _dbContext.Products.AddRange(water, cola, tea, hotdog);
                 #endregion

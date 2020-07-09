@@ -1,4 +1,5 @@
-﻿using FlightAppApi.Model;
+﻿using FlightAppApi.DTO;
+using FlightAppApi.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +38,7 @@ namespace FlightAppApi.Controllers
         /// </summary>        
 
         [HttpGet("{category}")]
-        public IEnumerable<Product> GetProductsFromCategory(string category)
+        public IEnumerable<Product> GetProductsFromCategory(Category category)
         {
             return _productRepository.GetProductsByCategory(category);
         }

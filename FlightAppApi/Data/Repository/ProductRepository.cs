@@ -22,7 +22,7 @@ namespace FlightAppApi.Data.Repository
             return _products;
         }
 
-        public IEnumerable<Product> GetProductsByCategory(string category)
+        public IEnumerable<Product> GetProductsByCategory(Category category)
         {
             return _products.Where(p => p.Category == category);
         }
