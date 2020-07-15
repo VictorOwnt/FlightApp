@@ -26,9 +26,10 @@ namespace FlightAppApi.Data
             builder.Entity<Passenger>();
 
             builder.Entity<Product>().HasKey(p => p.Id);
-            builder.Entity<Product>().HasOne(p => p.Category).WithMany(c => c.Products);
+            //builder.Entity<Product>().HasOne(p => p.Category).WithMany(c => c.Products);
 
             builder.Entity<Category>().HasKey(c => c.Id);
+            builder.Entity<Category>().HasMany(c => c.Products).WithOne();
 
             builder.Entity<PassengerProduct>().HasKey(pp => new { pp.PassengerId, pp.ProductId });
             builder.Entity<PassengerProduct>().HasOne(pp => pp.Passenger).WithMany(p => p.PassengerProducts);

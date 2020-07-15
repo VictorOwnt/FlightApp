@@ -13,8 +13,7 @@ namespace FlightAppApi.Model
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
-        public Category Category { get; set; }
+
         //public Bitmap Image { get; set; }
 
         public ICollection<PassengerProduct> PassengerProducts { get; set; }

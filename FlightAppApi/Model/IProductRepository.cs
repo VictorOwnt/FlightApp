@@ -8,7 +8,6 @@ namespace FlightAppApi.Model
     public interface IProductRepository
     {
         IEnumerable<Product> GetAllProducts();
-        IEnumerable<Product> GetProductsByCategory(Category category);
         void SaveChanges();
     }
 }

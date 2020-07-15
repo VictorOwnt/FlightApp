@@ -5,6 +5,7 @@
     xmlns:local="using:FlightApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Windows.UI.Xaml.Controls"
+    xmlns:data="using:FlightApp.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -12,13 +13,21 @@
 
         <muxc:NavigationView x:Name="ShoppingMenu" PaneDisplayMode="Top" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem  Content="Food" Tag="SamplePage1" />
-                <muxc:NavigationViewItem  Content="Drinks" Tag="SamplePage2" />
-                <muxc:NavigationViewItem  Content="Other" Tag="SamplePage3" />
-                <muxc:NavigationViewItem  Content="Order history" Tag="SamplePage4" />
-            </muxc:NavigationView.MenuItems>          
-
-
+                <muxc:NavigationViewItem  Content="Food" />
+                <muxc:NavigationViewItem  Content="Drinks" />
+                <muxc:NavigationViewItem  Content="Other" />
+                <muxc:NavigationViewItem  Content="Order history" />
+            </muxc:NavigationView.MenuItems>
+            <StackPanel>
+                <GridView ItemsSource="{x:Bind Products}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="data:Product">
+                            <TextBlock FontSize="16" Text="{x:Bind Name}"/>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
         </muxc:NavigationView>
+
     </Grid>
 </Page>

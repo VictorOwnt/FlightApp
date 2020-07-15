@@ -19,13 +19,10 @@ namespace FlightAppApi.Data.Repository
         }
         public IEnumerable<Product> GetAllProducts()
         {
-            return _products;
+            return _products;//.Include(p => p.Category);
         }
 
-        public IEnumerable<Product> GetProductsByCategory(Category category)
-        {
-            return _products.Where(p => p.Category == category);
-        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

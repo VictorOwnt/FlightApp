@@ -11,6 +11,7 @@ namespace FlightAppApi.Data.Repository
     {
         private readonly FlightDbContext _context;
         private readonly DbSet<Category> _categories;
+
         public CategoryRepository(FlightDbContext dbContext)
         {
             _context = dbContext;
@@ -18,7 +19,7 @@ namespace FlightAppApi.Data.Repository
         }
         public IEnumerable<Category> GetCategories()
         {
-            return _categories;
+            return _categories.Include(c => c.Products).AsNoTracking().ToList();
         }
 
         public void SaveChanges()

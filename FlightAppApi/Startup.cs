@@ -131,7 +131,7 @@ namespace FlightAppApi
 
             app.UseSwaggerUi3();
             app.UseOpenApi();
-
+            app.UseMvcWithDefaultRoute();
             dataInit.InitializeData().Wait();
         }
     }

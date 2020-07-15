@@ -10,6 +10,7 @@ namespace FlightApp.ViewModels
 {
     public class MainMenuPassengerViewModel
     {
+
         public Passenger LoggedInPassenger { get; set; }
         private readonly PassengerService PassengerService = new PassengerService();
         public MainMenuPassengerViewModel()

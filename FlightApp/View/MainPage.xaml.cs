@@ -30,7 +30,7 @@ namespace FlightApp
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
 
