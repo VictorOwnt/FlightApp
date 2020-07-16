@@ -31,8 +31,12 @@ namespace FlightApp.View
         private ObservableCollection<Product> Products;
         public ProductsOverview()
         {
+            //List<Product> help = new List<Product>();
+            //help.Add(new Product("test"));
+            //Products = new ObservableCollection<Product>(help);            
             InitializeComponent();
             GetProducts();
+
 
         }
 
@@ -40,15 +44,19 @@ namespace FlightApp.View
         {
             ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
             string token = LocalSettings.Values["Token"] as string;
+
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            Uri uri = new Uri("http://localhost:5000/api/product/category=food");
-
-            var json = await httpClient.GetStringAsync(uri);
-
-            var products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(json);
-            Products = products;
+            string url = string.Format("http://localhost:5000/api/category/products/?categoryName={0}", "drinks");
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                var category = JsonConvert.DeserializeObject<Category>(result);
+                Products = new ObservableCollection<Product>(category.Products);
+                Bindings.Update();
+            }
         }
     }
 }

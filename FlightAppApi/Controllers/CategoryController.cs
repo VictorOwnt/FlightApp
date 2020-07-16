@@ -37,7 +37,7 @@ namespace FlightAppApi.Controllers
         /// <summary>
         /// Get all products from category
         /// </summary> 
-        [HttpGet("/category/products")]
+        [HttpGet("/api/category/products/")]
         [AllowAnonymous]
         public Category GetProductsFromCategory(string categoryName)
         {
