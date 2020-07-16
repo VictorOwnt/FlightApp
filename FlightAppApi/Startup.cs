@@ -16,6 +16,7 @@ using NSwag.SwaggerGeneration.Processors.Security;
 using NSwag;
 using System.Security.Claims;
 using FlightAppApi.Data.Repository;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace FlightAppApi
 {
@@ -130,6 +131,7 @@ namespace FlightAppApi
             app.UseHttpsRedirection();
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
+
 
             app.UseMvc();
 

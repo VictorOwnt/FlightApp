@@ -9,7 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <muxc:NavigationView x:Name="navigationViewPassengerMenu" IsSettingsVisible="False" SelectionChanged="navigationViewPassenger_SelectionChanged">
+    <muxc:NavigationView
+        x:Name="navigationViewPassengerMenu"
+        IsSettingsVisible="False"
+        SelectionChanged="navigationViewPassenger_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <NavigationViewItem Content="Flight info" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>
@@ -37,8 +40,7 @@
                 Margin="10,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Text="{x:Bind ViewModel.LoggedInPassenger.FirstName}"
-                />
+                Text="{x:Bind ViewModel.LoggedInPassenger.FirstName}" />
         </Frame>
     </muxc:NavigationView>
 
