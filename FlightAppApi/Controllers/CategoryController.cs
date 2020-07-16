@@ -36,14 +36,13 @@ namespace FlightAppApi.Controllers
 
         /// <summary>
         /// Get all products from category
-        /// </summary>        
-
-        [HttpGet("{category}")]
+        /// </summary> 
+        [HttpGet("/category/products")]
         [AllowAnonymous]
-        public IEnumerable<Product> GetProductsFromCategory(string category)
+        public Category GetProductsFromCategory(string categoryName)
         {
-            //return _productRepository.GetProductsByCategory(category);
-            return null;
+            return _categoryRepository.GetCategoryWithProducts(categoryName);
+
         }
     }
 }

@@ -108,7 +108,11 @@ namespace FlightAppApi
                 options.AddPolicy("StewardOnly", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
                 options.AddPolicy("Passenger", policy => policy.RequireClaim(ClaimTypes.Role, "passenger"));
             });
+
+
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataInit dataInit)
@@ -131,7 +135,6 @@ namespace FlightAppApi
 
             app.UseSwaggerUi3();
             app.UseOpenApi();
-            app.UseMvcWithDefaultRoute();
             dataInit.InitializeData().Wait();
         }
     }

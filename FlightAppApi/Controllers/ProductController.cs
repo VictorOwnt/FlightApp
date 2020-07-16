@@ -34,6 +34,5 @@ namespace FlightAppApi.Controllers
             return _productRepository.GetAllProducts();
         }
 
-
     }
 }

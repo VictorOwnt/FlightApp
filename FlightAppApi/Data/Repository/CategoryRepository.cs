@@ -26,5 +26,9 @@ namespace FlightAppApi.Data.Repository
         {
             _context.SaveChanges();
         }
+        public Category GetCategoryWithProducts(string categoryName)
+        {
+            return _categories.Include(c => c.Products).SingleOrDefault(c => c.Name == categoryName);
+        }
     }
 }
