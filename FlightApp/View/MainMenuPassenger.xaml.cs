@@ -30,13 +30,15 @@ namespace FlightApp.View
     public sealed partial class MainMenuPassenger : Page
     {
 
-        public MainMenuPassengerViewModel ViewModel = new MainMenuPassengerViewModel();
+        public MainMenuPassengerViewModel ViewModel { get; set; }
         public MainMenuPassenger()
         {
             InitializeComponent();
-
+            ViewModel = new MainMenuPassengerViewModel();
 
         }
+
+
 
         private void navigationViewPassenger_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {

@@ -31,12 +31,8 @@ namespace FlightApp.View
         private ObservableCollection<Product> Products;
         public ProductsOverview()
         {
-            //List<Product> help = new List<Product>();
-            //help.Add(new Product("test"));
-            //Products = new ObservableCollection<Product>(help);            
             InitializeComponent();
             GetProducts();
-
 
         }
 
