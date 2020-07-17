@@ -1,4 +1,5 @@
 ﻿using FlightApp.Models;
+using FlightApp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,31 +29,19 @@ namespace FlightApp.View
     /// </summary>
     public sealed partial class ProductsOverview : Page
     {
-        private ObservableCollection<Product> Products;
+
+        public ProductsOverviewViewModel ViewModel;
         public ProductsOverview()
         {
             InitializeComponent();
-            GetProducts();
+            ViewModel = new ProductsOverviewViewModel();
 
         }
 
-        private async void GetProducts()
+        private void ShoppingMenu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
-            string token = LocalSettings.Values["Token"] as string;
-
-            HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            string url = string.Format("http://localhost:5000/api/category/products/?categoryName={0}", "drinks");
-            var response = await httpClient.GetAsync(url);
-            if (response.IsSuccessStatusCode)
-            {
-                var result = response.Content.ReadAsStringAsync().Result;
-                var category = JsonConvert.DeserializeObject<Category>(result);
-                Products = new ObservableCollection<Product>(category.Products);
-                Bindings.Update();
-            }
+            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+            ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
         }
     }
 }

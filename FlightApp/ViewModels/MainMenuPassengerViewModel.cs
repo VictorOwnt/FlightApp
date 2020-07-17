@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace FlightApp.ViewModels
 {
+    //BindableBase replaces manual implementation of INotifyPropertyChanged, just use SetProperty
     public class MainMenuPassengerViewModel : BindableBase
     {
         private Passenger _passenger;

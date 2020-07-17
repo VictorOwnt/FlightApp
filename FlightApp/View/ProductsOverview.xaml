@@ -16,18 +16,19 @@
             x:Name="ShoppingMenu"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
-            PaneDisplayMode="Top">
+            PaneDisplayMode="Top"
+            SelectionChanged="ShoppingMenu_SelectionChanged">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="Food" />
-                <muxc:NavigationViewItem Content="Drinks" />
-                <muxc:NavigationViewItem Content="Other" />
-                <muxc:NavigationViewItem Content="Order history" />
+                <muxc:NavigationViewItem Content="Food" Tag="food"/>
+                <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
+                <muxc:NavigationViewItem Content="Other" Tag="other" />
+                <muxc:NavigationViewItem Content="Order history" Tag="history"/>
             </muxc:NavigationView.MenuItems>
             <StackPanel>
-                <GridView ItemsSource="{x:Bind Products}">
+                <GridView ItemsSource="{x:Bind ViewModel.Products,Mode=OneWay}">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="data:Product">
-                            <TextBlock FontSize="16" Text="{x:Bind Name}" />
+                            <TextBlock FontSize="16" Text="{x:Bind Name,Mode=OneWay}" />
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>

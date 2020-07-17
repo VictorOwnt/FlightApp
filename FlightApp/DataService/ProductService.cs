@@ -11,24 +11,31 @@ using Windows.Storage;
 
 namespace FlightApp.DataService
 {
-    public class PassengerService
+    public class ProductService
     {
         private readonly ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
         //HttpClient is intended to be instantiated once and re-used throughout the life of an application. 
         //Instantiating an HttpClient class for every request will exhaust the number of sockets available under heavy loads. This will result in SocketException errors.
         private static readonly HttpClient client = new HttpClient();
+        private string token { get; set; }
 
-        public async Task<Passenger> GetLoggedInPassengerAsync()
+        public ProductService()
         {
-
-
-            string token = LocalSettings.Values["Token"] as string;
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/passenger/"));
-            var passenger = JsonConvert.DeserializeObject<Passenger>(json);
-            return passenger;
-
+            token = LocalSettings.Values["Token"] as string;
+        }
+        public async Task<Category> GetCategoryWithProducts(string categoryName)
+        {
+            string url = string.Format("http://localhost:5000/api/category/products/?categoryName={0}", categoryName);
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                var category = JsonConvert.DeserializeObject<Category>(result);
+                return category;
+            }
+            //TODO error handling
+            return new Category();
         }
     }
 }

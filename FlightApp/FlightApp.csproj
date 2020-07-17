@@ -120,11 +120,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataService\PassengerService.cs" />
+    <Compile Include="DataService\ProductService.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
+    <Compile Include="ViewModels\ProductsOverviewViewModel.cs" />
     <Compile Include="View\MainMenuPassenger.xaml.cs">
       <DependentUpon>MainMenuPassenger.xaml</DependentUpon>
     </Compile>
