@@ -17,5 +17,9 @@ namespace FlightAppApi.Model
         //public Bitmap Image { get; set; }
 
         public ICollection<PassengerProduct> PassengerProducts { get; set; }
+        public Product()
+        {
+            PassengerProducts = new List<PassengerProduct>();
+        }
     }
 }

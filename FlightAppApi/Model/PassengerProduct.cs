@@ -11,5 +11,17 @@ namespace FlightAppApi.Model
         public Passenger Passenger { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
+
+        public PassengerProduct(Passenger passenger, Product product)
+        {
+            PassengerId = passenger.Id;
+            Passenger = passenger;
+            ProductId = product.Id;
+            Product = product;
+        }
+        public PassengerProduct()
+        {
+
+        }
     }
 }

@@ -25,13 +25,18 @@
                 <muxc:NavigationViewItem Content="Order history" Tag="history"/>
             </muxc:NavigationView.MenuItems>
             <StackPanel>
-                <GridView ItemsSource="{x:Bind ViewModel.Products,Mode=OneWay}">
+                <GridView x:Name="Products_GridView"
+                    ItemsSource="{x:Bind ViewModel.Products,Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          SelectionMode="Multiple">
+
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="data:Product">
-                            <TextBlock FontSize="16" Text="{x:Bind Name,Mode=OneWay}" />
+                            <TextBlock FontSize="16" Text="{x:Bind Name,Mode=OneWay}" Width="280" />
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
+                <Button Content="Order products" Click="Order_Products" />
             </StackPanel>
         </muxc:NavigationView>
 

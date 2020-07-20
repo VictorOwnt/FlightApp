@@ -9,5 +9,6 @@ namespace FlightAppApi.Model
     {
         IEnumerable<Product> GetAllProducts();
         void SaveChanges();
+        Product GetProductByName(string name);
     }
 }

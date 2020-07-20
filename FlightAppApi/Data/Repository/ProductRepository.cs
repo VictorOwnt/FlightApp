@@ -22,6 +22,10 @@ namespace FlightAppApi.Data.Repository
             return _products;//.Include(p => p.Category);
         }
 
+        public Product GetProductByName(string name)
+        {
+            return _products.FirstOrDefault(p => p.Name == name);
+        }
 
         public void SaveChanges()
         {

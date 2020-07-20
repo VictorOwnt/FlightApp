@@ -11,5 +11,10 @@ namespace FlightAppApi.Model
         [Required]
         public int SeatNumber { get; set; }
         public ICollection<PassengerProduct> PassengerProducts { get; set; }
+
+        public Passenger()
+        {
+            PassengerProducts = new List<PassengerProduct>();
+        }
     }
 }

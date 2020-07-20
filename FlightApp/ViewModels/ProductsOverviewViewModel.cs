@@ -31,5 +31,10 @@ namespace FlightApp.ViewModels
             Category category = await productService.GetCategoryWithProducts(categoryName);
             Products = new ObservableCollection<Product>(category.Products);
         }
+
+        public async void OrderProducts(List<Product> products)
+        {
+            await productService.OrderProductsAsync(products);
+        }
     }
 }

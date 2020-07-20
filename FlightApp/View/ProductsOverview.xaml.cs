@@ -43,5 +43,16 @@ namespace FlightApp.View
             NavigationViewItem item = args.SelectedItem as NavigationViewItem;
             ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
         }
+
+        private void Order_Products(object sender, RoutedEventArgs e)
+        {
+            List<Product> products = new List<Product>();
+            foreach (var item in Products_GridView.SelectedItems)
+            {
+                products.Add(item as Product);
+            }
+
+            ViewModel.OrderProducts(products);
+        }
     }
 }
