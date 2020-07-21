@@ -43,13 +43,14 @@ namespace FlightAppApi.Controllers
         public ActionResult<List<ProductDTO>> OrderProducts(List<ProductDTO> products)
         {
             Passenger passenger = _passengerRepository.GetPassengerByEmail(User.Identity.Name);
+            Order order = new Order();
             foreach (ProductDTO productDTO in products)
             {
                 Product product = _productRepository.GetProductByName(productDTO.Name);
-                PassengerProduct passengerProduct = new PassengerProduct(passenger, product);
-                passenger.PassengerProducts.Add(passengerProduct);
-                //product.PassengerProducts.Add(passengerProduct); // Necessary?
+                order.Orderlines.Add(new Orderline(product));
+
             }
+            passenger.Orders.Add(order);
             _passengerRepository.SaveChanges();
             _productRepository.SaveChanges();
             return products;

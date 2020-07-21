@@ -10,16 +10,11 @@ namespace FlightAppApi.Model
     public class Product
     {
         [Required]
-        public int Id { get; set; }
+        public int Id { get; private set; }
         [Required]
         public string Name { get; set; }
 
-        //public Bitmap Image { get; set; }
+        //public Bitmap Image { get; set; }       
 
-        public ICollection<PassengerProduct> PassengerProducts { get; set; }
-        public Product()
-        {
-            PassengerProducts = new List<PassengerProduct>();
-        }
     }
 }

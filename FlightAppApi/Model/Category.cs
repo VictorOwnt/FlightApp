@@ -9,10 +9,10 @@ namespace FlightAppApi.Model
     public class Category
     {
         [Required]
-        public int Id { get; set; }
+        public int Id { get; private set; }
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public IEnumerable<Product> Products { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace FlightAppApi.Model
     public abstract class Person
     {
         [Required]
-        public int Id { get; set; }
+        public int Id { get; private set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
