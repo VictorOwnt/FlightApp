@@ -27,8 +27,7 @@ namespace FlightAppApi.Controllers
         /// <summary>
         /// Get all products
         /// </summary>        
-        [HttpGet]
-        [AllowAnonymous]
+        [HttpGet]        
         public IEnumerable<Product> GetProducts()
         {
             return _productRepository.GetAllProducts();

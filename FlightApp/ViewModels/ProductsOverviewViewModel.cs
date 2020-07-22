@@ -28,8 +28,8 @@ namespace FlightApp.ViewModels
 
         public async void SetProductsOfCategoryAsync(string categoryName)
         {
-            Category category = await productService.GetCategoryWithProducts(categoryName);
-            Products = new ObservableCollection<Product>(category.Products);
+            Products = await productService.GetProductsOfCategory(categoryName);
+
         }
 
         public async void OrderProducts(List<Product> products)
@@ -41,6 +41,11 @@ namespace FlightApp.ViewModels
         {
             Products = await productService.GetOrderedProductsAsync();
 
+        }
+
+        public async void SetAllProductsAsync()
+        {
+            Products = await productService.GetAllProductsAsync();
         }
     }
 }

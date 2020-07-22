@@ -25,31 +25,44 @@ namespace FlightApp.DataService
             Token = LocalSettings.Values["Token"] as string;
             client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", Token);
         }
-        public async Task<Category> GetCategoryWithProducts(string categoryName)
+
+        public async Task<IEnumerable<Product>> GetProductsOfCategory(string categoryName)
         {
-            string url = string.Format("http://localhost:5000/api/category/products/?categoryName={0}", categoryName);
+            string url = string.Format("http://localhost:5000/api/category/product/?categoryName={0}", categoryName);
             var response = await client.GetAsync(new Uri(url));
             if (response.IsSuccessStatusCode)
             {
                 var result = response.Content.ReadAsStringAsync().GetResults();
-                var category = JsonConvert.DeserializeObject<Category>(result);
-                return category;
+                var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(result);
+                return products;
             }
             //TODO error handling
-            return new Category();
+            return new List<Product>();
+        }
+
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        {
+            var response = await client.GetAsync(new Uri("http://localhost:5000/api/product"));
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetResults();
+                var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(result);
+                return products;
+            }
+            else throw new Exception();
         }
 
         public async Task OrderProductsAsync(IEnumerable<Product> products)
         {
             var productsJson = JsonConvert.SerializeObject(products);
 
-            var response = await client.PostAsync(new Uri("http://localhost:5000/api/products"), new HttpStringContent(productsJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+            var response = await client.PostAsync(new Uri("http://localhost:5000/api/product"), new HttpStringContent(productsJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
         }
 
         public async Task<IEnumerable<Product>> GetOrderedProductsAsync()
         {
 
-            var response = await client.GetAsync(new Uri("http://localhost:5000/api/passenger/orders/products"));
+            var response = await client.GetAsync(new Uri("http://localhost:5000/api/passenger/order/product"));
             if (response.IsSuccessStatusCode)
             {
                 var result = response.Content.ReadAsStringAsync().GetResults();

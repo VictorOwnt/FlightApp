@@ -40,7 +40,7 @@ namespace FlightAppApi.Controllers
         /// <summary>
         /// Add products to the current passenger
         /// </summary>        
-        [HttpPost("/api/products/")]
+        [HttpPost("/api/product/")]
         public ActionResult<List<ProductDTO>> OrderProducts(List<ProductDTO> products)
         {
             Passenger passenger = _passengerRepository.GetPassengerByEmail(User.Identity.Name);
@@ -61,7 +61,7 @@ namespace FlightAppApi.Controllers
         /// <summary>
         /// Get ordered products of the current passenger
         /// </summary>        
-        [HttpGet("/api/passenger/orders/products")]
+        [HttpGet("/api/passenger/order/product")]
         public IEnumerable<Product> GetOrderedProducts()
         {
             Passenger passenger = _passengerRepository.GetPassengerByEmailWithOrders(User.Identity.Name);
