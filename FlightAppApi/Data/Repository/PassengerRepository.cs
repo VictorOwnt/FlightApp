@@ -22,6 +22,10 @@ namespace FlightAppApi.Repository
         {
             return _passengers.SingleOrDefault(p => p.Email == email);
         }
+        public Passenger GetPassengerByEmailWithOrders(string email)
+        {
+            return _passengers.Include(p => p.Orders).ThenInclude(o => o.Orderlines).ThenInclude(ol => ol.Product).SingleOrDefault(p => p.Email == email);
+        }
         public void SaveChanges()
         {
             _context.SaveChanges();

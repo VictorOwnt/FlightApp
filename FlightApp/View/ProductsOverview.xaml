@@ -19,10 +19,11 @@
             PaneDisplayMode="Top"
             SelectionChanged="ShoppingMenu_SelectionChanged">
             <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Content="All" Tag="all" />
                 <muxc:NavigationViewItem Content="Food" Tag="food"/>
                 <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
-                <muxc:NavigationViewItem Content="Other" Tag="other" />
-                <muxc:NavigationViewItem Content="Order history" Tag="history"/>
+                <muxc:NavigationViewItem Content="View Orders" Tag="orders" />
+
             </muxc:NavigationView.MenuItems>
             <StackPanel>
                 <GridView x:Name="Products_GridView"
@@ -36,7 +37,7 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button Content="Order products" Click="Order_Products" />
+                <Button x:Name="Order_Button" Content="Order products" Click="Order_Products" />
             </StackPanel>
         </muxc:NavigationView>
 

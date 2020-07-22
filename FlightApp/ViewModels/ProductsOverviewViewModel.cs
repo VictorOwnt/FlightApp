@@ -12,8 +12,8 @@ namespace FlightApp.ViewModels
 {
     public class ProductsOverviewViewModel : BindableBase
     {
-        private ObservableCollection<Product> _products;
-        public ObservableCollection<Product> Products
+        private IEnumerable<Product> _products;
+        public IEnumerable<Product> Products
         {
             get { return _products; }
             set { SetProperty(ref _products, value); }
@@ -35,6 +35,12 @@ namespace FlightApp.ViewModels
         public async void OrderProducts(List<Product> products)
         {
             await productService.OrderProductsAsync(products);
+        }
+
+        public async void GetOrderedProductsAsync()
+        {
+            Products = await productService.GetOrderedProductsAsync();
+
         }
     }
 }

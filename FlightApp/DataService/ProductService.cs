@@ -17,12 +17,13 @@ namespace FlightApp.DataService
         //HttpClient is intended to be instantiated once and re-used throughout the life of an application. 
         //Instantiating an HttpClient class for every request will exhaust the number of sockets available under heavy loads. This will result in SocketException errors.
         private static readonly HttpClient client = new HttpClient();
-        private string token { get; set; }
+        private string Token { get; set; }
+
 
         public ProductService()
         {
-            token = LocalSettings.Values["Token"] as string;
-            client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
+            Token = LocalSettings.Values["Token"] as string;
+            client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", Token);
         }
         public async Task<Category> GetCategoryWithProducts(string categoryName)
         {
@@ -38,11 +39,25 @@ namespace FlightApp.DataService
             return new Category();
         }
 
-        public async Task OrderProductsAsync(List<Product> products)
+        public async Task OrderProductsAsync(IEnumerable<Product> products)
         {
             var productsJson = JsonConvert.SerializeObject(products);
 
             var response = await client.PostAsync(new Uri("http://localhost:5000/api/products"), new HttpStringContent(productsJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+        }
+
+        public async Task<IEnumerable<Product>> GetOrderedProductsAsync()
+        {
+
+            var response = await client.GetAsync(new Uri("http://localhost:5000/api/passenger/orders/products"));
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetResults();
+                var orderedProducts = JsonConvert.DeserializeObject<IEnumerable<Product>>(result);
+                return orderedProducts;
+            }
+            else throw new Exception();
+
         }
     }
 }

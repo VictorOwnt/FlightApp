@@ -1,5 +1,6 @@
 ﻿using FlightAppApi.DTO;
 using FlightAppApi.Model;
+using FlightAppApi.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,19 @@ namespace FlightAppApi.Controllers
             passenger.Orders.Add(order);
             _passengerRepository.SaveChanges();
             _productRepository.SaveChanges();
+            return products;
+
+        }
+
+        /// <summary>
+        /// Get ordered products of the current passenger
+        /// </summary>        
+        [HttpGet("/api/passenger/orders/products")]
+        public IEnumerable<Product> GetOrderedProducts()
+        {
+            Passenger passenger = _passengerRepository.GetPassengerByEmailWithOrders(User.Identity.Name);
+            IEnumerable<Product> products = passenger.GetOrderedProducts();
+
             return products;
 
         }

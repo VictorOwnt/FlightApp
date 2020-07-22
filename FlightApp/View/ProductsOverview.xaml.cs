@@ -41,7 +41,40 @@ namespace FlightApp.View
         private void ShoppingMenu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             NavigationViewItem item = args.SelectedItem as NavigationViewItem;
-            ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
+            switch (item.Tag.ToString().ToLower())
+            {
+                case "food":
+                    ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
+                    setDefaultUI();
+                    break;
+                case "drinks":
+                    ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
+                    setDefaultUI();
+                    break;
+                case "orders":
+                    setOrderUI();
+                    ViewModel.GetOrderedProductsAsync();
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+
+        }
+
+        private void setDefaultUI()
+        {
+            Order_Button.Visibility = Visibility.Visible;
+            Products_GridView.SelectionMode = ListViewSelectionMode.Multiple;
+            Products_GridView.IsItemClickEnabled = true;
+        }
+
+        private void setOrderUI()
+        {
+            Order_Button.Visibility = Visibility.Collapsed;
+            Products_GridView.SelectionMode = ListViewSelectionMode.None;
+            Products_GridView.IsItemClickEnabled = false;
+
         }
 
         private void Order_Products(object sender, RoutedEventArgs e)

@@ -16,5 +16,18 @@ namespace FlightAppApi.Model
         {
             Orders = new List<Order>();
         }
+
+        public IEnumerable<Product> GetOrderedProducts()
+        {
+            List<Product> products = new List<Product>();
+            foreach (Order order in Orders)
+            {
+                foreach (Orderline orderline in order.Orderlines)
+                {
+                    products.Add(orderline.Product);
+                }
+            }
+            return products;
+        }
     }
 }

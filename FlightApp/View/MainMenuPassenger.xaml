@@ -34,7 +34,7 @@
                 Tag="SamplePage3" />
         </muxc:NavigationView.MenuItems>
 
-        <Frame x:Name="ContentFrame">
+        <Frame x:Name="PageFrame">
             <TextBlock
                 x:Name="PassengerName"
                 Margin="10,10,0,0"

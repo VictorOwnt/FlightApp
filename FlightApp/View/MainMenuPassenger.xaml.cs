@@ -53,7 +53,7 @@ namespace FlightApp.View
                 switch (item.Tag.ToString())
                 {
                     case "ProductsOverview":
-                        ContentFrame.Navigate(typeof(ProductsOverview));
+                        PageFrame.Navigate(typeof(ProductsOverview));
                         break;
                 }
             }
