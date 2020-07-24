@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using FlightAppApi.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -26,7 +27,14 @@ namespace FlightAppApi.Controllers
             _stewardRepository = stewardRepo;
         }
 
-        //TODO
+        /// <summary>
+        /// Check if person is steward
+        /// </summary>        
+        [HttpGet]
+        public bool IsSteward()
+        {
+            return User.HasClaim(ClaimTypes.Role, "steward");
+        }
 
     }
 }

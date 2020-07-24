@@ -14,6 +14,7 @@ namespace FlightAppApi.Controllers
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Produces("application/json")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Policy = "Passenger")]
     [Route("api/[controller]")]
     [ApiController]
     public class PassengerController : ControllerBase
