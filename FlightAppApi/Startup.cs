@@ -106,7 +106,7 @@ namespace FlightAppApi
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("StewardOnly", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
+                options.AddPolicy("Steward", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
                 options.AddPolicy("Passenger", policy => policy.RequireClaim(ClaimTypes.Role, "passenger"));
             });
 

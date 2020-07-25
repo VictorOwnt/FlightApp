@@ -26,6 +26,12 @@ namespace FlightAppApi.Repository
         {
             return _passengers.Include(p => p.Orders).ThenInclude(o => o.Orderlines).ThenInclude(ol => ol.Product).SingleOrDefault(p => p.Email == email);
         }
+
+        public Passenger GetPassengerBySeatNumber(int seatNumber)
+        {
+            return _passengers.FirstOrDefault(p => p.SeatNumber == seatNumber);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

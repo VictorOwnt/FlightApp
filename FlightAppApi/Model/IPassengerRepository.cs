@@ -9,6 +9,8 @@ namespace FlightAppApi.Model
     {
         Passenger GetPassengerByEmail(string email);
         Passenger GetPassengerByEmailWithOrders(string email);
+        Passenger GetPassengerBySeatNumber(int seatNumber);
         void SaveChanges();
+
     }
 }
