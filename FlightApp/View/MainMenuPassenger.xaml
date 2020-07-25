@@ -12,7 +12,7 @@
     <muxc:NavigationView
         x:Name="navigationViewPassengerMenu"
         IsSettingsVisible="False"
-        SelectionChanged="navigationViewPassenger_SelectionChanged">
+        SelectionChanged="NavigationViewPassenger_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <NavigationViewItem Content="Flight info" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,23 +21,19 @@ namespace FlightApp.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainMenuSteward : Page
+    public sealed partial class ChangeSeatsView : Page
     {
-        public MainMenuSteward()
+        public ChangeSeatsViewModel ViewModel { get; set; }
+        public ChangeSeatsView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            ViewModel = new ChangeSeatsViewModel();
         }
 
-        private void NavigationViewStewardMenu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void Change_Seats_Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
-
-            switch (item.Tag.ToString())
-            {
-                case "ChangeSeatsView":
-                    PageFrame.Navigate(typeof(ChangeSeatsView));
-                    break;
-            }
+            //TODO Check if non digit chars
+            ViewModel.ChangeSeatsAsync(int.Parse(PassengerSeat1.Text), int.Parse(PassengerSeat2.Text));
         }
     }
 }

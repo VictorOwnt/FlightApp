@@ -11,7 +11,7 @@
     <muxc:NavigationView
         x:Name="navigationViewStewardMenu"
         IsSettingsVisible="False"
-        SelectionChanged="navigationViewSteward_SelectionChanged">
+        SelectionChanged="NavigationViewStewardMenu_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <muxc:NavigationViewItem
                 Content="View Orders"
@@ -25,7 +25,7 @@
             <muxc:NavigationViewItem
                 Content="Change seats"
                 Icon="Switch"
-                Tag="SamplePage3" />
+                Tag="ChangeSeatsView" />
         </muxc:NavigationView.MenuItems>
 
         <Frame x:Name="PageFrame">

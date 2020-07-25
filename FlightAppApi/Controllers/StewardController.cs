@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using FlightAppApi.DTO;
 using FlightAppApi.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -34,12 +35,12 @@ namespace FlightAppApi.Controllers
         /// Add products to the current passenger
         /// </summary>        
         [HttpPut("/api/steward/seat/change")]
-        public IEnumerable<Passenger> ChangeSeats(int seatNumber1, int seatNumber2) // Use seatNumber or passenger name?
+        public IEnumerable<Passenger> ChangeSeats(SeatDTO seatDTO) // Use seatNumber or passenger name?
         {
-            Passenger passenger1 = _passengerRepository.GetPassengerBySeatNumber(seatNumber1);
-            Passenger passenger2 = _passengerRepository.GetPassengerBySeatNumber(seatNumber2);
-            passenger1.SeatNumber = seatNumber2;
-            passenger2.SeatNumber = seatNumber1;
+            Passenger passenger1 = _passengerRepository.GetPassengerBySeatNumber(seatDTO.SeatNumber1);
+            Passenger passenger2 = _passengerRepository.GetPassengerBySeatNumber(seatDTO.SeatNumber2);
+            passenger1.SeatNumber = seatDTO.SeatNumber2;
+            passenger2.SeatNumber = seatDTO.SeatNumber1;
             _passengerRepository.SaveChanges();
             List<Passenger> passengers = new List<Passenger>() { passenger1, passenger2 };
             return passengers;
