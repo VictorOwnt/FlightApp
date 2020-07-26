@@ -2,7 +2,7 @@
 
 namespace FlightAppApi.Model
 {
-    interface IFlightRepository
+    public interface IFlightRepository
     {
         IEnumerable<Flight> GetAllFlights();
         void SaveChanges();
