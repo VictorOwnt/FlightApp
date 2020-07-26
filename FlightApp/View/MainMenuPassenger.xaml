@@ -9,18 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <muxc:NavigationView x:Name="navigationViewPassenger">
+    <muxc:NavigationView x:Name="navigationViewPassenger" SelectionChanged="NavView_SelectionChanged" Header="Welcome">
         <muxc:NavigationView.MenuItems>
-            <NavigationViewItem Content="Flight info" Tag="FlightInfoPage">
+            <NavigationViewItemHeader Content="General"/>
+            <NavigationViewItem Content="Flight info" Tag="FlightInfo">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <muxc:NavigationViewItem
-                Content="Order products"
-                Icon="Shop"
-                Tag="SamplePage1" />
-            <NavigationViewItem Content="Music" Tag="FlightInfoPage">
+            <muxc:NavigationViewItem Content="Order products" Icon="Shop" Tag="Shop" />
+            <NavigationViewItemHeader Content="Entertainment"/>
+            <NavigationViewItem Content="Music" Tag="Music">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;" />
                 </NavigationViewItem.Icon>
@@ -28,18 +27,16 @@
             <muxc:NavigationViewItem
                 Content="Film"
                 Icon="Video"
-                Tag="SamplePage3" />
+                Tag="Film" />
         </muxc:NavigationView.MenuItems>
 
-        <StackPanel>
-            <TextBlock
-                x:Name="PassengerName"
-                Margin="10,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Text="{x:Bind ViewModel.LoggedInPassenger.FirstName}"
-                TextWrapping="Wrap" />
-        </StackPanel>
+        <Frame x:Name="ContentFrame">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
     </muxc:NavigationView>
 
 

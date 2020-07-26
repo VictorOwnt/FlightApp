@@ -123,6 +123,9 @@
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
+    <Compile Include="View\FlightInfoPage.xaml.cs">
+      <DependentUpon>FlightInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainMenuPassenger.xaml.cs">
       <DependentUpon>MainMenuPassenger.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\FlightInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainMenuPassenger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

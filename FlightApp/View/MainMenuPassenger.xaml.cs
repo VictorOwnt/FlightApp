@@ -1,24 +1,5 @@
-﻿using FlightApp.Models;
-using FlightApp.ViewModels;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.UI.Xaml;
+﻿using FlightApp.ViewModels;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,11 +15,40 @@ namespace FlightApp.View
         public MainMenuPassenger()
         {
             InitializeComponent();
-
-
         }
 
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                ContentFrame.Navigate(typeof(FlightInfoPage));
+                navigationViewPassenger.Header = "Settings";
+            }
+            else
+            {
+                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
+                switch (item.Tag.ToString())
+                {
+                    case "FlightInfo":
+                        ContentFrame.Navigate(typeof(FlightInfoPage));
+                        navigationViewPassenger.Header = "FlightInfo";
+                        break;
+                    case "Shop":
+                        ContentFrame.Navigate(typeof(FlightInfoPage));
+                        navigationViewPassenger.Header = "Shop";
+                        break;
+                    case "Music":
+                        ContentFrame.Navigate(typeof(FlightInfoPage));
+                        navigationViewPassenger.Header = "Music";
+                        break;
+                    case "Film":
+                        ContentFrame.Navigate(typeof(FlightInfoPage));
+                        navigationViewPassenger.Header = "Film";
+                        break;
+                }
+            }
+        }
 
 
     }
