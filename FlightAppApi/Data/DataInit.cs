@@ -42,6 +42,24 @@ namespace FlightAppApi.Data
                 await CreatePassenger(passenger2.Email, "Azertyuiop@1");
 
                 _dbContext.Passengers.AddRange(passenger1, passenger2);
+
+                #region init flightInfo
+                Location brussel = new Location { Country = "Belgium", City = "Zaventem" };
+                Location loiu = new Location { Country = "Spain", City = "Loiu" };
+
+                Airport brusselsAirport = new Airport { Name = "Brussels Airport", Location = brussel };
+                Airport bilbaoAirport = new Airport { Name = "Bilbao Airport", Location = loiu };
+
+                Aircraft boeing747 = new Aircraft { Name = "Boeing 747", ConstructionYear = 1984 };
+
+                Airline soloFlightAirlines = new Airline { Name = "Solo Flight Airlines", Description = "This airline company was found in 2020 during covid-19." };
+
+                FlightDetail detail = new FlightDetail { DepartingAirport = brusselsAirport, DepartingTime = new DateTime(2020, 8, 15, 12, 0, 0), ArrivalAirport = bilbaoAirport, ArrivalTime = new DateTime(2020, 8, 15, 15, 0, 0) };
+
+                Flight flight = new Flight { Airline = soloFlightAirlines, Aircraft = boeing747, FlightDetail = detail };
+                _dbContext.Flights.Add(flight);
+                #endregion
+
                 _dbContext.SaveChanges();
             }
 
