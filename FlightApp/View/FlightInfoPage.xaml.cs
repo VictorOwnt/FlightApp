@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,10 +23,12 @@ namespace FlightApp.View
     /// </summary>
     public sealed partial class FlightInfoPage : Page
     {
+        public FlightsInfoModel ViewModel;
         public FlightInfoPage()
         {
             this.InitializeComponent();
-
+            ViewModel = new FlightsInfoModel();
+            ViewModel.SetAllFlightsAsync();
         }
     }
 }

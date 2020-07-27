@@ -4,11 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FlightApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:data="using:FlightApp.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <GridView x:Name="Flights_GridView" ItemsSource="{x:Bind ViewModel.Flights, Mode=OneWay}" IsItemClickEnabled="True" SelectionMode="Multiple">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="data:Flight">
+                    <TextBlock FontSize="16" Text="{x:Bind FlightNr, Mode=OneWay}" Width="200"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>            
+        </GridView>
     </Grid>
 </Page>
