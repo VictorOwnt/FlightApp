@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace FlightApp.Models
 {
-    public class Flight
+    public class Location
     {
-        public int FlightNr;
+        public int Id;
 
-        public Airline Airline;
+        public string Country;
 
-        public Aircraft Aircraft;
-
-        public FlightDetail FlightDetail;
+        public string City;
     }
 }

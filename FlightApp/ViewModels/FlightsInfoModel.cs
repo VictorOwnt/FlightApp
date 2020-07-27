@@ -23,7 +23,7 @@ namespace FlightApp.ViewModels
 
         public FlightsInfoModel()
         {
-            // TODO start with getAllProducts
+            // TODO start with getAllFlights
         }
 
         public async void SetAllFlightsAsync()

@@ -17,7 +17,10 @@ namespace FlightAppApi.Data.Repository
         }
         public IEnumerable<Flight> GetAllFlights()
         {
-            return _flights;
+            return _flights.Include(f => f.Airline)
+                .Include(f => f.Aircraft)
+                .Include(f => f.FlightDetail).ThenInclude(fd => fd.ArrivalAirport).ThenInclude(aa => aa.Location)
+                .Include(f => f.FlightDetail).ThenInclude(fd => fd.DepartingAirport).ThenInclude(da => da.Location);
         }
 
         public void SaveChanges()

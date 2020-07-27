@@ -34,11 +34,7 @@ namespace FlightApp.DataService
                 var flights = JsonConvert.DeserializeObject<IEnumerable<Flight>>(result);
                 return flights;
             }
-            else
-            {
-                Console.WriteLine("AAAAAAAAAAAAAAAAAA " + response.StatusCode);
-                throw new Exception();
-            }
+            else throw new Exception();
         }
     }
 }

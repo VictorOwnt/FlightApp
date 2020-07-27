@@ -9,12 +9,28 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <GridView x:Name="Flights_GridView" ItemsSource="{x:Bind ViewModel.Flights, Mode=OneWay}" IsItemClickEnabled="True" SelectionMode="Multiple">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="data:Flight">
-                    <TextBlock FontSize="16" Text="{x:Bind FlightNr, Mode=OneWay}" Width="200"/>
-                </DataTemplate>
-            </GridView.ItemTemplate>            
-        </GridView>
+        <StackPanel>
+            <GridView x:Name="Flights_GridView" ItemsSource="{x:Bind ViewModel.Flights, Mode=OneWay}" IsItemClickEnabled="True">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Flight">
+                        <StackPanel>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightNr, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind Airline.Name, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind Airline.Description, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind Aircraft.Name, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind Aircraft.ConstructionYear, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.DepartingAirport.Name, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.DepartingAirport.Location.Country, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.DepartingAirport.Location.City, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.DepartingTime, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.ArrivalAirport.Name, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.ArrivalAirport.Location.Country, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.ArrivalAirport.Location.City, Mode=OneWay}" Width="200"/>
+                            <TextBlock FontSize="16" Text="{x:Bind FlightDetail.ArrivalTime, Mode=OneWay}" Width="200"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
     </Grid>
 </Page>

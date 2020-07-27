@@ -119,9 +119,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataService\FlightService.cs" />
     <Compile Include="DataService\PassengerService.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
+    <Compile Include="Models\Aircraft.cs" />
+    <Compile Include="Models\Airline.cs" />
+    <Compile Include="Models\Airport.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\FlightDetail.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Passenger.cs" />
+    <Compile Include="ViewModels\FlightsInfoModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="View\FlightInfoPage.xaml.cs">
       <DependentUpon>FlightInfoPage.xaml</DependentUpon>
@@ -173,6 +181,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Core">
+      <Version>7.2.0.1422</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
