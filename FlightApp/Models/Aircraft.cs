@@ -13,5 +13,7 @@ namespace FlightApp.Models
         public string Name;
 
         public int ConstructionYear;
+
+        public string ImageString;
     }
 }

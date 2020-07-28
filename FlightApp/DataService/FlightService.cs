@@ -25,14 +25,14 @@ namespace FlightApp.DataService
             client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", Token);
         }
 
-        public async Task<IEnumerable<Flight>> GetAllFlightsAsync()
+        public async Task<Flight> GetFlightAsync()
         {
             var response = await client.GetAsync(new Uri("http://localhost:5000/api/flight"));
             if (response.IsSuccessStatusCode)
             {
                 var result = response.Content.ReadAsStringAsync().GetResults();
                 var flights = JsonConvert.DeserializeObject<IEnumerable<Flight>>(result);
-                return flights;
+                return flights.Single();
             }
             else throw new Exception();
         }

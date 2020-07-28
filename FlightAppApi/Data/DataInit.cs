@@ -50,9 +50,9 @@ namespace FlightAppApi.Data
                 Airport brusselsAirport = new Airport { Name = "Brussels Airport", Location = brussel };
                 Airport bilbaoAirport = new Airport { Name = "Bilbao Airport", Location = loiu };
 
-                Aircraft boeing747 = new Aircraft { Name = "Boeing 747", ConstructionYear = 1984 };
+                Aircraft boeing747 = new Aircraft { Name = "Boeing 747", ConstructionYear = 1984, ImageString = "/Assets/aircraft.jpg" };
 
-                Airline soloFlightAirlines = new Airline { Name = "Solo Flight Airlines", Description = "This airline company was found in 2020 during covid-19." };
+                Airline soloFlightAirlines = new Airline { Name = "Solo Flight Airlines", Description = "This airline company was found in 2020 during covid-19.", ImageString = "/Assets/airline.png" };
 
                 FlightDetail detail = new FlightDetail { DepartingAirport = brusselsAirport, DepartingTime = new DateTime(2020, 8, 15, 12, 0, 0), ArrivalAirport = bilbaoAirport, ArrivalTime = new DateTime(2020, 8, 15, 15, 0, 0) };
 

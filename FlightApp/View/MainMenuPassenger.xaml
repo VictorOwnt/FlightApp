@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <muxc:NavigationView x:Name="navigationViewPassenger" SelectionChanged="NavView_SelectionChanged" Header="Welcome">
+    <muxc:NavigationView x:Name="navigationViewPassenger" SelectionChanged="NavView_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <NavigationViewItemHeader Content="General"/>
             <NavigationViewItem Content="Flight info" Tag="FlightInfo">

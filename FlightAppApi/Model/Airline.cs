@@ -12,5 +12,8 @@ namespace FlightAppApi.Model
 
         [Required]
         public string Description { get; set; } // extra info about airline you are flying with
+
+        [Required]
+        public string ImageString { get; set; }
     }
 }

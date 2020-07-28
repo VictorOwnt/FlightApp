@@ -32,19 +32,19 @@ namespace FlightApp.View
                 {
                     case "FlightInfo":
                         ContentFrame.Navigate(typeof(FlightInfoPage));
-                        navigationViewPassenger.Header = "FlightInfo";
+                        // navigationViewPassenger.Header = "FlightInfo";
                         break;
                     case "Shop":
                         ContentFrame.Navigate(typeof(FlightInfoPage));
-                        navigationViewPassenger.Header = "Shop";
+                        // navigationViewPassenger.Header = "Shop";
                         break;
                     case "Music":
                         ContentFrame.Navigate(typeof(FlightInfoPage));
-                        navigationViewPassenger.Header = "Music";
+                        // navigationViewPassenger.Header = "Music";
                         break;
                     case "Film":
                         ContentFrame.Navigate(typeof(FlightInfoPage));
-                        navigationViewPassenger.Header = "Film";
+                        // navigationViewPassenger.Header = "Film";
                         break;
                 }
             }

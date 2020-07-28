@@ -12,5 +12,8 @@ namespace FlightAppApi.Model
 
         [Required]
         public int ConstructionYear { get; set; }
+
+        [Required]
+        public string ImageString { get; set; }
     }
 }

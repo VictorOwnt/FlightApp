@@ -11,12 +11,12 @@ namespace FlightApp.ViewModels
 {
     public class FlightsInfoModel : BindableBase
     {
-        private IEnumerable<Flight> _flights;
+        private Flight _flight;
 
-        public IEnumerable<Flight> Flights
+        public Flight Flight
         {
-            get { return _flights; }
-            set { SetProperty(ref _flights, value); }
+            get { return _flight; }
+            set { SetProperty(ref _flight, value); }
         }
 
         private readonly FlightService flightService = new FlightService();
@@ -26,9 +26,9 @@ namespace FlightApp.ViewModels
             // TODO start with getAllFlights
         }
 
-        public async void SetAllFlightsAsync()
+        public async void SetFlightAsync()
         {
-            Flights = await flightService.GetAllFlightsAsync();
+            Flight = await flightService.GetFlightAsync();
         }
         
     }
