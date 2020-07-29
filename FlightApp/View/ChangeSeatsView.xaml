@@ -16,9 +16,9 @@
             Margin="119,20,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
+            InputScope="Number"
             PlaceholderText="Seat number"
-            TextWrapping="Wrap"
-            InputScope="Number"/>
+            TextWrapping="Wrap" />
 
 
         <TextBox
@@ -28,39 +28,43 @@
             Margin="1222,25,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            PlaceholderText="Seat number"
-            TextWrapping="Wrap" 
             InputScope="Number"
-            />
+            PlaceholderText="Seat number"
+            TextWrapping="Wrap" />
         <TextBlock
-            x:Name="PassengerName1"            
+            x:Name="PassengerName1"
             Margin="119,124,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"            
-            TextWrapping="Wrap"
-            Text="{x:Bind Path=ViewModel.Passenger1.FirstName,Mode=OneWay}"/>
+            VerticalAlignment="Top"
+            Text="{x:Bind Path=ViewModel.Passenger1.FirstName, Mode=OneWay}"
+            TextWrapping="Wrap" />
         <TextBlock
             x:Name="PassengerName2"
             Margin="1222,124,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="{x:Bind Path=ViewModel.Passenger2.FirstName,Mode=OneWay}"
+            Text="{x:Bind Path=ViewModel.Passenger2.FirstName, Mode=OneWay}"
             TextWrapping="Wrap" />
         <TextBlock
             x:Name="SeatNumber1"
             Margin="119,180,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="{x:Bind Path=ViewModel.Passenger1.SeatNumber,Mode=OneWay}"
+            Text="{x:Bind Path=ViewModel.Passenger1.SeatNumber, Mode=OneWay}"
             TextWrapping="Wrap" />
         <TextBlock
             x:Name="SeatNumber2"
             Margin="1222,180,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Text="{x:Bind Path=ViewModel.Passenger2.SeatNumber,Mode=OneWay}"
+            Text="{x:Bind Path=ViewModel.Passenger2.SeatNumber, Mode=OneWay}"
             TextWrapping="Wrap" />
-        <Button x:Name="Change_Seats_Button" Content="Change seats" Margin="659,29,0,0" VerticalAlignment="Top" Click="Change_Seats_Button_Click"/>
+        <Button
+            x:Name="Change_Seats_Button"
+            Margin="659,29,0,0"
+            VerticalAlignment="Top"
+            Click="Change_Seats_Button_Click"
+            Content="Change seats" />
 
 
     </Grid>

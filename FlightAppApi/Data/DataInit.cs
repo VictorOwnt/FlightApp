@@ -64,6 +64,23 @@ namespace FlightAppApi.Data
 
                 _dbContext.Categories.AddRange(drinks, food);
                 #endregion
+                _dbContext.SaveChanges();
+
+                #region init orders
+                Order order1 = new Order(1);
+                Orderline orderline1 = new Orderline(water);
+                Orderline orderline2 = new Orderline(tea);
+                order1.Orderlines.Add(orderline1);
+                order1.Orderlines.Add(orderline2);
+
+                Order order2 = new Order(1);
+                Orderline orderline3 = new Orderline(hotdog);
+                Orderline orderline4 = new Orderline(cola);
+                order2.Orderlines.Add(orderline3);
+                order2.Orderlines.Add(orderline4);
+
+                _dbContext.Orders.AddRange(order1, order2);
+                #endregion
 
 
                 _dbContext.SaveChanges();

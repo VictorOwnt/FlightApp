@@ -12,6 +12,7 @@ namespace FlightApp.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public int SeatNumber { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
     }
 }

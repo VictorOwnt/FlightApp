@@ -9,7 +9,7 @@ namespace FlightAppApi.Model
     public class Category
     {
         [Required]
-        public int Id { get; private set; }
+        public int CategoryId { get; private set; }
         [Required]
         public string Name { get; set; }
 

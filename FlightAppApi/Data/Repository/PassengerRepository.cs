@@ -32,6 +32,11 @@ namespace FlightAppApi.Repository
             return _passengers.FirstOrDefault(p => p.SeatNumber == seatNumber);
         }
 
+        public IEnumerable<Passenger> GetPassengersWithOrders()
+        {
+            return _passengers.Include(p => p.Orders).ThenInclude(o => o.Orderlines).ThenInclude(ol => ol.Product);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

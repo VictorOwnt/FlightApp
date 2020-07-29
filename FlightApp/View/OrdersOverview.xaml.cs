@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,26 +21,29 @@ namespace FlightApp.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainMenuSteward : Page
+    public sealed partial class OrdersOverview : Page
     {
-        public MainMenuSteward()
+        OrdersOverviewViewModel ViewModel;
+        public OrdersOverview()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            ViewModel = new OrdersOverviewViewModel();
         }
 
-        private void NavigationViewStewardMenu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void OrderMenu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             NavigationViewItem item = args.SelectedItem as NavigationViewItem;
-
-            switch (item.Tag.ToString())
+            switch (item.Tag.ToString().ToLower())
             {
-                case "ChangeSeatsView":
-                    PageFrame.Navigate(typeof(ChangeSeatsView));
+                case "all":
+                    ViewModel.GetOrderedProductsAsync();
                     break;
-                case "OrdersOverview":
-                    PageFrame.Navigate(typeof(OrdersOverview));
-                    break;
+
             }
+        }
+
+        private void Deliver_Order_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

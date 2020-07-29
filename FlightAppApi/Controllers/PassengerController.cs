@@ -45,7 +45,7 @@ namespace FlightAppApi.Controllers
         public ActionResult<List<ProductDTO>> OrderProducts(List<ProductDTO> products)
         {
             Passenger passenger = _passengerRepository.GetPassengerByEmail(User.Identity.Name);
-            Order order = new Order();
+            Order order = new Order(passenger.PersonId);
             foreach (ProductDTO productDTO in products)
             {
                 Product product = _productRepository.GetProductByName(productDTO.Name);

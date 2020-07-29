@@ -10,7 +10,7 @@ namespace FlightAppApi.Model
     public class Product
     {
         [Required]
-        public int Id { get; private set; }
+        public int ProductId { get; private set; }
         [Required]
         public string Name { get; set; }
 

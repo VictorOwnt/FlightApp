@@ -24,6 +24,7 @@ namespace FlightAppApi.Controllers
         private readonly IProductRepository _productRepository;
         private readonly IStewardRepository _stewardRepository;
 
+
         public StewardController(IPassengerRepository passengerRepository, IProductRepository productRepository, IStewardRepository stewardRepository)
         {
             _passengerRepository = passengerRepository;
@@ -32,7 +33,7 @@ namespace FlightAppApi.Controllers
         }
 
         /// <summary>
-        /// Add products to the current passenger
+        /// Change seats of the 2 passengers
         /// </summary>        
         [HttpPut("/api/steward/seat/change")]
         public IEnumerable<Passenger> ChangeSeats(SeatDTO seatDTO) // Use seatNumber or passenger name?
@@ -46,5 +47,17 @@ namespace FlightAppApi.Controllers
             return passengers;
 
         }
+
+        /// <summary>
+        /// Get all passengers with their orders
+        /// </summary>        
+        [HttpGet("/api/steward/passengers/orders")]
+        public IEnumerable<Passenger> GetPassengersWithOrders()
+        {
+            IEnumerable<Passenger> passengers = _passengerRepository.GetPassengersWithOrders();
+            return passengers;
+
+        }
+
     }
 }

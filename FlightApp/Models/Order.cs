@@ -6,16 +6,8 @@ using System.Threading.Tasks;
 
 namespace FlightApp.Models
 {
-    public class Product
+    public class Order
     {
-        public string Name { get; set; }
-
-        public Product(string name)
-        {
-            Name = name;
-        }
-
-
-
+        public ICollection<Orderline> Orderlines { get; set; }
     }
 }

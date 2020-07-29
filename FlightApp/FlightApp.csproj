@@ -125,10 +125,13 @@
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SeatDTO.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Orderline.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="ViewModels\ChangeSeatsViewModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
+    <Compile Include="ViewModels\OrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\ProductsOverviewViewModel.cs" />
     <Compile Include="View\ChangeSeatsView.xaml.cs">
       <DependentUpon>ChangeSeatsView.xaml</DependentUpon>
@@ -143,6 +146,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\OrdersOverview.xaml.cs">
+      <DependentUpon>OrdersOverview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ProductsOverview.xaml.cs">
       <DependentUpon>ProductsOverview.xaml</DependentUpon>
     </Compile>
@@ -182,6 +188,10 @@
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OrdersOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ProductsOverview.xaml">
       <SubType>Designer</SubType>

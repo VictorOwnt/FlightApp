@@ -6,16 +6,9 @@ using System.Threading.Tasks;
 
 namespace FlightApp.Models
 {
-    public class Product
+    public class Orderline
     {
-        public string Name { get; set; }
-
-        public Product(string name)
-        {
-            Name = name;
-        }
-
-
-
+        public Product Product { get; set; }
+        public bool IsDelivered { get; set; }
     }
 }

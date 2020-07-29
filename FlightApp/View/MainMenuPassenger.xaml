@@ -40,7 +40,7 @@
                 Margin="10,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Text="{x:Bind Path=ViewModel.LoggedInPassenger.FirstName,Mode=OneWay}" />
+                Text="{x:Bind Path=ViewModel.LoggedInPassenger.FirstName, Mode=OneWay}" />
         </Frame>
     </muxc:NavigationView>
 
