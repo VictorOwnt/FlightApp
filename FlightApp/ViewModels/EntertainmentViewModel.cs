@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FlightApp.DataService;
+using FlightApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,30 +9,37 @@ using Windows.UI.Popups;
 
 namespace FlightApp.ViewModels
 {
-    public class MoviesViewModel : ViewModelBase
+    public class EntertainmentViewModel : ViewModelBase
     {
+        #region Properties
         private IList<Movie> _movies;
-
+        private IList<Music> _music;
         public IList<Movie> Movies {
-            get { return _movies; }
+            get => _movies;
             set { _movies = value; RaisePropertyChanged(); }
         }
+        public IList<Music> Music {
+            get => _music;
+            set { _music = value; RaisePropertyChanged(); }
+        }
+        #endregion
 
-        public MoviesViewModel()
+        public EntertainmentViewModel()
         {
-
+            LoadEntertainment();
         }
 
-        private async void LoadMovies()
+        private async void LoadEntertainment()
         {
             try
             {
-                //Movies = await EntertainmentRepository.GetAllMoviesAsync();
+                Movies = await EntertainmentService.GetAllMoviesAsync();
+                Music = await EntertainmentService.GetAllMusicAsync();
             }
             catch (Exception e)
             {
                 MessageDialog messageDialog = new MessageDialog($"Couldn't establish a connection to the database. \n{e.Message}");
-                messageDialog.Commands.Add(new UICommand("Try again", new UICommandInvokedHandler(this.CommandInvokedHandler)));
+                messageDialog.Commands.Add(new UICommand("Try again", new UICommandInvokedHandler(CommandInvokedHandler)));
                 messageDialog.Commands.Add(new UICommand("Close"));
                 messageDialog.DefaultCommandIndex = 0;
                 messageDialog.CancelCommandIndex = 1;
@@ -43,7 +52,7 @@ namespace FlightApp.ViewModels
             switch (command.Label)
             {
                 case "Try again":
-                    LoadMovies();
+                    LoadEntertainment();
                     break;
             }
         }

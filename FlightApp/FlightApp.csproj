@@ -119,11 +119,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataService\EntertainmentService.cs" />
     <Compile Include="DataService\PassengerService.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
+    <Compile Include="DTO\MovieDTO.cs" />
+    <Compile Include="DTO\MusicDTO.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Music.cs" />
     <Compile Include="Models\Passenger.cs" />
+    <Compile Include="ViewModels\EntertainmentViewModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
-    <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="View\MainMenuPassenger.xaml.cs">
       <DependentUpon>MainMenuPassenger.xaml</DependentUpon>

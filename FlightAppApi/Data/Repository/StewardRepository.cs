@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlightAppApi.Repository
+namespace FlightAppApi.Data.Repository
 {
     public class StewardRepository : IStewardRepository
     {

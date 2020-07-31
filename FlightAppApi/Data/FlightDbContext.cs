@@ -1,4 +1,5 @@
 ﻿//using FlightAppApi.Data.Mappers;
+using FlightAppApi.Data.Mappers;
 using FlightAppApi.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,8 @@ namespace FlightAppApi.Data
     {
         public DbSet<Steward> Stewards { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
-        //public DbSet<Movie> Movies { get; set; }
-        //public DbSet<Music> Music { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Music> Music { get; set; }
 
         public FlightDbContext(DbContextOptions<FlightDbContext> options)
             : base(options)
@@ -25,11 +26,12 @@ namespace FlightAppApi.Data
             base.OnModelCreating(builder);
             builder.Entity<Steward>();
             builder.Entity<Passenger>();
-            //builder.Entity<Movie>();
-            //builder.Entity<Music>();
 
-            //builder.ApplyConfiguration(new MovieConfig());
-            //builder.ApplyConfiguration(new MusicConfig());
+            //builder.Entity<Movie>().HasKey(i => i.Id);
+            //builder.Entity<Music>().HasKey(i => i.Id);
+
+            builder.ApplyConfiguration(new MovieConfig());
+            builder.ApplyConfiguration(new MusicConfig());
         }
     }
 }
