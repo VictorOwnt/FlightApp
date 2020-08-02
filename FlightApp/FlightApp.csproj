@@ -130,6 +130,9 @@
     <Compile Include="ViewModels\EntertainmentViewModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="View\EntertainmentView.xaml.cs">
+      <DependentUpon>EntertainmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainMenuPassenger.xaml.cs">
       <DependentUpon>MainMenuPassenger.xaml</DependentUpon>
     </Compile>
@@ -137,9 +140,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\MoviesPage.xaml.cs">
-      <DependentUpon>MoviesPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -162,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\EntertainmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainMenuPassenger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,10 +173,6 @@
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\MoviesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

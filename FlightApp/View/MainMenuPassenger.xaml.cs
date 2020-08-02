@@ -34,12 +34,36 @@ namespace FlightApp.View
         public MainMenuPassenger()
         {
             InitializeComponent();
-
-
         }
 
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                ContentFrame.Navigate(typeof(EntertainmentView));
+                navigationViewPassenger.Header = "Settings";
+            }
+            else
+            {
+                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
+                switch (item.Tag.ToString())
+                {
+                    case "FlightInfo":
+                        //ContentFrame.Navigate(typeof(EntertainmentView));
+                        // navigationViewPassenger.Header = "FlightInfo";
+                        break;
+                    case "Shop":
+                        //ContentFrame.Navigate(typeof(EntertainmentView));
+                        // navigationViewPassenger.Header = "Shop";
+                        break;
 
-
+                    case "Entertainment":
+                        ContentFrame.Navigate(typeof(EntertainmentView));
+                        // navigationViewPassenger.Header = "Music";
+                        break;
+                }
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace FlightApp.Models
         public string Title { get; private set; }
         public string Artist { get; private set; }
         public string Poster { get; private set; }
-        public string Source => $"{Artist}{Title}.mp3";
+        public string Source => $"{Artist}.{Title}.mp3";
 
         public Music(int id, string title, string artist, string poster)
         {

@@ -9,7 +9,6 @@ namespace FlightAppApi.Model
 {
     public class Movie
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }

@@ -22,7 +22,6 @@ namespace FlightApp.ViewModels
         {
             var passenger = await PassengerService.GetLoggedInPassengerAsync();
             LoggedInPassenger = passenger;
-
         }
     }
 }
