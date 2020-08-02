@@ -17,7 +17,7 @@ namespace FlightApp.Models
         public string Poster { get; private set; }
         public string Trailer { get; private set; }
 
-        public string Source => $"{Director}.{Title}.mp4";
+        public string Source => $"{Director}.{Description.Substring(0, 3)}.mp4";
 
         public Movie(int id, string title, DateTime releaseDate, int runtime, string description, string director, string poster, string trailer)
         {

@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -34,7 +35,11 @@ namespace FlightApp.View
         public MainMenuPassenger()
         {
             InitializeComponent();
+            if (_instance is null) _instance = this;
         }
+
+        private static MainMenuPassenger _instance;
+        public static MainMenuPassenger Instance { get { return _instance; } }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
@@ -50,11 +55,11 @@ namespace FlightApp.View
                 switch (item.Tag.ToString())
                 {
                     case "FlightInfo":
-                        //ContentFrame.Navigate(typeof(EntertainmentView));
+                        ContentFrame.Navigate(typeof(EntertainmentView));
                         // navigationViewPassenger.Header = "FlightInfo";
                         break;
                     case "Shop":
-                        //ContentFrame.Navigate(typeof(EntertainmentView));
+                        ContentFrame.Navigate(typeof(EntertainmentView));
                         // navigationViewPassenger.Header = "Shop";
                         break;
 
@@ -64,6 +69,11 @@ namespace FlightApp.View
                         break;
                 }
             }
+        }
+        public  void NavigateToMoviePlayer(Movie movie)
+        {
+            ContentFrame.Navigate(typeof(MoviePlayerView), movie, new EntranceNavigationTransitionInfo());
+            navigationViewPassenger.Header = "Movie Player";
         }
     }
 }

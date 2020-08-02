@@ -26,7 +26,7 @@ namespace FlightApp.View
 
         public EntertainmentView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -45,13 +45,12 @@ namespace FlightApp.View
         private void Music_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Music music = (sender as ListView).SelectedItem as Music;
-            MusicPlayer.Source = MediaSource.CreateFromUri(
-                new Uri($"ms-appx:///Assets/Files/{music.Source}"));
+            MusicPlayer.Source = MediaSource.CreateFromUri(new Uri($"ms-appx:///Assets/Files/Music/{music.Source}"));
         }
 
         private void Movie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MainPage.Instance.NavigateToMoviePlayer((sender as ListView).SelectedItem as Movie);
+            MainMenuPassenger.Instance.NavigateToMoviePlayer((sender as ListView).SelectedItem as Movie);
         }
     }
 }
