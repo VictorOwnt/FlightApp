@@ -14,5 +14,6 @@ namespace FlightApp.Models
         public int SeatNumber { get; set; }
         public ICollection<Order> Orders { get; set; }
 
+
     }
 }

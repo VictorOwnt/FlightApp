@@ -29,5 +29,18 @@ namespace FlightAppApi.Model
             }
             return products;
         }
+
+        public ICollection<Order> FilterOrdersOnDelivery(bool delivery)
+        {
+            List<Order> filteredOrders = new List<Order>();
+            foreach (Order order in Orders)
+            {
+                if (order.IsDelivered == delivery)
+                {
+                    filteredOrders.Add(order);
+                }
+            }
+            return filteredOrders;
+        }
     }
 }

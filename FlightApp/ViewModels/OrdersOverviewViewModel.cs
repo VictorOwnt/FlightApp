@@ -20,9 +20,14 @@ namespace FlightApp.ViewModels
 
         private readonly StewardService stewardService = new StewardService();
 
-        public async void GetOrderedProductsAsync()
+        public async void GetPassengersWithAllOrders()
         {
             Passengers = await stewardService.GetPassengersIncludeOrders();
+        }
+
+        public async void GetPassengerWithFilteredOrders(bool delivery)
+        {
+            Passengers = await stewardService.GetPassengersWithFilteredOrders(delivery);
         }
     }
 }

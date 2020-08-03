@@ -36,8 +36,15 @@ namespace FlightApp.View
             switch (item.Tag.ToString().ToLower())
             {
                 case "all":
-                    ViewModel.GetOrderedProductsAsync();
+                    ViewModel.GetPassengersWithAllOrders();
                     break;
+                case "deliver":
+                    ViewModel.GetPassengerWithFilteredOrders(false);
+                    break;
+                case "delivered":
+                    ViewModel.GetPassengerWithFilteredOrders(true);
+                    break;
+
 
             }
         }

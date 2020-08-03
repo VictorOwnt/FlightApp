@@ -9,6 +9,5 @@ namespace FlightApp.Models
     public class Orderline
     {
         public Product Product { get; set; }
-        public bool IsDelivered { get; set; }
     }
 }

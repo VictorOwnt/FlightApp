@@ -59,5 +59,20 @@ namespace FlightAppApi.Controllers
 
         }
 
+        /// <summary>
+        /// Get all passengers with their orders
+        /// </summary>        
+        [HttpGet("/api/steward/passengers/orders/deliver")]
+        public IEnumerable<Passenger> GetPassengersWithFilteredOrders(bool delivery)
+        {
+            IEnumerable<Passenger> passengers = _passengerRepository.GetPassengersWithOrders(); // Get passengers first and filter after because filtering on include was not possible. More info:  https://stackoverflow.com/questions/43618096/filtering-on-include-in-ef-core
+            foreach (Passenger passenger in passengers)
+            {
+                passenger.Orders = passenger.FilterOrdersOnDelivery(delivery);
+            }
+            return passengers;
+        }
+
+
     }
 }
