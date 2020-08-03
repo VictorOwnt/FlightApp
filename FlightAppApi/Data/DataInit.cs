@@ -46,11 +46,11 @@ namespace FlightAppApi.Data
                 #endregion
 
                 #region init products
-                Product water = new Product { Name = "water" };
-                Product cola = new Product { Name = "cola" };
-                Product tea = new Product { Name = "tea" };
+                Product water = new Product { Name = "water", ImagePath = "/Assets/water.png" };
+                Product cola = new Product { Name = "cola", ImagePath = "/Assets/cola.jpg" };
+                Product tea = new Product { Name = "ice tea", ImagePath = "/Assets/ice_tea.png" };
 
-                Product hotdog = new Product { Name = "hotdog" };
+                Product hotdog = new Product { Name = "hotdog", ImagePath = "/Assets/hotdog.jpg" };
 
                 _dbContext.Products.AddRange(water, cola, tea, hotdog);
                 #endregion

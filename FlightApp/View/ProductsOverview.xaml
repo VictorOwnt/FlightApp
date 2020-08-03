@@ -33,7 +33,10 @@
 
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="data:Product">
-                            <TextBlock FontSize="16" Text="{x:Bind Name,Mode=OneWay}" Width="280" />
+                            <StackPanel>
+                                <TextBlock FontSize="16" Text="{x:Bind Name,Mode=OneWay}" Width="280" />
+                                <Image Source="{x:Bind ImagePath,Mode=OneWay}" Width="200" Height="200"/>
+                            </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>

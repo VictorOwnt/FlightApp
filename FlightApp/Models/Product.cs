@@ -8,14 +8,13 @@ namespace FlightApp.Models
 {
     public class Product
     {
-        public string Name { get; set; }
-
-        public Product(string name)
+        private string _name;
+        public string Name
         {
-            Name = name;
+            get => _name.First().ToString().ToUpper() + _name.Substring(1);
+            set => _name = value;
         }
-
-
+        public string ImagePath { get; set; }
 
     }
 }
