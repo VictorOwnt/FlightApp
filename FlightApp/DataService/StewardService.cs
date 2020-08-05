@@ -27,6 +27,21 @@ namespace FlightApp.DataService
             Token = LocalSettings.Values["Token"] as string;
             client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", Token);
         }
+
+        public async Task DeliverOrderAsync(int orderId)
+        {
+            var orderIdJson = JsonConvert.SerializeObject(orderId);
+            string url = string.Format("http://localhost:5000/api/steward/passenger/order/deliver?orderId={0}", orderId);            
+            var response = await client.PutAsync(new Uri(url), new HttpStringContent(orderIdJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception();
+            }
+
+
+
+        }
+
         public async Task<List<Passenger>> ChangeSeats(int seatNumber1, int seatNumber2)
         {
             SeatDTO seatDTO = new SeatDTO(seatNumber1, seatNumber2);
@@ -55,7 +70,6 @@ namespace FlightApp.DataService
         }
         public async Task<IEnumerable<Passenger>> GetPassengersWithFilteredOrders(bool delivery)
         {
-            //http://localhost:5000/api/steward/passengers/orders/deliver?delivery=false
             string url = string.Format("http://localhost:5000/api/steward/passengers/orders/deliver?delivery={0}", delivery);
             var response = await client.GetAsync(new Uri(url));
             if (response.IsSuccessStatusCode)

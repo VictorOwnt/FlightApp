@@ -30,5 +30,9 @@ namespace FlightApp.ViewModels
             Passengers = await stewardService.GetPassengersWithFilteredOrders(delivery);
         }
 
+        public async Task DeliverOrderAsync(int orderId)
+        {
+            await stewardService.DeliverOrderAsync(orderId);
+        }
     }
 }

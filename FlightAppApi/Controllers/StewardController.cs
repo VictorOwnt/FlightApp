@@ -23,13 +23,15 @@ namespace FlightAppApi.Controllers
         private readonly IPassengerRepository _passengerRepository;
         private readonly IProductRepository _productRepository;
         private readonly IStewardRepository _stewardRepository;
+        private readonly IOrderRepository _orderRepository;
 
 
-        public StewardController(IPassengerRepository passengerRepository, IProductRepository productRepository, IStewardRepository stewardRepository)
+        public StewardController(IPassengerRepository passengerRepository, IProductRepository productRepository, IStewardRepository stewardRepository, IOrderRepository orderRepository)
         {
             _passengerRepository = passengerRepository;
             _productRepository = productRepository;
             _stewardRepository = stewardRepository;
+            _orderRepository = orderRepository;
         }
 
         /// <summary>
@@ -73,6 +75,22 @@ namespace FlightAppApi.Controllers
             return passengers;
         }
 
+        /// <summary>
+        /// Set order with given orderId as delivered
+        /// </summary>        
+        [HttpPut("/api/steward/passenger/order/deliver")]
+        public IActionResult DeliverOrder(int orderId)
+        {
+
+            Order order = _orderRepository.GetOrderById(orderId);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            order.IsDelivered = true;
+            _orderRepository.SaveChanges();
+            return Ok();
+        }
 
     }
 }

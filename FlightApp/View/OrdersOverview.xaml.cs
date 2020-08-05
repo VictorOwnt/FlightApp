@@ -1,4 +1,5 @@
-﻿using FlightApp.ViewModels;
+﻿using FlightApp.Models;
+using FlightApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,7 +52,26 @@ namespace FlightApp.View
 
         private void Deliver_Order_Click(object sender, RoutedEventArgs e)
         {
+            Button button = (Button)sender;
+            int orderId = ((Order)button.DataContext).OrderId;
 
+            NavigationViewItem item = OrderMenu.SelectedItem as NavigationViewItem;
+
+            ViewModel.DeliverOrderAsync(orderId);
+
+            switch (item.Tag.ToString().ToLower())
+            {
+                case "all":
+                    ViewModel.GetPassengersWithAllOrders();
+                    break;
+                case "deliver":
+                    ViewModel.GetPassengerWithFilteredOrders(false);
+                    break;
+                case "delivered":
+                    ViewModel.GetPassengerWithFilteredOrders(true);
+                    break;
+
+            }
         }
     }
 }

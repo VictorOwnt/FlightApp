@@ -8,6 +8,7 @@ namespace FlightAppApi.Model
 {
     public class Order
     {
+        [Required]
         public int OrderId { get; private set; }
         [Required]
         public ICollection<Orderline> Orderlines { get; set; }

@@ -8,7 +8,7 @@ namespace FlightApp.Models
 {
     public class Order
     {
-
+        public int OrderId { get; set; }
         public ICollection<Orderline> Orderlines { get; set; }
 
         public double CalculateOrderCost(ICollection<Orderline> orderlines)
