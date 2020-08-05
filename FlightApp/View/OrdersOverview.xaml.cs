@@ -23,7 +23,7 @@ namespace FlightApp.View
     /// </summary>
     public sealed partial class OrdersOverview : Page
     {
-        OrdersOverviewViewModel ViewModel;
+        public readonly OrdersOverviewViewModel ViewModel;
         public OrdersOverview()
         {
             InitializeComponent();

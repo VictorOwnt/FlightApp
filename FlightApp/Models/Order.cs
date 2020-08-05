@@ -8,6 +8,23 @@ namespace FlightApp.Models
 {
     public class Order
     {
+
         public ICollection<Orderline> Orderlines { get; set; }
+
+        public double CalculateOrderCost(ICollection<Orderline> orderlines)
+        {
+            double cost = 0;
+            foreach (Orderline orderline in orderlines)
+            {
+                cost += orderline.Product.Price;
+            }
+            return cost;
+        }
+
+        public string OrderCostToString(ICollection<Orderline> orderlines)
+        {
+            double totalCost = CalculateOrderCost(orderlines);
+            return "Total cost:" + " €" + totalCost.ToString();
+        }
     }
 }

@@ -24,23 +24,24 @@
                 <muxc:NavigationViewItem Content="Delivered" Tag="delivered" />
             </muxc:NavigationView.MenuItems>
 
-            <ListView ItemsSource="{x:Bind Path=ViewModel.Passengers,Mode=OneWay}" x:Name="ListA">
+            <ListView ItemsSource="{x:Bind ViewModel.Passengers,Mode=OneWay}" x:Name="Passengers">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="data:Passenger">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Bind FirstName,Mode=OneWay}"/>
-                            <ListView x:Name="ListB" ItemsSource="{x:Bind Orders,Mode=OneWay}">
+                            <ListView x:Name="Orders" ItemsSource="{x:Bind Orders,Mode=OneWay}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="data:Order">
                                         <StackPanel Orientation="Vertical">
                                             <Button x:Name="Deliver_Order" Content="Order delivered" Click="Deliver_Order_Click" />
-                                            <ListView x:Name="ListC" ItemsSource="{x:Bind Orderlines,Mode=OneWay}">
+                                            <ListView x:Name="Orderlines" ItemsSource="{x:Bind Orderlines,Mode=OneWay}">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate x:DataType="data:Orderline">
                                                         <TextBlock Text="{x:Bind Product.Name,Mode=OneWay}"/>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
+                                            <TextBlock Text="{x:Bind OrderCostToString(Orderlines),Mode=OneWay}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
