@@ -24,24 +24,25 @@
                 <muxc:NavigationViewItem Content="Delivered" Tag="delivered" />
             </muxc:NavigationView.MenuItems>
 
-            <ListView ItemsSource="{x:Bind ViewModel.Passengers,Mode=OneWay}" x:Name="Passengers">
+            <ListView ItemsSource="{x:Bind Path=ViewModel.Passengers,Mode=OneWay}" x:Name="Passengers" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="data:Passenger">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{x:Bind FirstName,Mode=OneWay}"/>
-                            <ListView x:Name="Orders" ItemsSource="{x:Bind Orders,Mode=OneWay}">
+                            <TextBlock Text="{x:Bind FirstName,Mode=OneWay}" Style="{StaticResource DefaultHeader}"/>
+                            <ListView Margin="16,0" x:Name="Orders" ItemsSource="{x:Bind Orders,Mode=OneWay}" SelectionMode="None" ItemContainerStyle="{StaticResource BorderedItem}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="data:Order">
-                                        <StackPanel Orientation="Vertical">
-                                            <Button x:Name="Deliver_Order" Content="Order delivered" Click="Deliver_Order_Click" />
-                                            <ListView x:Name="Orderlines" ItemsSource="{x:Bind Orderlines,Mode=OneWay}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <ListView x:Name="Orderlines" ItemsSource="{x:Bind Orderlines,Mode=OneWay}" SelectionMode="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate x:DataType="data:Orderline">
-                                                        <TextBlock Text="{x:Bind Product.Name,Mode=OneWay}"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{x:Bind Product.Name,Mode=OneWay}"/>
+                                                        </StackPanel>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
-                                            <TextBlock Text="{x:Bind OrderCostToString(Orderlines),Mode=OneWay}"/>
+                                            <Button x:Name="Deliver_Order" Content="Order delivered" Click="Deliver_Order_Click" Style="{StaticResource DefaultButtonStyle}" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
