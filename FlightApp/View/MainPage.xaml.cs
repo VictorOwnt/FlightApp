@@ -19,6 +19,7 @@ namespace FlightApp
     /// </summary>    
     public sealed partial class MainPage : Page
     {
+        private readonly HttpClient client = new HttpClient();
         public MainPage()
         {
             InitializeComponent();
@@ -29,25 +30,34 @@ namespace FlightApp
         {
             LoginDTO login = new LoginDTO(Email.Text, Password.Password);
             var loginJson = JsonConvert.SerializeObject(login);
-            HttpClient client = new HttpClient();
 
-            var res = await client.PostAsync(new Uri("http://localhost:5000/api/account/"), new HttpStringContent(loginJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-            var token = await res.Content.ReadAsStringAsync();
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            localSettings.Values["Token"] = token;
-            client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
+            try
+            {
+                var res = await client.PostAsync(new Uri("http://localhost:5000/api/account/"), new HttpStringContent(loginJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+                var token = await res.Content.ReadAsStringAsync();
+                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                localSettings.Values["Token"] = token;
+                client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
 
-            res = await client.GetAsync(new Uri("http://localhost:5000/api/Person"));
-            string value = await res.Content.ReadAsStringAsync();
-            bool isSteward = Convert.ToBoolean(value);
-            if (isSteward)
-            {
-                Frame.Navigate(typeof(MainMenuSteward));
+                res = await client.GetAsync(new Uri("http://localhost:5000/api/Person"));
+                string value = await res.Content.ReadAsStringAsync();
+                bool isSteward = Convert.ToBoolean(value);
+                if (isSteward)
+                {
+                    Frame.Navigate(typeof(MainMenuSteward));
+                }
+                else
+                {
+                    Frame.Navigate(typeof(MainMenuPassenger));
+                }
             }
-            else
+            catch (Exception error)
             {
-                Frame.Navigate(typeof(MainMenuPassenger));
+
             }
+
+
+
 
 
         }

@@ -15,6 +15,12 @@ namespace FlightApp.Models
             set => _name = value;
         }
         public string ImagePath { get; set; }
+        public double Price { get; set; }
+
+        public string PriceToString(double price)
+        {
+            return "€" + price.ToString();
+        }
 
     }
 }

@@ -15,6 +15,8 @@ namespace FlightAppApi.Model
         public string Name { get; set; }
 
         public string ImagePath { get; set; }
+        [Required]
+        public double Price { get; set; }
 
     }
 }

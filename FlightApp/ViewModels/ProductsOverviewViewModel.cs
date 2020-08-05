@@ -1,12 +1,7 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
 using Prism.Mvvm;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlightApp.ViewModels
 {
@@ -18,18 +13,19 @@ namespace FlightApp.ViewModels
             get { return _products; }
             set { SetProperty(ref _products, value); }
         }
+        private double _totalCost;
+        public double TotalCost
+        {
+            get { return _totalCost; }
+            set { SetProperty(ref _totalCost, value); }
+        }
+        public HashSet<Product> SelectedProducts { get; set; } = new HashSet<Product>();
 
         private readonly ProductService productService = new ProductService();
-
-        public ProductsOverviewViewModel()
-        {
-            //TODO start with getAllProducts
-        }
 
         public async void SetProductsOfCategoryAsync(string categoryName)
         {
             Products = await productService.GetProductsOfCategory(categoryName);
-
         }
 
         public async void OrderProducts(List<Product> products)
@@ -46,6 +42,25 @@ namespace FlightApp.ViewModels
         public async void SetAllProductsAsync()
         {
             Products = await productService.GetAllProductsAsync();
+        }
+
+        public string TotalCostToString(double totalCost)
+        {
+            return "Total cost:" + " €" + totalCost;
+        }
+
+        public void ChangeSelectedProducts(Product selectedProduct)
+        {
+            if (SelectedProducts.Contains(selectedProduct))
+            {
+                SelectedProducts.Remove(selectedProduct);
+                TotalCost -= selectedProduct.Price;
+            }
+            else
+            {
+                SelectedProducts.Add(selectedProduct);
+                TotalCost += selectedProduct.Price;
+            }
         }
     }
 }

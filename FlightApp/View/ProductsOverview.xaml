@@ -10,39 +10,56 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid>
 
-        <muxc:NavigationView
-            x:Name="ShoppingMenu"
-            IsBackButtonVisible="Collapsed"
-            IsSettingsVisible="False"
-            PaneDisplayMode="Top"
-            SelectionChanged="ShoppingMenu_SelectionChanged">
-            <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="All" Tag="all" />
-                <muxc:NavigationViewItem Content="Food" Tag="food"/>
-                <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
-                <muxc:NavigationViewItem Content="View Orders" Tag="orders" />
 
-            </muxc:NavigationView.MenuItems>
-            <StackPanel>
-                <GridView x:Name="Products_GridView"
-                    ItemsSource="{x:Bind ViewModel.Products,Mode=OneWay}"
-                          IsItemClickEnabled="True"
-                          SelectionMode="Multiple">
+    <muxc:NavigationView
+        x:Name="ShoppingMenu"
+        IsBackButtonVisible="Collapsed"
+        IsSettingsVisible="False"
+        PaneDisplayMode="Top"
+        SelectionChanged="ShoppingMenu_SelectionChanged">
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem Content="All" Tag="all" />
+            <muxc:NavigationViewItem Content="Food" Tag="food" />
+            <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
+            <muxc:NavigationViewItem Content="View ordered products" Tag="orders" />
 
-                    <GridView.ItemTemplate>
-                        <DataTemplate x:DataType="data:Product">
-                            <StackPanel>
-                                <TextBlock FontSize="16" Text="{x:Bind Name,Mode=OneWay}" Width="280" />
-                                <Image Source="{x:Bind ImagePath,Mode=OneWay}" Width="200" Height="200"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-                <Button x:Name="Order_Button" Content="Order products" Click="Order_Products" />
-            </StackPanel>
-        </muxc:NavigationView>
+        </muxc:NavigationView.MenuItems>
+        <StackPanel>
+            <GridView
+                x:Name="Products_GridView"
+                IsItemClickEnabled="True"
+                ItemClick="Products_GridView_ItemClick"
+                ItemsSource="{x:Bind ViewModel.Products, Mode=OneWay}"
+                SelectionMode="Multiple">
 
-    </Grid>
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Product">
+                        <StackPanel>
+                            <TextBlock
+                                Width="280"
+                                FontSize="16"
+                                Text="{x:Bind Name, Mode=OneWay}" />
+                            <TextBlock
+                                Width="280"
+                                FontSize="16"
+                                Text="{x:Bind PriceToString(Price), , Mode=OneWay}" />
+                            <Image
+                                Width="200"
+                                Height="200"
+                                Source="{x:Bind ImagePath, Mode=OneWay}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <TextBlock x:Name="Total_Cost" Text="{x:Bind ViewModel.TotalCostToString(ViewModel.TotalCost), Mode=OneWay}" />
+            <Button
+                x:Name="Order_Button"
+                Click="Order_Products"
+                Content="Order products"
+                Style="{StaticResource DefaultButtonStyle}" />
+        </StackPanel>
+    </muxc:NavigationView>
+
+
 </Page>
