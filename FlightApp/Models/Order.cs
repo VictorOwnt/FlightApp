@@ -10,6 +10,7 @@ namespace FlightApp.Models
     {
         public int OrderId { get; set; }
         public ICollection<Orderline> Orderlines { get; set; }
+        public bool IsDelivered { get; set; }
 
         public double CalculateOrderCost(ICollection<Orderline> orderlines)
         {
@@ -26,5 +27,18 @@ namespace FlightApp.Models
             double totalCost = CalculateOrderCost(orderlines);
             return "Total cost:" + " €" + totalCost.ToString();
         }
+
+        public string IsDeliveredToString()
+        {
+            if (IsDelivered)
+            {
+                return "Order Delivered";
+            }
+            else
+            {
+                return "Deliver Order";
+            }
+        }
+
     }
 }

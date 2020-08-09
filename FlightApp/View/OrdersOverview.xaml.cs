@@ -29,6 +29,7 @@ namespace FlightApp.View
         {
             InitializeComponent();
             ViewModel = new OrdersOverviewViewModel();
+
         }
 
         private void OrderMenu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -41,23 +42,25 @@ namespace FlightApp.View
                     break;
                 case "deliver":
                     ViewModel.GetPassengerWithFilteredOrders(false);
+
                     break;
                 case "delivered":
                     ViewModel.GetPassengerWithFilteredOrders(true);
+
                     break;
 
 
             }
         }
 
-        private void Deliver_Order_Click(object sender, RoutedEventArgs e)
+        private async void Deliver_Order_Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             int orderId = ((Order)button.DataContext).OrderId;
 
             NavigationViewItem item = OrderMenu.SelectedItem as NavigationViewItem;
 
-            ViewModel.DeliverOrderAsync(orderId);
+            await ViewModel.DeliverOrderAsync(orderId);
 
             switch (item.Tag.ToString().ToLower())
             {
@@ -70,6 +73,7 @@ namespace FlightApp.View
                 case "delivered":
                     ViewModel.GetPassengerWithFilteredOrders(true);
                     break;
+
 
             }
         }
