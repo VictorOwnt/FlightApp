@@ -42,7 +42,51 @@ namespace FlightAppApi.Data
 
                 await CreatePassenger(passenger2.Email, "Azertyuiop@1");
 
+                Passenger passenger3 = new Passenger { Email = "sandrawilson@gmail.com", FirstName = "Sandra", LastName = "Wilson", SeatNumber = 3 };
+
+                await CreatePassenger(passenger3.Email, "Azertyuiop@1");
+
+                Passenger passenger4 = new Passenger { Email = "hilairesimard@gmail.com", FirstName = "Hilaire", LastName = "Simard", SeatNumber = 4 };
+
+                await CreatePassenger(passenger4.Email, "Azertyuiop@1");
+
+                Passenger passenger5 = new Passenger { Email = "rogerdupont@gmail.com", FirstName = "Roger", LastName = "Dupont", SeatNumber = 5 };
+
+                await CreatePassenger(passenger5.Email, "Azertyuiop@1");
+
+                Passenger passenger6 = new Passenger { Email = "nandodiemel@gmail.com", FirstName = "Nando", LastName = "Diemel", SeatNumber = 6 };
+
+                await CreatePassenger(passenger6.Email, "Azertyuiop@1");
+
                 _dbContext.Passengers.AddRange(passenger1, passenger2);
+                #endregion
+
+                #region set contacts
+                PassengerContact passengerContact1 = new PassengerContact { Passenger = passenger1, PassengerId = passenger1.PersonId, Contact = passenger3, ContactId = passenger3.PersonId };
+                PassengerContact passengerContact2 = new PassengerContact { Passenger = passenger1, PassengerId = passenger1.PersonId, Contact = passenger4, ContactId = passenger4.PersonId };
+                List<PassengerContact> passengerContacts1 = new List<PassengerContact>
+                {
+                    passengerContact1,
+                    passengerContact2
+                };
+                passenger1.Contacts = passengerContacts1;
+                //passenger2.ContactOf = passengerContacts1;
+
+
+                PassengerContact passengerContact3 = new PassengerContact { Passenger = passenger3, PassengerId = passenger3.PersonId, Contact = passenger1, ContactId = passenger1.PersonId };
+                List<PassengerContact> passengerContacts2 = new List<PassengerContact>
+                {
+                    passengerContact3
+                };
+                passenger3.Contacts = passengerContacts2;
+
+                PassengerContact passengerContact4 = new PassengerContact { Passenger = passenger4, PassengerId = passenger4.PersonId, Contact = passenger1, ContactId = passenger1.PersonId };
+                List<PassengerContact> passengerContacts3 = new List<PassengerContact>
+                {
+                    passengerContact4
+                };
+                passenger4.Contacts = passengerContacts3;
+                _dbContext.SaveChanges();
                 #endregion
 
                 #region init products

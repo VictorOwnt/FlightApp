@@ -26,6 +26,11 @@ namespace FlightAppApi.Data
             builder.Entity<Steward>().HasKey(s => s.PersonId);
             builder.Entity<Passenger>().HasKey(p => p.PersonId);
             builder.Entity<Passenger>().HasMany(p => p.Orders).WithOne().OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Passenger>().HasMany(p => p.Contacts).WithOne();
+
+            builder.Entity<PassengerContact>().HasKey(pc => new { pc.PassengerId, pc.ContactId });
+            //builder.Entity<PassengerContact>().HasOne(pc => pc.Contact).WithMany(p => p.ContactOf).HasForeignKey(pc => pc.ContactId).OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<PassengerContact>().HasOne(pc => pc.Passenger).WithMany(p => p.Contacts).HasForeignKey(pc => pc.PassengerId).OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Product>().HasKey(p => p.ProductId);
 
@@ -37,8 +42,6 @@ namespace FlightAppApi.Data
 
             builder.Entity<Category>().HasKey(c => c.CategoryId);
             builder.Entity<Category>().HasMany(c => c.Products).WithOne();
-
-
 
         }
 
