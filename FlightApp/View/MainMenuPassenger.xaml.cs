@@ -55,6 +55,9 @@ namespace FlightApp.View
                     case "ProductsOverview":
                         PageFrame.Navigate(typeof(ProductsOverview));
                         break;
+                    case "ContactsOverview":
+                        PageFrame.Navigate(typeof(ContactsOverview));
+                        break;
                 }
             }
         }

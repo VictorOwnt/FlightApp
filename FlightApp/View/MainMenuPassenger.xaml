@@ -32,6 +32,10 @@
                 Content="Film"
                 Icon="Video"
                 Tag="SamplePage3" />
+            <muxc:NavigationViewItem
+                Content="Contacts"
+                Icon="Contact"
+                Tag="ContactsOverview" />
         </muxc:NavigationView.MenuItems>
 
         <Frame x:Name="PageFrame">
@@ -40,7 +44,7 @@
                 Margin="10,10,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Text="{x:Bind Path=ViewModel.LoggedInPassenger.FirstName, Mode=OneWay}" />
+                Text="{x:Bind Path=ViewModel.LoggedInPassenger.Name, Mode=OneWay}" />
         </Frame>
     </muxc:NavigationView>
 

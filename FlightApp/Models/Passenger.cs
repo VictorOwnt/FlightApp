@@ -10,6 +10,10 @@ namespace FlightApp.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Name
+        {
+            get => FirstName + " " + LastName;
+        }
         public string Email { get; set; }
         public int SeatNumber { get; set; }
         public ICollection<Order> Orders { get; set; }

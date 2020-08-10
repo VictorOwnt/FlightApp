@@ -130,11 +130,15 @@
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="ViewModels\ChangeSeatsViewModel.cs" />
+    <Compile Include="ViewModels\ContactsOverviewViewModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="ViewModels\OrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\ProductsOverviewViewModel.cs" />
     <Compile Include="View\ChangeSeatsView.xaml.cs">
       <DependentUpon>ChangeSeatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ContactsOverview.xaml.cs">
+      <DependentUpon>ContactsOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainMenuPassenger.xaml.cs">
       <DependentUpon>MainMenuPassenger.xaml</DependentUpon>
@@ -178,6 +182,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="View\ChangeSeatsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ContactsOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

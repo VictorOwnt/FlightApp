@@ -71,5 +71,22 @@ namespace FlightAppApi.Controllers
             return products;
 
         }
+
+        /// <summary>
+        /// Get contacts of the current passenger
+        /// </summary>        
+        [HttpGet("/api/passenger/contacts")]
+        public IEnumerable<Passenger> GetContacts()
+        {
+            Passenger passenger = _passengerRepository.GetPassengerByEmailWithContacts(User.Identity.Name);
+            List<Passenger> contacts = new List<Passenger>();
+            foreach (PassengerContact passengerContact in passenger.Contacts)
+            {
+                contacts.Add(passengerContact.Contact);
+            }
+
+            return contacts;
+
+        }
     }
 }
