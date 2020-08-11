@@ -21,18 +21,18 @@ namespace FlightApp.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ContactsOverview : Page
+    public sealed partial class ChatView : Page
     {
         public ContactsOverviewViewModel ViewModel { get; set; }
-        public ContactsOverview()
+        public ChatView()
         {
             ViewModel = new ContactsOverviewViewModel();
             this.InitializeComponent();
         }
 
-        private void Contact_Button_Click(object sender, RoutedEventArgs e)
+        private async void Send_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ChatView));
+            await ViewModel.SendMessage(name.Text, text.Text);
         }
     }
 }

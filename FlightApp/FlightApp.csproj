@@ -125,6 +125,7 @@
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SeatDTO.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ChatMessage.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Orderline.cs" />
     <Compile Include="Models\Passenger.cs" />
@@ -136,6 +137,9 @@
     <Compile Include="ViewModels\ProductsOverviewViewModel.cs" />
     <Compile Include="View\ChangeSeatsView.xaml.cs">
       <DependentUpon>ChangeSeatsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChatView.xaml.cs">
+      <DependentUpon>ChatView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ContactsOverview.xaml.cs">
       <DependentUpon>ContactsOverview.xaml</DependentUpon>
@@ -207,6 +211,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ChatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ContactsOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,6 +241,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
+      <Version>3.1.6</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities">
       <Version>2.2.0</Version>
     </PackageReference>
