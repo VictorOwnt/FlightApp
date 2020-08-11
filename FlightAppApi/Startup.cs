@@ -17,6 +17,7 @@ using NSwag;
 using System.Security.Claims;
 using FlightAppApi.Data.Repository;
 using Microsoft.AspNetCore.Rewrite;
+using FlightAppApi.Hubs;
 
 namespace FlightAppApi
 {
@@ -111,6 +112,8 @@ namespace FlightAppApi
                 options.AddPolicy("Passenger", policy => policy.RequireClaim(ClaimTypes.Role, "passenger"));
             });
 
+            services.AddSignalR();
+
 
         }
 
@@ -133,7 +136,10 @@ namespace FlightAppApi
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
 
-
+            app.UseSignalR((routes) =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+            });
             app.UseMvc();
 
             app.UseSwaggerUi3();

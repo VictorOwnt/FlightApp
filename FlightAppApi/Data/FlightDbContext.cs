@@ -32,6 +32,9 @@ namespace FlightAppApi.Data
             //builder.Entity<PassengerContact>().HasOne(pc => pc.Contact).WithMany(p => p.ContactOf).HasForeignKey(pc => pc.ContactId).OnDelete(DeleteBehavior.Restrict);
             builder.Entity<PassengerContact>().HasOne(pc => pc.Passenger).WithMany(p => p.Contacts).HasForeignKey(pc => pc.PassengerId).OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<ChatMessage>().HasKey(cm => cm.ChatMessageId);
+            builder.Entity<PassengerContact>().HasMany(pc => pc.ChatMessages).WithOne();
+
             builder.Entity<Product>().HasKey(p => p.ProductId);
 
             builder.Entity<Order>().HasKey(o => o.OrderId);
