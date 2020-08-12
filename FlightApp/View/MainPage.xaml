@@ -8,37 +8,45 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid>
-        <StackPanel>
+    <Grid Background="LightSkyBlue">
+
+        <StackPanel
+            Margin="50"
+            Padding="50" 
+            Width="Auto"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            BorderBrush="Black"
+            BorderThickness="4,4,4,4">
+
             <TextBlock
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
+                FontFamily="Arial Black"
                 FontSize="32"
+                FontStyle="Italic"
+                FontWeight="Bold"
                 Text="Log in " />
             <TextBox
-                x:Name="Email"
-                Width="200"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
+                x:Name="Email"                
+                Margin="0,20,0,0"                
                 PlaceholderText="Email"
                 TextWrapping="Wrap" />
             <PasswordBox
-                x:Name="Password"
-                Width="200"
-                Height="40"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
+                x:Name="Password"                
+                Margin="0,20,0,0"                
                 InputScope="Password"
                 PlaceholderText="Password" />
             <Button
                 Margin="10"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                Background="#FF62CA4E"
+                BorderBrush="#FF2332AC"
                 Click="Log_In"
                 Content="Log in"
                 Style="{StaticResource DefaultButtonStyle}" />
         </StackPanel>
+
     </Grid>
 
 </Page>

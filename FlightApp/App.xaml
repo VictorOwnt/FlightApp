@@ -5,7 +5,7 @@
     xmlns:local="using:FlightApp">
     <Application.Resources>
         <Style x:Key="DefaultButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="LightSkyBlue" />
+            <Setter Property="Background" Value="#FF62CA4E" />
             <Setter Property="BorderBrush" Value="#FF0B4268" />
             <Setter Property="CornerRadius" Value="4" />
             <Setter Property="Margin" Value="4" />

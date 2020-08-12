@@ -35,6 +35,7 @@ namespace FlightApp.View
         {
             InitializeComponent();
             ViewModel = new MainMenuPassengerViewModel();
+            navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[0]; // Set to flight info
 
         }
 

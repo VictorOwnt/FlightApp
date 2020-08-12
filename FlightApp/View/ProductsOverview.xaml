@@ -25,7 +25,7 @@
             <muxc:NavigationViewItem Content="View ordered products" Tag="orders" />
 
         </muxc:NavigationView.MenuItems>
-        <StackPanel>
+        <StackPanel Background="LightSkyBlue">
             <GridView
                 x:Name="Products_GridView"
                 IsItemClickEnabled="True"
@@ -35,20 +35,26 @@
 
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Product">
-                        <StackPanel>
-                            <TextBlock
-                                Width="280"
-                                FontSize="16"
-                                Text="{x:Bind Name, Mode=OneWay}" />
-                            <TextBlock
-                                Width="280"
-                                FontSize="16"
-                                Text="{x:Bind PriceToString(Price), , Mode=OneWay}" />
-                            <Image
-                                Width="200"
-                                Height="200"
-                                Source="{x:Bind ImagePath, Mode=OneWay}" />
-                        </StackPanel>
+                        <Border
+                            BorderBrush="Black"
+                            BorderThickness="2"
+                            CornerRadius="4">
+                            <StackPanel>
+                                <TextBlock
+                                    Width="280"
+                                    FontSize="16"
+                                    Text="{x:Bind Name, Mode=OneWay}" />
+                                <TextBlock
+                                    Width="280"
+                                    FontSize="16"
+                                    Text="{x:Bind PriceToString(Price), , Mode=OneWay}" />
+                                <Image
+                                    Width="200"
+                                    Height="200"
+                                    Source="{x:Bind ImagePath, Mode=OneWay}" />
+
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>

@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <muxc:NavigationView
+    <muxc:NavigationView 
         x:Name="navigationViewPassengerMenu"
         IsSettingsVisible="False"
         SelectionChanged="NavigationViewPassenger_SelectionChanged">
@@ -22,7 +22,8 @@
             <muxc:NavigationViewItem
                 Content="Order products"
                 Icon="Shop"
-                Tag="ProductsOverview" />
+                Tag="ProductsOverview"
+                />
             <NavigationViewItem Content="Music" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;" />
@@ -39,12 +40,7 @@
         </muxc:NavigationView.MenuItems>
 
         <Frame x:Name="PageFrame">
-            <TextBlock
-                x:Name="PassengerName"
-                Margin="10,10,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Text="{x:Bind Path=ViewModel.LoggedInPassenger.Name, Mode=OneWay}" />
+
         </Frame>
     </muxc:NavigationView>
 
