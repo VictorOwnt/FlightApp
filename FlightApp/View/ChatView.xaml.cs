@@ -11,11 +11,11 @@ namespace FlightApp.View
 
     public sealed partial class ChatView : Page
     {
-        public ContactsOverviewViewModel ViewModel { get; set; }
+        public ChatViewModel ViewModel { get; set; }
         private Passenger Contact { get; set; }
         public ChatView()
         {
-            ViewModel = new ContactsOverviewViewModel();
+            ViewModel = new ChatViewModel();
             InitializeComponent();
         }
 

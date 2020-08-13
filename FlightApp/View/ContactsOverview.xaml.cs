@@ -28,14 +28,14 @@ namespace FlightApp.View
         public ContactsOverview()
         {
             ViewModel = new ContactsOverviewViewModel();
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void Contact_Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             Passenger contact = ((Passenger)button.DataContext);
-            this.Frame.Navigate(typeof(ChatView), contact);
+            Frame.Navigate(typeof(ChatView), contact);
         }
     }
 }

@@ -131,6 +131,7 @@
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="ViewModels\ChangeSeatsViewModel.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContactsOverviewViewModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="ViewModels\OrdersOverviewViewModel.cs" />

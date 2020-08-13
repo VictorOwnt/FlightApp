@@ -111,7 +111,7 @@ namespace FlightAppApi
                 options.AddPolicy("Steward", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
                 options.AddPolicy("Passenger", policy => policy.RequireClaim(ClaimTypes.Role, "passenger"));
             });
-            services.AddSingleton<PassengerRepository>();
+            services.AddSingleton<PassengerRepository>(); // Singleton needed to access repository in chathub
             services.AddSignalR();
 
 
