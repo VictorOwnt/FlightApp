@@ -88,5 +88,27 @@ namespace FlightAppApi.Controllers
             return contacts;
 
         }
+        /// <summary>
+        /// Get messages of the current passenger with given contactEmail
+        /// </summary>        
+        [HttpGet("/api/passenger/messages/")]
+        public IEnumerable<ChatMessage> GetPassengerWithMessages(string contactEmail)
+        {
+            Passenger passenger = _passengerRepository.GetPassengerByEmailWithChatMessages(User.Identity.Name);
+            List<ChatMessage> messages = new List<ChatMessage>();
+            foreach (PassengerContact passengerContact in passenger.Contacts) // Move to domain?
+            {
+                if (passengerContact.Contact.Email == contactEmail)
+                {
+                    foreach (ChatMessage chatMessage in passengerContact.ChatMessages)
+                    {
+                        messages.Add(chatMessage);
+                    }
+                }
+            }
+
+            return messages;
+
+        }
     }
 }

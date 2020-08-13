@@ -1,38 +1,40 @@
-﻿using FlightApp.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using FlightApp.Models;
+using FlightApp.ViewModels;
+using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace FlightApp.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class ChatView : Page
     {
         public ContactsOverviewViewModel ViewModel { get; set; }
+        private Passenger Contact { get; set; }
         public ChatView()
         {
             ViewModel = new ContactsOverviewViewModel();
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private async void Send_Click(object sender, RoutedEventArgs e)
         {
-            await ViewModel.SendMessage(name.Text, text.Text);
+            LocalObjectStorageHelper localObjectStorage = new LocalObjectStorageHelper();
+            if (localObjectStorage.KeyExists("passenger"))
+            {
+                Passenger passenger = localObjectStorage.Read<Passenger>("passenger");
+                await ViewModel.SendMessage(passenger.Email, Contact.Email, text.Text);
+            }
+
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Contact = e.Parameter as Passenger;
+            ViewModel.SetMessages(Contact.Email);
+            //ViewModel = new ContactsOverviewViewModel(Contact.Email);
         }
     }
 }

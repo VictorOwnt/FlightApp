@@ -1,4 +1,5 @@
-﻿using FlightApp.ViewModels;
+﻿using FlightApp.Models;
+using FlightApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +33,9 @@ namespace FlightApp.View
 
         private void Contact_Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ChatView));
+            Button button = (Button)sender;
+            Passenger contact = ((Passenger)button.DataContext);
+            this.Frame.Navigate(typeof(ChatView), contact);
         }
     }
 }

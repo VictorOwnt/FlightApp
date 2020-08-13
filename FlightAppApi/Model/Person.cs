@@ -16,5 +16,10 @@ namespace FlightAppApi.Model
         public string LastName { get; set; }
         [Required]
         public string Email { get; set; }
+
+        public string Name
+        {
+            get => FirstName + " " + LastName;
+        }
     }
 }

@@ -42,6 +42,10 @@ namespace FlightAppApi.Repository
         {
             return _passengers.Include(p => p.Orders).ThenInclude(o => o.Orderlines).ThenInclude(ol => ol.Product);
         }
+        public Passenger GetPassengerByEmailWithChatMessages(string email)
+        {
+            return _passengers.Include(p => p.Contacts).ThenInclude(c => c.ChatMessages).Include(p => p.Contacts).ThenInclude(c => c.Contact).SingleOrDefault(p => p.Email == email);
+        }
 
         public void SaveChanges()
         {

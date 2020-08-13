@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using Microsoft.Toolkit.Uwp.Helpers;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,6 @@ namespace FlightApp.ViewModels
         private async void SetLoggedInPassenger()
         {
             LoggedInPassenger = await PassengerService.GetLoggedInPassengerAsync();
-
         }
 
     }

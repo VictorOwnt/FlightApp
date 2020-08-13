@@ -6,6 +6,7 @@ using Windows.Storage;
 using Windows.Web.Http;
 using Windows.Web.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace FlightApp.DataService
 {
@@ -26,6 +27,10 @@ namespace FlightApp.DataService
         {
             var json = await client.GetStringAsync(new Uri("http://localhost:5000/api/passenger/"));
             var passenger = JsonConvert.DeserializeObject<Passenger>(json);
+
+            LocalObjectStorageHelper localObjectStorage = new LocalObjectStorageHelper();
+            localObjectStorage.Save("passenger", passenger);
+
             return passenger;
 
         }
@@ -46,5 +51,24 @@ namespace FlightApp.DataService
 
 
         }
+
+        public async Task<IEnumerable<ChatMessage>> GetMessagesOfPassengerWithContact(string contactEmail)
+        {
+            string url = string.Format("http://localhost:5000/api/passenger/messages/?contactEmail={0}", contactEmail);
+            var response = await client.GetAsync(new Uri(url));
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetResults();
+                var messages = JsonConvert.DeserializeObject<IEnumerable<ChatMessage>>(result);
+                return messages;
+            }
+            else
+            {
+                throw new Exception();
+            }
+
+
+        }
+
     }
 }

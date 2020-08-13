@@ -10,18 +10,12 @@
     mc:Ignorable="d">
 
     <RelativePanel>
-        <TextBox
-            x:Name="name"
-            RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.AlignTopWithPanel="True" />
         <ListView
-            x:Name="lv"
+            x:Name="messagesListView"
             ItemsSource="{x:Bind ViewModel.Messages}"
             RelativePanel.Above="rp"
             RelativePanel.AlignLeftWithPanel="True"
-            RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.Below="name">
+            RelativePanel.AlignRightWithPanel="True">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:ChatMessage">
                     <StackPanel Orientation="Horizontal">
