@@ -28,10 +28,7 @@ namespace FlightApp.ViewModels
 
         public ContactsOverviewViewModel()
         {
-            // TODO : Fill with existing messages?
-
             SetContacts();
-
         }
         public async void SetContacts()
         {

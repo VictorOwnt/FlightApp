@@ -13,6 +13,7 @@ namespace FlightAppApi.Model
         public int ContactId { get; set; }
         public Passenger Contact { get; set; }
 
+        public string RoomName { get; set; }
         public List<ChatMessage> ChatMessages { get; set; } = new List<ChatMessage>();
     }
 }

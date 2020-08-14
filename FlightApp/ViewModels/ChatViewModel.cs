@@ -40,7 +40,7 @@ namespace FlightApp.ViewModels
             Messages = new ObservableCollection<ChatMessage>();
             IsConnected = false;
             hubConnection = new HubConnectionBuilder().WithUrl($"http://localhost:5000/chatHub").Build();
-            Connect();
+            //Connect();
 
             hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
             {
@@ -48,10 +48,10 @@ namespace FlightApp.ViewModels
             });
         }
 
-        public async void Connect()
+        public async void Connect(string passengerEmail, string contactEmail)
         {
             await hubConnection.StartAsync();
-            //await hubConnection.InvokeAsync("JoinChat", "TO REPLACE");
+            await hubConnection.InvokeAsync("JoinRoom", passengerEmail, contactEmail);
 
             IsConnected = true;
         }

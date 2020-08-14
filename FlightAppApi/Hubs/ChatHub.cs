@@ -16,26 +16,52 @@ namespace FlightAppApi.Hubs
         {
             _passengerRepository = passengerRepo;
         }
-        /*public async Task JoinChat(string user)
+        public Task JoinRoom(string passengerEmail, string contactEmail)
         {
-            await Clients.All.SendAsync("JoinChat", user);
-        }
+            PassengerContact pc = GetCurrentPassengerContact(passengerEmail, contactEmail);
+            if (pc.RoomName == null)
+            {
+                pc.RoomName = CreateRoomName(passengerEmail, contactEmail);
+                _passengerRepository.SaveChanges();
+            }
 
-        public async Task LeaveChat(string user)
+            return Groups.AddToGroupAsync(Context.ConnectionId, pc.RoomName);
+        }
+        public Task LeaveRoom(string passengerEmail, string contactEmail)
         {
-            await Clients.All.SendAsync("LeaveChat", user);
-        }*/
+
+            return Groups.RemoveFromGroupAsync(Context.ConnectionId, CreateRoomName(passengerEmail, contactEmail));
+        }
 
         public async Task SendMessage(string passengerEmail, string contactEmail, string message)
         {
+            PassengerContact pc = GetCurrentPassengerContact(passengerEmail, contactEmail);
+            pc.ChatMessages.Add(new ChatMessage(message, pc.Passenger.FirstName + " " + pc.Passenger.LastName));
+            _passengerRepository.SaveChanges();
 
+            await Clients.Group(pc.RoomName).SendAsync("ReceiveMessage", pc.Passenger.Name, message);
+        }
+
+        private PassengerContact GetCurrentPassengerContact(string passengerEmail, string contactEmail)
+        {
             Passenger passenger = _passengerRepository.GetPassengerByEmailWithContacts(passengerEmail);
             Passenger contact = _passengerRepository.GetPassengerByEmailWithContacts(contactEmail);
             PassengerContact pc = passenger.Contacts.SingleOrDefault(c => c.Contact == contact);
-            pc.ChatMessages.Add(new ChatMessage(message, passenger.FirstName + " " + passenger.LastName));
-            _passengerRepository.SaveChanges();
+            return pc;
+        }
 
-            await Clients.All.SendAsync("ReceiveMessage", passenger.Name, message);
+        private string CreateRoomName(string passengerEmail, string contactEmail)
+        {
+            int help = string.Compare(passengerEmail, contactEmail);
+            if (help < 0)
+            {
+                return passengerEmail + contactEmail;
+            }
+            else
+            {
+                return contactEmail + passengerEmail;
+            }
+
         }
     }
 }

@@ -44,7 +44,7 @@ namespace FlightAppApi.Repository
         }
         public Passenger GetPassengerByEmailWithChatMessages(string email)
         {
-            return _passengers.Include(p => p.Contacts).ThenInclude(c => c.ChatMessages).Include(p => p.Contacts).ThenInclude(c => c.Contact).SingleOrDefault(p => p.Email == email);
+            return _passengers.Include(p => p.Contacts).ThenInclude(c => c.ChatMessages).Include(p => p.Contacts).ThenInclude(c => c.Contact).ThenInclude(c => c.Contacts).ThenInclude(c => c.ChatMessages).SingleOrDefault(p => p.Email == email);
         }
 
         public void SaveChanges()

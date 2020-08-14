@@ -43,5 +43,34 @@ namespace FlightAppApi.Model
             }
             return filteredOrders;
         }
+
+        public IEnumerable<ChatMessage> GetChatsWithContact(string contactEmail)
+        {
+            //TODO: try to simplify
+            List<ChatMessage> messages = new List<ChatMessage>();
+            foreach (PassengerContact passengerContact in Contacts)
+            {
+                if (passengerContact.Contact.Email == contactEmail)
+                {
+                    foreach (ChatMessage chatMessage in passengerContact.ChatMessages)
+                    {
+                        messages.Add(chatMessage);
+                    }
+
+                    foreach (PassengerContact passengerContact1 in passengerContact.Contact.Contacts)
+                    {
+                        if (passengerContact1.Passenger.Email == contactEmail)
+                        {
+                            foreach (ChatMessage chatMessage in passengerContact1.ChatMessages)
+                            {
+                                messages.Add(chatMessage);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return messages;
+        }
     }
 }

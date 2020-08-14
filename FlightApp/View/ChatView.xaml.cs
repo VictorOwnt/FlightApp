@@ -13,6 +13,7 @@ namespace FlightApp.View
     {
         public ChatViewModel ViewModel { get; set; }
         private Passenger Contact { get; set; }
+        private Passenger Passenger { get; set; }
         public ChatView()
         {
             ViewModel = new ChatViewModel();
@@ -21,20 +22,21 @@ namespace FlightApp.View
 
         private async void Send_Click(object sender, RoutedEventArgs e)
         {
-            LocalObjectStorageHelper localObjectStorage = new LocalObjectStorageHelper();
-            if (localObjectStorage.KeyExists("passenger"))
-            {
-                Passenger passenger = localObjectStorage.Read<Passenger>("passenger");
-                await ViewModel.SendMessage(passenger.Email, Contact.Email, text.Text);
-            }
+            await ViewModel.SendMessage(Passenger.Email, Contact.Email, text.Text);
 
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Contact = e.Parameter as Passenger;
+            LocalObjectStorageHelper localObjectStorage = new LocalObjectStorageHelper();
+            if (localObjectStorage.KeyExists("passenger"))
+            {
+                Passenger = localObjectStorage.Read<Passenger>("passenger");
+
+            }
+            ViewModel.Connect(Passenger.Email, Contact.Email);
             ViewModel.SetMessages(Contact.Email);
-            //ViewModel = new ContactsOverviewViewModel(Contact.Email);
         }
     }
 }
