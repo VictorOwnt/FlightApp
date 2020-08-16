@@ -23,6 +23,10 @@
                 Content="Order products"
                 Icon="Shop"
                 Tag="ProductsOverview" />
+            <muxc:NavigationViewItem
+                Content="View orders"
+                Icon="View"
+                Tag="PassengerOrdersOverview" />
             <NavigationViewItem Content="Music" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;" />

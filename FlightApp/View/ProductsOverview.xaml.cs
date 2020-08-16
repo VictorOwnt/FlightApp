@@ -47,21 +47,12 @@ namespace FlightApp.View
                 case "food":
                     SetAlreadyChosenProducts();
                     ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
-                    SetDefaultUI();
-
                     break;
                 case "drinks":
                     ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
                     SetAlreadyChosenProducts();
-                    SetDefaultUI();
-
-                    break;
-                case "orders":
-                    SetOrderUI();
-                    ViewModel.GetOrderedProductsAsync();
                     break;
                 case "all":
-                    SetDefaultUI();
                     ViewModel.SetAllProductsAsync();
                     SetAlreadyChosenProducts();
                     break;
@@ -72,20 +63,7 @@ namespace FlightApp.View
 
         }
 
-        private void SetDefaultUI()
-        {
-            Order_Button.Visibility = Visibility.Visible;
-            Products_GridView.SelectionMode = ListViewSelectionMode.Multiple;
-            Products_GridView.IsItemClickEnabled = true;
-        }
 
-        private void SetOrderUI()
-        {
-            Order_Button.Visibility = Visibility.Collapsed;
-            Products_GridView.SelectionMode = ListViewSelectionMode.None;
-            Products_GridView.IsItemClickEnabled = false;
-
-        }
 
         private void Order_Products(object sender, RoutedEventArgs e)
         {

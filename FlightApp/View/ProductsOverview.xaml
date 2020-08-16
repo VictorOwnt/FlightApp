@@ -22,8 +22,6 @@
             <muxc:NavigationViewItem Content="All" Tag="all" />
             <muxc:NavigationViewItem Content="Food" Tag="food" />
             <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
-            <muxc:NavigationViewItem Content="View ordered products" Tag="orders" />
-
         </muxc:NavigationView.MenuItems>
         <StackPanel Background="LightSkyBlue">
             <GridView

@@ -11,9 +11,9 @@
     <Grid Background="LightSkyBlue">
 
         <StackPanel
-            Margin="50"
-            Padding="50" 
             Width="Auto"
+            Margin="50"
+            Padding="50"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
             BorderBrush="Black"
@@ -27,13 +27,13 @@
                 FontWeight="Bold"
                 Text="Log in " />
             <TextBox
-                x:Name="Email"                
-                Margin="0,20,0,0"                
+                x:Name="Email"
+                Margin="0,20,0,0"
                 PlaceholderText="Email"
                 TextWrapping="Wrap" />
             <PasswordBox
-                x:Name="Password"                
-                Margin="0,20,0,0"                
+                x:Name="Password"
+                Margin="0,20,0,0"
                 InputScope="Password"
                 PlaceholderText="Password" />
             <Button

@@ -60,15 +60,14 @@ namespace FlightAppApi.Controllers
         }
 
         /// <summary>
-        /// Get ordered products of the current passenger
+        /// Get orders of current passenger
         /// </summary>        
-        [HttpGet("/api/passenger/order/product")]
-        public IEnumerable<Product> GetOrderedProducts()
+        [HttpGet("/api/passenger/orders")]
+        public ActionResult<Passenger> GetOrderedProducts()
         {
             Passenger passenger = _passengerRepository.GetPassengerByEmailWithOrders(User.Identity.Name);
-            IEnumerable<Product> products = passenger.GetOrderedProducts();
 
-            return products;
+            return passenger;
 
         }
 

@@ -33,12 +33,6 @@ namespace FlightApp.ViewModels
             await productService.OrderProductsAsync(products);
         }
 
-        public async void GetOrderedProductsAsync()
-        {
-            Products = await productService.GetOrderedProductsAsync();
-
-        }
-
         public async void SetAllProductsAsync()
         {
             Products = await productService.GetAllProductsAsync();

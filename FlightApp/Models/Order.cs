@@ -39,6 +39,17 @@ namespace FlightApp.Models
                 return "Deliver Order";
             }
         }
+        public string StatusToString()
+        {
+            if (IsDelivered)
+            {
+                return "Status: Delivered";
+            }
+            else
+            {
+                return "Status: Not delivered";
+            }
+        }
 
     }
 }

@@ -13,6 +13,7 @@ namespace FlightApp.DataService
     public class PassengerService
     {
         private readonly ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
+
         //HttpClient is intended to be instantiated once and re-used throughout the life of an application. 
         //Instantiating an HttpClient class for every request will exhaust the number of sockets available under heavy loads. This will result in SocketException errors.
         private static readonly HttpClient client = new HttpClient();
@@ -66,8 +67,20 @@ namespace FlightApp.DataService
             {
                 throw new Exception();
             }
-
-
+        }
+        public async Task<Passenger> GetPassengerIncludeOrders()
+        {
+            var response = await client.GetAsync(new Uri("http://localhost:5000/api/passenger/orders"));
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetResults();
+                var passenger = JsonConvert.DeserializeObject<Passenger>(result);
+                return passenger;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
     }

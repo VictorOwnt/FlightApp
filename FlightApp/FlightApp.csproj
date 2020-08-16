@@ -135,6 +135,7 @@
     <Compile Include="ViewModels\ContactsOverviewViewModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="ViewModels\OrdersOverviewViewModel.cs" />
+    <Compile Include="ViewModels\PassengerOrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\ProductsOverviewViewModel.cs" />
     <Compile Include="View\ChangeSeatsView.xaml.cs">
       <DependentUpon>ChangeSeatsView.xaml</DependentUpon>
@@ -157,6 +158,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\OrdersOverview.xaml.cs">
       <DependentUpon>OrdersOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PassengerOrdersOverview.xaml.cs">
+      <DependentUpon>PassengerOrdersOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ProductsOverview.xaml.cs">
       <DependentUpon>ProductsOverview.xaml</DependentUpon>
@@ -233,6 +237,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\OrdersOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PassengerOrdersOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

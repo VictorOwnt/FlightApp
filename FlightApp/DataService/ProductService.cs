@@ -56,19 +56,5 @@ namespace FlightApp.DataService
 
             var response = await client.PostAsync(new Uri("http://localhost:5000/api/product"), new HttpStringContent(productsJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
         }
-
-        public async Task<IEnumerable<Product>> GetOrderedProductsAsync()
-        {
-
-            var response = await client.GetAsync(new Uri("http://localhost:5000/api/passenger/order/product"));
-            if (response.IsSuccessStatusCode)
-            {
-                var result = response.Content.ReadAsStringAsync().GetResults();
-                var orderedProducts = JsonConvert.DeserializeObject<IEnumerable<Product>>(result);
-                return orderedProducts;
-            }
-            else throw new Exception();
-
-        }
     }
 }
