@@ -63,7 +63,6 @@ namespace FlightAppApi.Data
 
             builder.ApplyConfiguration(new MovieConfig());
             builder.ApplyConfiguration(new MusicConfig());
-        }
 
             builder.Entity<FlightDetail>().HasKey(fd => fd.Id);
             builder.Entity<FlightDetail>().HasOne(fd => fd.DepartingAirport).WithMany().IsRequired().HasForeignKey(fd => fd.DepartingAirportId).OnDelete(DeleteBehavior.Restrict);

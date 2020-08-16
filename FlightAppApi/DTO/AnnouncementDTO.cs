@@ -22,7 +22,7 @@ namespace FlightAppApi.DTO
                 TimeStamp = announcement.Timestamp,
                 Title = announcement.Title,
                 Content = announcement.Content,
-                PassengerId = announcement.Receiver?.Id
+                PassengerId = announcement.Receiver?.SeatNumber
             };
         }
     }
