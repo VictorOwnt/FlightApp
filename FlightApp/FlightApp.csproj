@@ -153,6 +153,7 @@
     </Compile>
     <Compile Include="View\ContactsOverview.xaml.cs">
       <DependentUpon>ContactsOverview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FlightInfoPage.xaml.cs">
       <DependentUpon>FlightInfoPage.xaml</DependentUpon>
     </Compile>
@@ -233,6 +234,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContactsOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FlightInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

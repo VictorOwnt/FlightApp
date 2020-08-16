@@ -16,40 +16,8 @@ namespace FlightApp.View
         {
             InitializeComponent();
             ViewModel = new MainMenuPassengerViewModel();
-            navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[0]; // Set to flight info
-        }
-
-        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            if (args.IsSettingsSelected)
-            {
-                ContentFrame.Navigate(typeof(FlightInfoPage));
-                navigationViewPassenger.Header = "Settings";
-            }
-            else
-            {
-                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
-
-                switch (item.Tag.ToString())
-                {
-                    case "FlightInfo":
-                        ContentFrame.Navigate(typeof(FlightInfoPage));
-                        // navigationViewPassenger.Header = "FlightInfo";
-                        break;
-                    case "Shop":
-                        ContentFrame.Navigate(typeof(FlightInfoPage));
-                        // navigationViewPassenger.Header = "Shop";
-                        break;
-                    case "Music":
-                        ContentFrame.Navigate(typeof(FlightInfoPage));
-                        // navigationViewPassenger.Header = "Music";
-                        break;
-                    case "Film":
-                        ContentFrame.Navigate(typeof(FlightInfoPage));
-                        // navigationViewPassenger.Header = "Film";
-                        break;
-                }
-            }
+            // Is dit wel nodig? start standaar op flightinfo en boel werkt niet met dit erbij :p 
+            // navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[0]; // Set to flight info
         }
 
         private void NavigationViewPassenger_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -57,6 +25,8 @@ namespace FlightApp.View
             if (args.IsSettingsSelected)
             {
                 //Settingspage needed?
+                // ContentFrame.Navigate(typeof(FlightInfoPage));
+                // navigationViewPassengerMenu.Header = "Settings";
             }
             else
             {
@@ -65,13 +35,25 @@ namespace FlightApp.View
                 switch (item.Tag.ToString())
                 {
                     case "ProductsOverview":
-                        PageFrame.Navigate(typeof(ProductsOverview));
+                        ContentFrame.Navigate(typeof(ProductsOverview));
                         break;
                     case "ContactsOverview":
-                        PageFrame.Navigate(typeof(ContactsOverview));
+                        ContentFrame.Navigate(typeof(ContactsOverview));
                         break;
                     case "PassengerOrdersOverview":
-                        PageFrame.Navigate(typeof(PassengerOrdersOverview));
+                        ContentFrame.Navigate(typeof(PassengerOrdersOverview));
+                        break;
+                    case "FlightInfo":
+                        ContentFrame.Navigate(typeof(FlightInfoPage));
+                        // navigationViewPassengerMenu.Header = "FlightInfo";
+                        break;
+                    case "Music":
+                        ContentFrame.Navigate(typeof(FlightInfoPage));
+                        // navigationViewPassengerMenu.Header = "Music";
+                        break;
+                    case "Film":
+                        ContentFrame.Navigate(typeof(FlightInfoPage));
+                        // navigationViewPassengerMenu.Header = "Film";
                         break;
                 }
             }

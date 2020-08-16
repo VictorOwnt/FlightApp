@@ -126,8 +126,6 @@ namespace FlightAppApi.Data
                 _dbContext.Orders.AddRange(order1, order2);
                 #endregion
 
-
-
                 #region init flightInfo
                 Location brussel = new Location { Country = "Belgium", City = "Zaventem" };
                 Location loiu = new Location { Country = "Spain", City = "Loiu" };
