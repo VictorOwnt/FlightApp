@@ -14,7 +14,8 @@
         IsSettingsVisible="False"
         SelectionChanged="NavigationViewPassenger_SelectionChanged">
         <muxc:NavigationView.MenuItems>
-            <NavigationViewItem Content="Flight info" Tag="FlightInfoPage">
+            <NavigationViewItemHeader Content="General"/>
+            <NavigationViewItem Content="Flight info" Tag="FlightInfo">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;" />
                 </NavigationViewItem.Icon>
@@ -27,7 +28,8 @@
                 Content="View orders"
                 Icon="View"
                 Tag="PassengerOrdersOverview" />
-            <NavigationViewItem Content="Music" Tag="FlightInfoPage">
+            <NavigationViewItemHeader Content="Entertainment"/>
+            <NavigationViewItem Content="Music" Tag="Music">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;" />
                 </NavigationViewItem.Icon>
@@ -35,14 +37,19 @@
             <muxc:NavigationViewItem
                 Content="Film"
                 Icon="Video"
-                Tag="SamplePage3" />
+                Tag="Film" />
             <muxc:NavigationViewItem
                 Content="Contacts"
                 Icon="Contact"
                 Tag="ContactsOverview" />
         </muxc:NavigationView.MenuItems>
-
-        <Frame x:Name="PageFrame" />
+        <Frame x:Name="ContentFrame">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
     </muxc:NavigationView>
 
 

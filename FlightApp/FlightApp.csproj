@@ -119,13 +119,20 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataService\FlightService.cs" />
     <Compile Include="DataService\PassengerService.cs" />
     <Compile Include="DataService\ProductService.cs" />
     <Compile Include="DataService\StewardService.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SeatDTO.cs" />
+    <Compile Include="Models\Aircraft.cs" />
+    <Compile Include="Models\Airline.cs" />
+    <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ChatMessage.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\FlightDetail.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Orderline.cs" />
     <Compile Include="Models\Passenger.cs" />
@@ -133,6 +140,7 @@
     <Compile Include="ViewModels\ChangeSeatsViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContactsOverviewViewModel.cs" />
+    <Compile Include="ViewModels\FlightsInfoModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="ViewModels\OrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengerOrdersOverviewViewModel.cs" />
@@ -145,6 +153,9 @@
     </Compile>
     <Compile Include="View\ContactsOverview.xaml.cs">
       <DependentUpon>ContactsOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FlightInfoPage.xaml.cs">
+      <DependentUpon>FlightInfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainMenuPassenger.xaml.cs">
       <DependentUpon>MainMenuPassenger.xaml</DependentUpon>
@@ -172,6 +183,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\aircraft.jpg" />
+    <Content Include="Assets\airline.png" />
     <Content Include="Assets\cola.jpg" />
     <Content Include="Assets\hotdog.jpg" />
     <Content Include="Assets\ice_tea.png" />
@@ -186,9 +199,9 @@
     <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
-    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
     <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.scale-125.png" />
     <Content Include="Assets\Square44x44Logo.scale-150.png" />
     <Content Include="Assets\Square44x44Logo.scale-400.png" />
@@ -221,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContactsOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FlightInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
