@@ -16,6 +16,8 @@ using NSwag.SwaggerGeneration.Processors.Security;
 using NSwag;
 using System.Security.Claims;
 using FlightAppApi.Data.Repository;
+using Microsoft.AspNetCore.Rewrite;
+using FlightAppApi.Hubs;
 
 namespace FlightAppApi
 {
@@ -36,6 +38,9 @@ namespace FlightAppApi
             services.AddScoped<DataInit>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IStewardRepository, StewardRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IFlightRepository, FlightRepository>();
 
 
@@ -104,10 +109,16 @@ namespace FlightAppApi
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("StewardOnly", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
+                options.AddPolicy("Steward", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
                 options.AddPolicy("Passenger", policy => policy.RequireClaim(ClaimTypes.Role, "passenger"));
             });
+            services.AddSingleton<PassengerRepository>(); // Singleton needed to access repository in chathub
+            services.AddSignalR();
+
+
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataInit dataInit)
@@ -126,11 +137,14 @@ namespace FlightAppApi
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
 
+            app.UseSignalR((routes) =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+            });
             app.UseMvc();
 
             app.UseSwaggerUi3();
             app.UseOpenApi();
-
             dataInit.InitializeData().Wait();
         }
     }

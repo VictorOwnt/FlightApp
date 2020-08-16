@@ -11,10 +11,12 @@ namespace FlightApp.View
     public sealed partial class MainMenuPassenger : Page
     {
 
-        public MainMenuPassengerViewModel ViewModel = new MainMenuPassengerViewModel();
+        public MainMenuPassengerViewModel ViewModel { get; set; }
         public MainMenuPassenger()
         {
             InitializeComponent();
+            ViewModel = new MainMenuPassengerViewModel();
+            navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[0]; // Set to flight info
         }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -50,6 +52,29 @@ namespace FlightApp.View
             }
         }
 
+        private void NavigationViewPassenger_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                //Settingspage needed?
+            }
+            else
+            {
+                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
+                switch (item.Tag.ToString())
+                {
+                    case "ProductsOverview":
+                        PageFrame.Navigate(typeof(ProductsOverview));
+                        break;
+                    case "ContactsOverview":
+                        PageFrame.Navigate(typeof(ContactsOverview));
+                        break;
+                    case "PassengerOrdersOverview":
+                        PageFrame.Navigate(typeof(PassengerOrdersOverview));
+                        break;
+                }
+            }
+        }
     }
 }

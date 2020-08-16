@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="FlightApp.View.ChatView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:FlightApp.View"
+    xmlns:local1="using:FlightApp.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+        <ListView
+            x:Name="messagesListView"
+            ItemsSource="{x:Bind ViewModel.Messages}"
+            RelativePanel.Above="rp"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:ChatMessage">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>
+                            <Run Text="{x:Bind Author}" />
+                            <Run Text=": " />
+                            <Run Text="{x:Bind Message}" />
+                        </TextBlock>
+
+                    </StackPanel>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+        </ListView>
+        <RelativePanel
+            x:Name="rp"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True">
+            <TextBox
+                x:Name="text"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.LeftOf="send" />
+            <Button
+                x:Name="send"
+                Click="Send_Click"
+                Content="Send"
+                RelativePanel.AlignRightWithPanel="True" />
+        </RelativePanel>
+    </RelativePanel>
+</Page>

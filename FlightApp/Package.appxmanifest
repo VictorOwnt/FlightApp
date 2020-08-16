@@ -4,7 +4,9 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
+  xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+  xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2"
+  IgnorableNamespaces="uap mp desktop4 iot2">
 
   <Identity
     Name="323338df-dedc-47dd-9636-fed46dd6543a"
@@ -30,7 +32,9 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="FlightApp.App">
+      EntryPoint="FlightApp.App"
+      desktop4:SupportsMultipleInstances="true"
+	    iot2:SupportsMultipleInstances="true">
       <uap:VisualElements
         DisplayName="FlightApp"
         Square150x150Logo="Assets\Square150x150Logo.png"
