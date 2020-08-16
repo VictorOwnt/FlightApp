@@ -10,5 +10,6 @@ namespace FlightAppApi.Model
     {
         [Required]
         public int SeatNumber { get; set; }
+        public IList<Announcement> ReceivedAnnouncements { get; set; }
     }
 }
