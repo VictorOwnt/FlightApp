@@ -51,7 +51,7 @@ namespace FlightAppApi.Controllers
 
                 if (result.Succeeded)
                 {
-                    string token = GetToken(user);
+                    string token = await GetTokenAsync(user);
                     return Created("", token); //returns only the token                    
                 }
             }
@@ -59,14 +59,25 @@ namespace FlightAppApi.Controllers
         }
 
 
-        private string GetToken(IdentityUser IdentityUser)
+        private async Task<string> GetTokenAsync(IdentityUser IdentityUser)
         {
             // Create the token
-            var claims = new[]
+            IEnumerable<Claim> userClaims = await _userManager.GetClaimsAsync(IdentityUser);
+            Claim claim = userClaims.FirstOrDefault();
+
+            var claims = new List<Claim>();
+            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, IdentityUser.Email));
+            claims.Add(new Claim(JwtRegisteredClaimNames.UniqueName, IdentityUser.UserName));
+            if (claim.Value == "passenger")
             {
-              new Claim(JwtRegisteredClaimNames.Sub, IdentityUser.Email),
-              new Claim(JwtRegisteredClaimNames.UniqueName, IdentityUser.UserName)
-            };
+
+                claims.Add(new Claim(ClaimTypes.Role, "passenger"));
+            }
+            else
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "steward"));
+            }
+
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
 
@@ -79,18 +90,6 @@ namespace FlightAppApi.Controllers
               signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-        /// <summary>
-        /// Checks if an email is available as username
-        /// </summary>
-        /// <returns>true if the email is not registered yet</returns>
-        /// <param name="email">Email.</param>/
-        [AllowAnonymous]
-        [HttpGet("checkusername")]
-        public async Task<ActionResult<bool>> CheckAvailableUserName(string email)
-        {
-            var user = await _userManager.FindByNameAsync(email);
-            return user == null;
         }
     }
 }

@@ -31,10 +31,12 @@ namespace FlightApp.View
     public sealed partial class MainMenuPassenger : Page
     {
 
-        public MainMenuPassengerViewModel ViewModel = new MainMenuPassengerViewModel();
+        public MainMenuPassengerViewModel ViewModel { get; set; }
         public MainMenuPassenger()
         {
             InitializeComponent();
+            ViewModel = new MainMenuPassengerViewModel();
+            navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[0]; // Set to flight info
             if (_instance is null) _instance = this;
         }
 
@@ -52,17 +54,23 @@ namespace FlightApp.View
             {
                 NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
+
+
+
                 switch (item.Tag.ToString())
                 {
-                    case "FlightInfo":
-                        ContentFrame.Navigate(typeof(EntertainmentView));
-                        // navigationViewPassenger.Header = "FlightInfo";
+                    case "ProductsOverview":
+                        PageFrame.Navigate(typeof(ProductsOverview));
                         break;
-                    case "Shop":
-                        ContentFrame.Navigate(typeof(EntertainmentView));
-                        // navigationViewPassenger.Header = "Shop";
+                    case "ContactsOverview":
+                        PageFrame.Navigate(typeof(ContactsOverview));
                         break;
-
+                    case "PassengerOrdersOverview":
+                        PageFrame.Navigate(typeof(PassengerOrdersOverview));
+                        break;
+                }
+            }
+        }
                     case "Entertainment":
                         ContentFrame.Navigate(typeof(EntertainmentView));
                         // navigationViewPassenger.Header = "Music";

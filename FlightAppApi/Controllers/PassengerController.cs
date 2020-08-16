@@ -1,4 +1,6 @@
-﻿using FlightAppApi.Model;
+﻿using FlightAppApi.DTO;
+using FlightAppApi.Model;
+using FlightAppApi.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,15 +14,18 @@ namespace FlightAppApi.Controllers
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Produces("application/json")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Policy = "Passenger")]
     [Route("api/[controller]")]
     [ApiController]
     public class PassengerController : ControllerBase
     {
         private readonly IPassengerRepository _passengerRepository;
+        private readonly IProductRepository _productRepository;
 
-        public PassengerController(IPassengerRepository passengerRepo)
+        public PassengerController(IPassengerRepository passengerRepo, IProductRepository productRepository)
         {
             _passengerRepository = passengerRepo;
+            _productRepository = productRepository;
         }
 
         /// <summary>
@@ -33,5 +38,64 @@ namespace FlightAppApi.Controllers
             return passenger;
         }
 
+        /// <summary>
+        /// Add products to the current passenger
+        /// </summary>        
+        [HttpPost("/api/product/")]
+        public ActionResult<List<ProductDTO>> OrderProducts(List<ProductDTO> products)
+        {
+            Passenger passenger = _passengerRepository.GetPassengerByEmail(User.Identity.Name);
+            Order order = new Order(passenger.PersonId);
+            foreach (ProductDTO productDTO in products)
+            {
+                Product product = _productRepository.GetProductByName(productDTO.Name);
+                order.Orderlines.Add(new Orderline(product));
+
+            }
+            passenger.Orders.Add(order);
+            _passengerRepository.SaveChanges();
+            _productRepository.SaveChanges();
+            return products;
+
+        }
+
+        /// <summary>
+        /// Get orders of current passenger
+        /// </summary>        
+        [HttpGet("/api/passenger/orders")]
+        public ActionResult<Passenger> GetOrderedProducts()
+        {
+            Passenger passenger = _passengerRepository.GetPassengerByEmailWithOrders(User.Identity.Name);
+
+            return passenger;
+
+        }
+
+        /// <summary>
+        /// Get contacts of the current passenger
+        /// </summary>        
+        [HttpGet("/api/passenger/contacts")]
+        public IEnumerable<Passenger> GetContacts()
+        {
+            Passenger passenger = _passengerRepository.GetPassengerByEmailWithContacts(User.Identity.Name);
+            List<Passenger> contacts = new List<Passenger>();
+            foreach (PassengerContact passengerContact in passenger.Contacts)
+            {
+                contacts.Add(passengerContact.Contact);
+            }
+
+            return contacts;
+
+        }
+        /// <summary>
+        /// Get messages of the current passenger with given contactEmail
+        /// </summary>        
+        [HttpGet("/api/passenger/messages/")]
+        public IEnumerable<ChatMessage> GetPassengerWithMessages(string contactEmail)
+        {
+            Passenger passenger = _passengerRepository.GetPassengerByEmailWithChatMessages(User.Identity.Name);
+            return passenger.GetChatsWithContact(contactEmail);
+
+        }
     }
 }

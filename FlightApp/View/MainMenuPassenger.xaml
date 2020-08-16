@@ -9,7 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <muxc:NavigationView x:Name="navigationViewPassenger" SelectionChanged="NavView_SelectionChanged">
+    <muxc:NavigationView
+        x:Name="navigationViewPassengerMenu"
+        IsSettingsVisible="False"
+        SelectionChanged="NavigationViewPassenger_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <NavigationViewItemHeader Content="General"/>
             <NavigationViewItem Content="Flight info" Tag="FlightInfo">
@@ -19,6 +22,26 @@
             </NavigationViewItem>
             <muxc:NavigationViewItem Content="Order products" Icon="Shop" Tag="Shop" />
             <muxc:NavigationViewItem
+                Content="Order products"
+                Icon="Shop"
+                Tag="ProductsOverview" />
+            <muxc:NavigationViewItem
+                Content="View orders"
+                Icon="View"
+                Tag="PassengerOrdersOverview" />
+            <NavigationViewItem Content="Music" Tag="FlightInfoPage">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <muxc:NavigationViewItem
+                Content="Film"
+                Icon="Video"
+                Tag="SamplePage3" />
+            <muxc:NavigationViewItem
+                Content="Contacts"
+                Icon="Contact"
+                Tag="ContactsOverview" />
                 Content="Entertainment"
                 Icon="Emoji2"
                 Tag="Entertainment" />
