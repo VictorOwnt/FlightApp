@@ -20,6 +20,7 @@
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
+            <muxc:NavigationViewItem Content="Order products" Icon="Shop" Tag="Shop" />
             <muxc:NavigationViewItem
                 Content="Order products"
                 Icon="Shop"
@@ -42,6 +43,9 @@
                 Content="Contacts"
                 Icon="Contact"
                 Tag="ContactsOverview" />
+                Content="Entertainment"
+                Icon="Emoji2"
+                Tag="Entertainment" />
         </muxc:NavigationView.MenuItems>
         <Frame x:Name="ContentFrame">
             <Frame.ContentTransitions>

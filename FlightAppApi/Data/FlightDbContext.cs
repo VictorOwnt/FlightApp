@@ -1,4 +1,6 @@
-﻿using FlightAppApi.Model;
+﻿//using FlightAppApi.Data.Mappers;
+using FlightAppApi.Data.Mappers;
+using FlightAppApi.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,6 +18,8 @@ namespace FlightAppApi.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Flight> Flights { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Music> Music { get; set; }
 
         public FlightDbContext(DbContextOptions<FlightDbContext> options)
             : base(options)
@@ -54,7 +58,12 @@ namespace FlightAppApi.Data
 
             builder.Entity<Aircraft>().HasKey(ac => ac.Id);
 
-            builder.Entity<Location>().HasKey(l => l.Id);
+            //builder.Entity<Movie>().HasKey(i => i.Id);
+            //builder.Entity<Music>().HasKey(i => i.Id);
+
+            builder.ApplyConfiguration(new MovieConfig());
+            builder.ApplyConfiguration(new MusicConfig());
+        }
 
             builder.Entity<FlightDetail>().HasKey(fd => fd.Id);
             builder.Entity<FlightDetail>().HasOne(fd => fd.DepartingAirport).WithMany().IsRequired().HasForeignKey(fd => fd.DepartingAirportId).OnDelete(DeleteBehavior.Restrict);
