@@ -1,5 +1,7 @@
-﻿using FlightApp.ViewModels;
+﻿using FlightApp.Models;
+using FlightApp.ViewModels;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -18,8 +20,14 @@ namespace FlightApp.View
             ViewModel = new MainMenuPassengerViewModel();
             // Is dit wel nodig? start standaar op flightinfo en boel werkt niet met dit erbij :p 
             // navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[0]; // Set to flight info
+            if (_instance is null)
+            {
+                _instance = this;
+            }
         }
 
+        private static MainMenuPassenger _instance;
+        public static MainMenuPassenger Instance => _instance;
         private void NavigationViewPassenger_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
@@ -45,18 +53,16 @@ namespace FlightApp.View
                         break;
                     case "FlightInfo":
                         ContentFrame.Navigate(typeof(FlightInfoPage));
-                        // navigationViewPassengerMenu.Header = "FlightInfo";
                         break;
-                    case "Music":
-                        ContentFrame.Navigate(typeof(FlightInfoPage));
-                        // navigationViewPassengerMenu.Header = "Music";
-                        break;
-                    case "Film":
-                        ContentFrame.Navigate(typeof(FlightInfoPage));
-                        // navigationViewPassengerMenu.Header = "Film";
+                    case "Entertainment":
+                        ContentFrame.Navigate(typeof(EntertainmentView));
                         break;
                 }
             }
+        }
+        public void NavigateToMoviePlayer(Movie movie)
+        {
+            ContentFrame.Navigate(typeof(MoviePlayerView), movie, new EntranceNavigationTransitionInfo());
         }
     }
 }

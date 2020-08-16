@@ -29,19 +29,14 @@
                 Icon="View"
                 Tag="PassengerOrdersOverview" />
             <NavigationViewItemHeader Content="Entertainment"/>
-            <NavigationViewItem Content="Music" Tag="Music">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <muxc:NavigationViewItem
-                Content="Film"
-                Icon="Video"
-                Tag="Film" />
             <muxc:NavigationViewItem
                 Content="Contacts"
                 Icon="Contact"
                 Tag="ContactsOverview" />
+            <muxc:NavigationViewItem
+                Content="Entertainment"
+                Icon="Emoji2"
+                Tag="Entertainment" />
         </muxc:NavigationView.MenuItems>
         <Frame x:Name="ContentFrame">
             <Frame.ContentTransitions>

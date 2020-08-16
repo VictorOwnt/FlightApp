@@ -28,7 +28,6 @@ namespace FlightApp.View
         {
             this.InitializeComponent();
             ViewModel = new FlightsInfoModel();
-            ViewModel.SetFlightAsync();
         }
     }
 }

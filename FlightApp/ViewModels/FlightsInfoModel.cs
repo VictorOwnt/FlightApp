@@ -23,13 +23,13 @@ namespace FlightApp.ViewModels
 
         public FlightsInfoModel()
         {
-            // TODO start with getAllFlights
+            SetFlightAsync();
         }
 
         public async void SetFlightAsync()
         {
             Flight = await flightService.GetFlightAsync();
         }
-        
+
     }
 }
