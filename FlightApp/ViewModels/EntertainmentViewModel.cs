@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,20 @@ using Windows.UI.Popups;
 
 namespace FlightApp.ViewModels
 {
-    public class EntertainmentViewModel : ViewModelBase
+    public class EntertainmentViewModel : BindableBase
     {
         #region Properties
         private IList<Movie> _movies;
         private IList<Music> _music;
-        public IList<Movie> Movies {
+        public IList<Movie> Movies
+        {
             get => _movies;
-            set { _movies = value; RaisePropertyChanged(); }
+            set { SetProperty(ref _movies, value); }
         }
-        public IList<Music> Music {
+        public IList<Music> Music
+        {
             get => _music;
-            set { _music = value; RaisePropertyChanged(); }
+            set { SetProperty(ref _music, value); }
         }
         #endregion
 

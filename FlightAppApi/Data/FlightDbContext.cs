@@ -1,12 +1,6 @@
-﻿//using FlightAppApi.Data.Mappers;
-using FlightAppApi.Data.Mappers;
-using FlightAppApi.Model;
+﻿using FlightAppApi.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FlightAppApi.Data
 {
@@ -34,7 +28,6 @@ namespace FlightAppApi.Data
             builder.Entity<Passenger>().HasMany(p => p.Contacts).WithOne();
 
             builder.Entity<PassengerContact>().HasKey(pc => new { pc.PassengerId, pc.ContactId });
-            //builder.Entity<PassengerContact>().HasOne(pc => pc.Contact).WithMany(p => p.ContactOf).HasForeignKey(pc => pc.ContactId).OnDelete(DeleteBehavior.Restrict);
             builder.Entity<PassengerContact>().HasOne(pc => pc.Passenger).WithMany(p => p.Contacts).HasForeignKey(pc => pc.PassengerId).OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<ChatMessage>().HasKey(cm => cm.ChatMessageId);
@@ -58,11 +51,8 @@ namespace FlightAppApi.Data
 
             builder.Entity<Aircraft>().HasKey(ac => ac.Id);
 
-            //builder.Entity<Movie>().HasKey(i => i.Id);
-            //builder.Entity<Music>().HasKey(i => i.Id);
-
-            builder.ApplyConfiguration(new MovieConfig());
-            builder.ApplyConfiguration(new MusicConfig());
+            builder.Entity<Movie>().HasKey(i => i.Id);
+            builder.Entity<Music>().HasKey(i => i.Id);
 
             builder.Entity<FlightDetail>().HasKey(fd => fd.Id);
             builder.Entity<FlightDetail>().HasOne(fd => fd.DepartingAirport).WithMany().IsRequired().HasForeignKey(fd => fd.DepartingAirportId).OnDelete(DeleteBehavior.Restrict);
