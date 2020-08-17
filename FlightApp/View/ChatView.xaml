@@ -9,9 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <RelativePanel>
+    <RelativePanel Background="LightSkyBlue">
         <ListView
             x:Name="messagesListView"
+            Margin="0,48,0,0"
             ItemsSource="{x:Bind ViewModel.Messages}"
             RelativePanel.Above="rp"
             RelativePanel.AlignLeftWithPanel="True"

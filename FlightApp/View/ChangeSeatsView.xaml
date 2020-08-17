@@ -8,64 +8,45 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid>
+    <RelativePanel Background="LightSteelBlue">
         <TextBox
             x:Name="PassengerSeat1"
             Width="200"
             Height="40"
-            Margin="119,20,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            Margin="16,48,0,0"        
             InputScope="Number"
             PlaceholderText="Seat number"
             TextWrapping="Wrap" />
-
-
         <TextBox
             x:Name="PassengerSeat2"
             Width="200"
             Height="40"
-            Margin="1222,25,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            Margin="16,24,0,0"
             InputScope="Number"
             PlaceholderText="Seat number"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap"
+            RelativePanel.Below="PassengerSeat1"/>
         <TextBlock
             x:Name="PassengerName1"
-            Margin="119,124,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="{x:Bind Path=ViewModel.Passenger1.FirstName, Mode=OneWay}"
+            Margin="16,0"
+            RelativePanel.RightOf="PassengerSeat1"
+            Text="{x:Bind Path=ViewModel.Passenger1.Name, Mode=OneWay}"
             TextWrapping="Wrap" />
         <TextBlock
             x:Name="PassengerName2"
-            Margin="1222,124,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="{x:Bind Path=ViewModel.Passenger2.FirstName, Mode=OneWay}"
+            Margin="16,0"
+            RelativePanel.RightOf="PassengerSeat2"
+            RelativePanel.Below="PassengerSeat1"
+            Text="{x:Bind Path=ViewModel.Passenger2.Name, Mode=OneWay}"
             TextWrapping="Wrap" />
-        <TextBlock
-            x:Name="SeatNumber1"
-            Margin="119,180,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="{x:Bind Path=ViewModel.Passenger1.SeatNumber, Mode=OneWay}"
-            TextWrapping="Wrap" />
-        <TextBlock
-            x:Name="SeatNumber2"
-            Margin="1222,180,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="{x:Bind Path=ViewModel.Passenger2.SeatNumber, Mode=OneWay}"
-            TextWrapping="Wrap" />
+
         <Button
             x:Name="Change_Seats_Button"
-            Margin="659,29,0,0"
-            VerticalAlignment="Top"
+            Margin="16,24"
+            RelativePanel.Below="PassengerSeat2"
             Click="Change_Seats_Button_Click"
             Content="Change seats" />
 
 
-    </Grid>
+    </RelativePanel>
 </Page>

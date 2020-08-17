@@ -18,46 +18,36 @@ namespace FlightApp.View
         {
             InitializeComponent();
             ViewModel = new MainMenuPassengerViewModel();
-            // Is dit wel nodig? start standaar op flightinfo en boel werkt niet met dit erbij :p 
-            // navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[0]; // Set to flight info
-            if (_instance is null)
+
+            navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[1]; // Set to flight info
+            if (Instance is null)
             {
-                _instance = this;
+                Instance = this;
             }
         }
 
-        private static MainMenuPassenger _instance;
-        public static MainMenuPassenger Instance => _instance;
+        public static MainMenuPassenger Instance { get; set; }
         private void NavigationViewPassenger_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            if (args.IsSettingsSelected)
-            {
-                //Settingspage needed?
-                // ContentFrame.Navigate(typeof(FlightInfoPage));
-                // navigationViewPassengerMenu.Header = "Settings";
-            }
-            else
-            {
-                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
-                switch (item.Tag.ToString())
-                {
-                    case "ProductsOverview":
-                        ContentFrame.Navigate(typeof(ProductsOverview));
-                        break;
-                    case "ContactsOverview":
-                        ContentFrame.Navigate(typeof(ContactsOverview));
-                        break;
-                    case "PassengerOrdersOverview":
-                        ContentFrame.Navigate(typeof(PassengerOrdersOverview));
-                        break;
-                    case "FlightInfo":
-                        ContentFrame.Navigate(typeof(FlightInfoPage));
-                        break;
-                    case "Entertainment":
-                        ContentFrame.Navigate(typeof(EntertainmentView));
-                        break;
-                }
+            switch (item.Tag.ToString())
+            {
+                case "ProductsOverview":
+                    ContentFrame.Navigate(typeof(ProductsOverview));
+                    break;
+                case "ContactsOverview":
+                    ContentFrame.Navigate(typeof(ContactsOverview));
+                    break;
+                case "PassengerOrdersOverview":
+                    ContentFrame.Navigate(typeof(PassengerOrdersOverview));
+                    break;
+                case "FlightInfo":
+                    ContentFrame.Navigate(typeof(FlightInfoPage));
+                    break;
+                case "Entertainment":
+                    ContentFrame.Navigate(typeof(EntertainmentView));
+                    break;
             }
         }
         public void NavigateToMoviePlayer(Movie movie)

@@ -24,7 +24,7 @@
                     <ControlTemplate TargetType="ListViewItem">
                         <Border
                             Name="Border"
-                            BorderBrush="SkyBlue"
+                            BorderBrush="Black"
                             BorderThickness="2"
                             CornerRadius="4">
                             <ContentPresenter />

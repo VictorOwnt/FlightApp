@@ -12,6 +12,7 @@
     <muxc:NavigationView
         x:Name="navigationViewPassengerMenu"
         IsSettingsVisible="False"
+        IsBackButtonVisible="Collapsed"
         SelectionChanged="NavigationViewPassenger_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <NavigationViewItemHeader Content="General"/>

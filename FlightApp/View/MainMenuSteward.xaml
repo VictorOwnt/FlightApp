@@ -12,7 +12,8 @@
     <muxc:NavigationView
         x:Name="navigationViewStewardMenu"
         IsSettingsVisible="False"
-        SelectionChanged="NavigationViewStewardMenu_SelectionChanged">
+        SelectionChanged="NavigationViewStewardMenu_SelectionChanged"
+        IsBackButtonVisible="Collapsed">
         <muxc:NavigationView.MenuItems>
             <muxc:NavigationViewItem
                 Content="View Orders"
