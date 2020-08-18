@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 
 using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.Web.Http;
@@ -52,9 +53,10 @@ namespace FlightApp
                     Frame.Navigate(typeof(MainMenuPassenger));
                 }
             }
-            catch (Exception error)
+            catch
             {
-
+                var dialog = new MessageDialog("Oups, something went wrong. Please check your username, password and if you're connected to the internet.", "Error");
+                await dialog.ShowAsync();
             }
 
 

@@ -1,5 +1,6 @@
 ﻿using FlightApp.Models;
 using FlightApp.ViewModels;
+using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
@@ -47,6 +48,11 @@ namespace FlightApp.View
                     break;
                 case "Entertainment":
                     ContentFrame.Navigate(typeof(EntertainmentView));
+                    break;
+                case "Logout":
+                    Frame.Navigate(typeof(MainPage));
+                    ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                    localSettings.Values["Token"] = string.Empty;
                     break;
             }
         }
