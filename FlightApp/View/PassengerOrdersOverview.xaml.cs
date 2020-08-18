@@ -100,7 +100,7 @@ namespace FlightApp.View
         private void GetPreviewPage(object sender, GetPreviewPageEventArgs e)
         {
             // Provide a UIElement as the print preview.
-            printDoc.SetPreviewPage(e.PageNumber, this.Orders_List);
+            printDoc.SetPreviewPage(e.PageNumber, PassengerOrders);
         }
         private void AddPages(object sender, AddPagesEventArgs e)
         {

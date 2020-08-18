@@ -12,19 +12,19 @@ namespace FlightApp.Models
         public ICollection<Orderline> Orderlines { get; set; }
         public bool IsDelivered { get; set; }
 
-        public double CalculateOrderCost(ICollection<Orderline> orderlines)
+        public double CalculateOrderCost()
         {
             double cost = 0;
-            foreach (Orderline orderline in orderlines)
+            foreach (Orderline orderline in Orderlines)
             {
                 cost += orderline.Product.Price;
             }
             return cost;
         }
 
-        public string OrderCostToString(ICollection<Orderline> orderlines)
+        public string OrderCostToString()
         {
-            double totalCost = CalculateOrderCost(orderlines);
+            double totalCost = CalculateOrderCost();
             return "Total cost:" + " €" + totalCost.ToString();
         }
 

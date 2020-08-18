@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -38,6 +39,11 @@ namespace FlightApp.View
                     break;
                 case "OrdersOverview":
                     PageFrame.Navigate(typeof(OrdersOverview));
+                    break;
+                case "Logout":
+                    Frame.Navigate(typeof(MainPage));
+                    ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                    localSettings.Values["Token"] = string.Empty;
                     break;
             }
 

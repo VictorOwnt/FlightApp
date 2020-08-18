@@ -18,6 +18,15 @@ namespace FlightApp.Models
         public int SeatNumber { get; set; }
         public ICollection<Order> Orders { get; set; }
 
+        public string TotalOrdersCostToString()
+        {
+            double cost = 0;
+            foreach (Order order in Orders)
+            {
+                cost += order.CalculateOrderCost();
+            }
+            return "Total Cost: " + cost.ToString() + "€";
+        }
 
     }
 }

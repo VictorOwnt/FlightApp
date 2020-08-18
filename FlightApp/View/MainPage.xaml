@@ -40,8 +40,6 @@
                 Margin="10"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
-                Background="#FF62CA4E"
-                BorderBrush="#FF2332AC"
                 Click="Log_In"
                 Content="Log in"
                 Style="{StaticResource DefaultButtonStyle}" />

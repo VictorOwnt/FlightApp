@@ -6,21 +6,23 @@
     xmlns:data="using:FlightApp.Models"
     xmlns:local="using:FlightApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="LightSkyBlue"
     mc:Ignorable="d">
 
-    <ListView
-        x:Name="Contacts_List"
+    <ListView 
+        x:Name="Contacts_List"        
         ItemsSource="{x:Bind ViewModel.Contacts, Mode=OneWay}"
-        SelectionMode="None">
+        SelectionMode="None"
+        Margin="16,48,0,0">
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="data:Passenger">
-                <StackPanel>
+                <StackPanel >
                     <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
                     <Button
                         x:Name="Contact_Button"
                         Click="Contact_Button_Click"
                         Content="Open chat"
+                        Margin="0,0,0,12"
                         Style="{StaticResource DefaultButtonStyle}" />
                 </StackPanel>
             </DataTemplate>

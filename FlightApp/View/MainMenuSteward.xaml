@@ -28,6 +28,10 @@
                 Content="Change seats"
                 Icon="Switch"
                 Tag="ChangeSeatsView" />
+            <muxc:NavigationViewItem
+                Content="Logout"
+                Icon="Back"
+                Tag="Logout" />
         </muxc:NavigationView.MenuItems>
 
         <Frame x:Name="PageFrame" />
