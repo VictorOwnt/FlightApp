@@ -11,59 +11,72 @@
     mc:Ignorable="d">
 
 
-
-    <muxc:NavigationView
+    <ScrollViewer>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ShoppingMenu.Margin" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <muxc:NavigationView
+        Margin="0,40,0,0"
         x:Name="ShoppingMenu"
         IsBackButtonVisible="Collapsed"
         IsSettingsVisible="False"
         PaneDisplayMode="Top"
         SelectionChanged="ShoppingMenu_SelectionChanged">
-        <muxc:NavigationView.MenuItems>
-            <muxc:NavigationViewItem Content="All" Tag="all" />
-            <muxc:NavigationViewItem Content="Food" Tag="food" />
-            <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
-        </muxc:NavigationView.MenuItems>
-        <StackPanel Background="LightSkyBlue">
-            <GridView
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Content="All" Tag="all" />
+                <muxc:NavigationViewItem Content="Food" Tag="food" />
+                <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
+            </muxc:NavigationView.MenuItems>
+            <StackPanel Background="LightSkyBlue">
+                <GridView
                 x:Name="Products_GridView"
                 IsItemClickEnabled="True"
                 ItemClick="Products_GridView_ItemClick"
                 ItemsSource="{x:Bind ViewModel.Products, Mode=OneWay}"
                 SelectionMode="Multiple">
 
-                <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="data:Product">
-                        <Border
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="data:Product">
+                            <Border
                             BorderBrush="Black"
                             BorderThickness="2"
                             CornerRadius="4">
-                            <StackPanel>
-                                <TextBlock
+                                <StackPanel>
+                                    <TextBlock
                                     Width="280"
                                     FontSize="16"
                                     Text="{x:Bind Name, Mode=OneWay}" />
-                                <TextBlock
+                                    <TextBlock
                                     Width="280"
                                     FontSize="16"
                                     Text="{x:Bind PriceToString(Price), , Mode=OneWay}" />
-                                <Image
+                                    <Image
                                     Width="200"
                                     Height="200"
                                     Source="{x:Bind ImagePath, Mode=OneWay}" />
 
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-            <TextBlock x:Name="Total_Cost" Text="{x:Bind ViewModel.TotalCostToString(ViewModel.TotalCost), Mode=OneWay}" />
-            <Button
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+                <TextBlock x:Name="Total_Cost" Text="{x:Bind ViewModel.TotalCostToString(ViewModel.TotalCost), Mode=OneWay}" />
+                <Button
                 x:Name="Order_Button"
                 Click="Order_Products"
                 Content="Order products"
                 Style="{StaticResource DefaultButtonStyle}" />
-        </StackPanel>
-    </muxc:NavigationView>
-
+            </StackPanel>
+        </muxc:NavigationView>
+    </ScrollViewer>
 
 </Page>

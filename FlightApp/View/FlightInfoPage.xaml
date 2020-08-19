@@ -2,13 +2,18 @@
     x:Class="FlightApp.View.FlightInfoPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FlightApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:data="using:FlightApp.Models"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:data="using:FlightApp.Models"
+    xmlns:local="using:FlightApp.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
-    <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Background="LightSkyBlue">
+    <Grid
+        Margin="0,0,0,0"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Background="LightSkyBlue">
         <StackPanel Margin="16,48,0,0">
             <ContentControl Content="{x:Bind ViewModel.Flight, Mode=OneWay}">
                 <ContentControl.ContentTemplate>
@@ -22,14 +27,11 @@
                                         </Paragraph>
                                         <Paragraph>
                                             <Span>
-                                                <Run Text="{x:Bind Airline.Name, Mode=OneWay}"/>
-                                                welcomes you aboard on flight
-                                                <Run Text="{x:Bind FlightNr, Mode=OneWay}"/>
-                                                departing from
-                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Name, Mode=OneWay}"/>
-                                                with destination
-                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Name, Mode=OneWay}"/> .
-                                            </Span>
+                                                <Run Text="{x:Bind Airline.Name, Mode=OneWay}" />
+                                                welcomes you aboard on flight<Run Text="{x:Bind FlightNr, Mode=OneWay}" />
+                                                departing from<Run Text="{x:Bind FlightDetail.DepartingAirport.Name, Mode=OneWay}" />
+                                                with destination<Run Text="{x:Bind FlightDetail.ArrivalAirport.Name, Mode=OneWay}" />
+                                                .</Span>
                                         </Paragraph>
                                         <Paragraph>
                                             <Run AutomationProperties.HeadingLevel="Level2" FontSize="22">Details</Run>
@@ -39,28 +41,22 @@
                                         </Paragraph>
                                         <Paragraph>
                                             <Span>
-                                                Departed on
-                                                <Run Text="{x:Bind FlightDetail.DepartingTime}"/>
-                                                from the
-                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Name}"/>
-                                                in
-                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Location.City}"/> ,
-                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Location.Country}"/> .
-                                            </Span>
+                                                Departed on<Run Text="{x:Bind FlightDetail.DepartingTime}" />
+                                                from the<Run Text="{x:Bind FlightDetail.DepartingAirport.Name}" />
+                                                in<Run Text="{x:Bind FlightDetail.DepartingAirport.Location.City}" />
+                                                ,<Run Text="{x:Bind FlightDetail.DepartingAirport.Location.Country}" />
+                                                .</Span>
                                         </Paragraph>
                                         <Paragraph>
                                             <Run AutomationProperties.HeadingLevel="Level3" FontSize="18">Arrival</Run>
                                         </Paragraph>
                                         <Paragraph>
                                             <Span>
-                                                Arrival scheduled on
-                                                <Run Text="{x:Bind FlightDetail.ArrivalTime}"/>
-                                                in the
-                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Name}"/>
-                                                in
-                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.City}"/> ,
-                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.Country}"/> .
-                                            </Span>
+                                                Arrival scheduled on<Run Text="{x:Bind FlightDetail.ArrivalTime}" />
+                                                in the<Run Text="{x:Bind FlightDetail.ArrivalAirport.Name}" />
+                                                in<Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.City}" />
+                                                ,<Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.Country}" />
+                                                .</Span>
                                         </Paragraph>
                                     </RichTextBlock>
                                 </StackPanel>
@@ -68,18 +64,24 @@
                             <PivotItem Header="About us">
                                 <StackPanel>
                                     <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Who are we?</TextBlock>
-                                    <Image HorizontalAlignment="Left" Source="{x:Bind Airline.ImageString}" Width="400"/>
-                                    <TextBlock Text="{x:Bind Airline.Name, Mode=OneWay}"/>
-                                    <TextBlock TextWrapping="WrapWholeWords" Text="{x:Bind Airline.Description, Mode=OneWay}"/>
+                                    <Image
+                                        Width="400"
+                                        HorizontalAlignment="Left"
+                                        Source="{x:Bind Airline.ImageString}" />
+                                    <TextBlock Text="{x:Bind Airline.Name, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind Airline.Description, Mode=OneWay}" TextWrapping="WrapWholeWords" />
                                 </StackPanel>
                             </PivotItem>
                             <PivotItem Header="About the aircraft">
                                 <StackPanel>
                                     <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Which aircraft am i in?</TextBlock>
-                                    <Image HorizontalAlignment="Left" Source="{x:Bind Aircraft.ImageString}" Width="400"/>
-                                    <TextBlock Text="{x:Bind Aircraft.Name, Mode=OneWay}"/>
+                                    <Image
+                                        Width="400"
+                                        HorizontalAlignment="Left"
+                                        Source="{x:Bind Aircraft.ImageString}" />
+                                    <TextBlock Text="{x:Bind Aircraft.Name, Mode=OneWay}" />
                                     <TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Year of construction</TextBlock>
-                                    <TextBlock Text="{x:Bind Aircraft.ConstructionYear, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind Aircraft.ConstructionYear, Mode=OneWay}" />
                                 </StackPanel>
                             </PivotItem>
                         </Pivot>
