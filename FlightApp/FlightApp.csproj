@@ -242,6 +242,7 @@
     <Content Include="Assets\Files\Movies\P. Jackson.TGa.mp4" />
     <Content Include="Assets\Files\Music\Zedd.The Middle.mp3" />
     <Content Include="Assets\Files\Movies\Q. Tarantino.The.mp4" />
+    <Content Include="Assets\weather.png" />
     <Content Include="images\poster.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

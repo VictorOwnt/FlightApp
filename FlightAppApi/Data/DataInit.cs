@@ -127,8 +127,8 @@ namespace FlightAppApi.Data
                 #endregion
 
                 #region init flightInfo
-                Location brussel = new Location { Country = "Belgium", City = "Zaventem" };
-                Location loiu = new Location { Country = "Spain", City = "Loiu" };
+                Location brussel = new Location { Country = "Belgium", City = "Zaventem", Latitude = 50.8855, Longitude = 4.4710 };
+                Location loiu = new Location { Country = "Spain", City = "Loiu", Latitude = 43.3161, Longitude = -2.92444 };
 
                 Airport brusselsAirport = new Airport { Name = "Brussels Airport", Location = brussel };
                 Airport bilbaoAirport = new Airport { Name = "Bilbao Airport", Location = loiu };

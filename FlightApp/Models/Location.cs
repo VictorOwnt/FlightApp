@@ -13,5 +13,9 @@ namespace FlightApp.Models
         public string Country;
 
         public string City;
+
+        public double Latitude;
+
+        public double Longitude;
     }
 }

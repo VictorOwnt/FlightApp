@@ -28,35 +28,67 @@
                                         <Paragraph>
                                             <Span>
                                                 <Run Text="{x:Bind Airline.Name, Mode=OneWay}" />
-                                                welcomes you aboard on flight<Run Text="{x:Bind FlightNr, Mode=OneWay}" />
-                                                departing from<Run Text="{x:Bind FlightDetail.DepartingAirport.Name, Mode=OneWay}" />
-                                                with destination<Run Text="{x:Bind FlightDetail.ArrivalAirport.Name, Mode=OneWay}" />
-                                                .</Span>
+                                                welcomes you aboard on flight
+                                                <Run Text="{x:Bind FlightNr, Mode=OneWay}" />
+                                                departing from
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Name, Mode=OneWay}" />
+                                                with destination
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Name, Mode=OneWay}" />
+                                                .
+                                            </Span>
                                         </Paragraph>
                                         <Paragraph>
                                             <Run AutomationProperties.HeadingLevel="Level2" FontSize="22">Details</Run>
                                         </Paragraph>
-                                        <Paragraph>
-                                            <Run AutomationProperties.HeadingLevel="Level3" FontSize="18">Departure</Run>
-                                        </Paragraph>
-                                        <Paragraph>
-                                            <Span>
-                                                Departed on<Run Text="{x:Bind FlightDetail.DepartingTime}" />
-                                                from the<Run Text="{x:Bind FlightDetail.DepartingAirport.Name}" />
-                                                in<Run Text="{x:Bind FlightDetail.DepartingAirport.Location.City}" />
-                                                ,<Run Text="{x:Bind FlightDetail.DepartingAirport.Location.Country}" />
-                                                .</Span>
-                                        </Paragraph>
-                                        <Paragraph>
-                                            <Run AutomationProperties.HeadingLevel="Level3" FontSize="18">Arrival</Run>
-                                        </Paragraph>
+                                    </RichTextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RichTextBlock>
+                                            <Paragraph>
+                                                <Run AutomationProperties.HeadingLevel="Level3" FontSize="18">Departure</Run>
+                                            </Paragraph>
+                                        </RichTextBlock>
+                                        <HyperlinkButton Margin="10 0 0 0" Width="50" Padding="0" BorderThickness="0" Click="GetWeatherForecastAsync" Tag="{x:Bind FlightDetail.DepartingAirport.Location}">
+                                            <Image Source="/Assets/weather.png" Stretch="UniformToFill"/>
+                                        </HyperlinkButton>
+                                    </StackPanel>
+                                    <RichTextBlock>
                                         <Paragraph>
                                             <Span>
-                                                Arrival scheduled on<Run Text="{x:Bind FlightDetail.ArrivalTime}" />
-                                                in the<Run Text="{x:Bind FlightDetail.ArrivalAirport.Name}" />
-                                                in<Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.City}" />
-                                                ,<Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.Country}" />
-                                                .</Span>
+                                                Departed on
+                                                <Run Text="{x:Bind FlightDetail.DepartingTime}" />
+                                                from the
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Name}" />
+                                                in
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Location.City}" />
+                                                ,
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Location.Country}" />
+                                                .
+                                            </Span>
+                                        </Paragraph>
+                                    </RichTextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RichTextBlock>
+                                            <Paragraph>
+                                                <Run AutomationProperties.HeadingLevel="Level3" FontSize="18">Arrival</Run>
+                                            </Paragraph>
+                                        </RichTextBlock>
+                                        <HyperlinkButton Margin="10 0 0 0" Width="50" Padding="0" BorderThickness="0" Click="GetWeatherForecastAsync" Tag="{x:Bind FlightDetail.ArrivalAirport.Location}">
+                                            <Image Source="/Assets/weather.png" Stretch="UniformToFill"/>
+                                        </HyperlinkButton>
+                                    </StackPanel>
+                                    <RichTextBlock>
+                                        <Paragraph>
+                                            <Span>
+                                                Arrival scheduled on
+                                                <Run Text="{x:Bind FlightDetail.ArrivalTime}" />
+                                                in the
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Name}" />
+                                                in
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.City}" />
+                                                ,
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.Country}" />
+                                                .
+                                            </Span>
                                         </Paragraph>
                                     </RichTextBlock>
                                 </StackPanel>

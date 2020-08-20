@@ -2,10 +2,7 @@
 using FlightApp.Models;
 using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Windows.System;
 
 namespace FlightApp.ViewModels
 {
@@ -30,6 +27,5 @@ namespace FlightApp.ViewModels
         {
             Flight = await flightService.GetFlightAsync();
         }
-
     }
 }
