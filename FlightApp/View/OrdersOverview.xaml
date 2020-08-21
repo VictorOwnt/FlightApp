@@ -29,8 +29,8 @@
             </muxc:NavigationView.MenuItems>
 
             <ListView
-                Margin="16,48,0,0"
                 x:Name="Passengers_List"
+                Margin="16,48,0,0"
                 ItemsSource="{x:Bind Path=ViewModel.Passengers, Mode=OneWay}"
                 SelectionMode="None">
                 <ListView.ItemTemplate>

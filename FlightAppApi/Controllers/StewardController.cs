@@ -92,5 +92,22 @@ namespace FlightAppApi.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Change Discount of product
+        /// </summary>        
+        [HttpPut("/api/steward/product/discount")]
+        public IActionResult SetDiscount(Product product)
+        {
+
+            Product productToChange = _productRepository.GetProductByName(product.Name);
+            if (productToChange == null)
+            {
+                return NotFound();
+            }
+            productToChange.DiscountPercentage = product.DiscountPercentage;
+            _productRepository.SaveChanges();
+            return Ok();
+        }
+
     }
 }

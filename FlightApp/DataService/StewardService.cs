@@ -31,15 +31,12 @@ namespace FlightApp.DataService
         public async Task DeliverOrderAsync(int orderId)
         {
             var orderIdJson = JsonConvert.SerializeObject(orderId);
-            string url = string.Format("http://localhost:5000/api/steward/passenger/order/deliver?orderId={0}", orderId);            
+            string url = string.Format("http://localhost:5000/api/steward/passenger/order/deliver?orderId={0}", orderId);
             var response = await client.PutAsync(new Uri(url), new HttpStringContent(orderIdJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception();
             }
-
-
-
         }
 
         public async Task<List<Passenger>> ChangeSeats(int seatNumber1, int seatNumber2)
@@ -53,8 +50,17 @@ namespace FlightApp.DataService
                 var passengers = JsonConvert.DeserializeObject<List<Passenger>>(result);
                 return passengers;
             }
-            //TODO error handling
-            return new List<Passenger>();
+            else throw new Exception();
+        }
+
+        public async Task SetDiscount(Product product)
+        {
+            var productJson = JsonConvert.SerializeObject(product);
+            var response = await client.PutAsync(new Uri("http://localhost:5000/api/steward/product/discount"), new HttpStringContent(productJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception();
+            }
         }
 
         public async Task<IEnumerable<Passenger>> GetPassengersIncludeOrders()
@@ -80,6 +86,6 @@ namespace FlightApp.DataService
             }
             else throw new Exception(); //Throw general exception because class Windows.Web.Http has no specific exception, only system.http. More info https://stackoverflow.com/questions/27031408/why-are-network-exceptions-raised-by-windows-web-http-httpclient-of-type-system
         }
-        ///api/steward/passengers/orders/deliver
+
     }
 }

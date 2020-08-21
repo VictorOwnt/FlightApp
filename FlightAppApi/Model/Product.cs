@@ -16,7 +16,29 @@ namespace FlightAppApi.Model
 
         public string ImagePath { get; set; }
         [Required]
-        public double Price { get; set; }
+        public double BasePrice { get; set; }
 
+        [Required]
+        public int DiscountPercentage { get; set; }
+
+        public double Price
+        {
+            get
+            {
+                if (DiscountPercentage == 0)
+                {
+                    return BasePrice;
+                }
+                else
+                {
+                    return Price * DiscountPercentage;
+                }
+            }
+        }
+
+        public Product()
+        {
+            DiscountPercentage = 0;
+        }
     }
 }

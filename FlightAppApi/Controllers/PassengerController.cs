@@ -38,20 +38,20 @@ namespace FlightAppApi.Controllers
         /// Add products to the current passenger
         /// </summary>        
         [HttpPost("/api/product/")]
-        public ActionResult<List<ProductDTO>> OrderProducts(List<ProductDTO> products)
+        public ActionResult<List<Product>> OrderProducts(List<Product> orderedProducts)
         {
             Passenger passenger = _passengerRepository.GetPassengerByEmail(User.Identity.Name);
             Order order = new Order(passenger.PersonId);
-            foreach (ProductDTO productDTO in products)
+            foreach (Product orderedProduct in orderedProducts)
             {
-                Product product = _productRepository.GetProductByName(productDTO.Name);
+                Product product = _productRepository.GetProductByName(orderedProduct.Name);
                 order.Orderlines.Add(new Orderline(product));
 
             }
             passenger.Orders.Add(order);
             _passengerRepository.SaveChanges();
             _productRepository.SaveChanges();
-            return products;
+            return orderedProducts;
 
         }
 

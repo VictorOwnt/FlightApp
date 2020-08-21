@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <RelativePanel Background="LightSkyBlue" x:Name="PassengerOrders">
+    <RelativePanel x:Name="PassengerOrders" Background="LightSkyBlue">
         <ListView
             x:Name="Orders_List"
             Margin="16,48,0,0"
@@ -31,20 +31,23 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <TextBlock Text="{x:Bind StatusToString(),Mode=OneWay}" Margin="8" />
-                        <TextBlock Text="{x:Bind OrderCostToString(), Mode=OneWay}" Margin="8" />
+                        <TextBlock Margin="8" Text="{x:Bind StatusToString(), Mode=OneWay}" />
+                        <TextBlock Margin="8" Text="{x:Bind OrderCostToString(), Mode=OneWay}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock x:Name="help" Text="{x:Bind ViewModel.Passenger.TotalOrdersCostToString(),Mode=OneWay}" Margin="16,8" 
-                   RelativePanel.Below="Orders_List"/>
+        <TextBlock
+            x:Name="help"
+            Margin="16,8"
+            RelativePanel.Below="Orders_List"
+            Text="{x:Bind ViewModel.Passenger.TotalOrdersCostToString(), Mode=OneWay}" />
         <Button
             x:Name="InvokePrintingButton"
+            Margin="16,0"
             Click="InvokePrintingButton_Click"
             Content="Print"
             RelativePanel.Below="help"
-            Margin="16,0"
             Style="{StaticResource DefaultButtonStyle}" />
     </RelativePanel>
 

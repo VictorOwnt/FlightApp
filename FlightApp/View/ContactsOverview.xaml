@@ -9,20 +9,20 @@
     Background="LightSkyBlue"
     mc:Ignorable="d">
 
-    <ListView 
-        x:Name="Contacts_List"        
+    <ListView
+        x:Name="Contacts_List"
+        Margin="16,48,0,0"
         ItemsSource="{x:Bind ViewModel.Contacts, Mode=OneWay}"
-        SelectionMode="None"
-        Margin="16,48,0,0">
+        SelectionMode="None">
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="data:Passenger">
-                <StackPanel >
+                <StackPanel>
                     <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
                     <Button
                         x:Name="Contact_Button"
+                        Margin="0,0,0,12"
                         Click="Contact_Button_Click"
                         Content="Open chat"
-                        Margin="0,0,0,12"
                         Style="{StaticResource DefaultButtonStyle}" />
                 </StackPanel>
             </DataTemplate>

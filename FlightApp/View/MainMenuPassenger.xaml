@@ -11,11 +11,11 @@
 
     <muxc:NavigationView
         x:Name="navigationViewPassengerMenu"
-        IsSettingsVisible="False"
         IsBackButtonVisible="Collapsed"
+        IsSettingsVisible="False"
         SelectionChanged="NavigationViewPassenger_SelectionChanged">
         <muxc:NavigationView.MenuItems>
-            <NavigationViewItemHeader Content="General"/>
+            <NavigationViewItemHeader Content="General" />
             <NavigationViewItem Content="Flight info" Tag="FlightInfo">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;" />
@@ -29,7 +29,7 @@
                 Content="View orders"
                 Icon="View"
                 Tag="PassengerOrdersOverview" />
-            <NavigationViewItemHeader Content="Entertainment"/>
+            <NavigationViewItemHeader Content="Entertainment" />
             <muxc:NavigationViewItem
                 Content="Contacts"
                 Icon="Contact"
@@ -38,7 +38,7 @@
                 Content="Entertainment"
                 Icon="Emoji2"
                 Tag="Entertainment" />
-            <NavigationViewItemHeader Content="Logout"/>
+            <NavigationViewItemHeader Content="Logout" />
             <muxc:NavigationViewItem
                 Content="Logout"
                 Icon="Back"
@@ -47,7 +47,7 @@
         <Frame x:Name="ContentFrame">
             <Frame.ContentTransitions>
                 <TransitionCollection>
-                    <NavigationThemeTransition/>
+                    <NavigationThemeTransition />
                 </TransitionCollection>
             </Frame.ContentTransitions>
         </Frame>

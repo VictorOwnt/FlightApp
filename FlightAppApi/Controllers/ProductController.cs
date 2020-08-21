@@ -27,11 +27,13 @@ namespace FlightAppApi.Controllers
         /// <summary>
         /// Get all products
         /// </summary>        
-        [HttpGet]        
+        [HttpGet]
         public IEnumerable<Product> GetProducts()
         {
             return _productRepository.GetAllProducts();
         }
+
+
 
     }
 }
