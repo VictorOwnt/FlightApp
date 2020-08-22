@@ -10,7 +10,7 @@ namespace FlightAppApi.Model
     public class Product
     {
         [Required]
-        public int ProductId { get; private set; }
+        public int ProductId { get; set; }
         [Required]
         public string Name { get; set; }
 
@@ -19,7 +19,7 @@ namespace FlightAppApi.Model
         public double BasePrice { get; set; }
 
         [Required]
-        public int DiscountPercentage { get; set; }
+        public double DiscountPercentage { get; set; }
 
         public Product()
         {

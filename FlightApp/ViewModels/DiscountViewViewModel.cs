@@ -18,6 +18,7 @@ namespace FlightApp.ViewModels
         }
 
         private readonly ProductService productService = new ProductService();
+        private Dictionary<int, Product> changedProducts = new Dictionary<int, Product>();
 
         public DiscountViewViewModel()
         {
@@ -32,6 +33,24 @@ namespace FlightApp.ViewModels
         {
             Product ProductToChange = Products.FirstOrDefault(p => p == product);
             ProductToChange.DiscountPercentage = discountPercentage;
+            if (!changedProducts.ContainsKey(ProductToChange.ProductId))
+            {
+                changedProducts.Add(ProductToChange.ProductId, ProductToChange);
+            }
+            else
+            {
+                changedProducts[ProductToChange.ProductId] = ProductToChange;
+            }
+
+        }
+
+        public void SaveDiscountChanges()
+        {
+            if (changedProducts.Count() != 0)
+            {
+                productService.SaveDiscountChanges(changedProducts.Values.ToList());
+            }
+
         }
     }
 }

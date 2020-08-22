@@ -22,9 +22,9 @@ namespace FlightAppApi.Data.Repository
             return _products;
         }
 
-        public Product GetProductByName(string name)
+        public Product GetProductById(int id)
         {
-            return _products.FirstOrDefault(p => p.Name == name);
+            return _products.FirstOrDefault(p => p.ProductId == id);
         }
 
         public void SaveChanges()

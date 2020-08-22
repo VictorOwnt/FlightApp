@@ -33,7 +33,7 @@ namespace FlightApp.View
 
         private void Discount_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.SaveDiscountChanges();
         }
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -41,7 +41,10 @@ namespace FlightApp.View
             if (sender is Slider slider)
             {
                 Product product = (Product)slider.DataContext;
-                ViewModel.SetDiscountPercentage(product, slider.Value);
+                if (product != null) // null on init
+                {
+                    ViewModel.SetDiscountPercentage(product, slider.Value);
+                }
 
             }
         }

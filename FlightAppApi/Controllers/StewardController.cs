@@ -95,16 +95,18 @@ namespace FlightAppApi.Controllers
         /// <summary>
         /// Change Discount of product
         /// </summary>        
-        [HttpPut("/api/steward/product/discount")]
-        public IActionResult SetDiscount(Product product)
+        [HttpPut("/api/steward/products/discount")]
+        public IActionResult SetDiscount(IEnumerable<Product> products)
         {
-
-            Product productToChange = _productRepository.GetProductByName(product.Name);
-            if (productToChange == null)
+            foreach (Product product in products)
             {
-                return NotFound();
+                Product productToChange = _productRepository.GetProductById(product.ProductId);
+                if (productToChange == null)
+                {
+                    return NotFound();
+                }
+                productToChange.DiscountPercentage = product.DiscountPercentage;
             }
-            productToChange.DiscountPercentage = product.DiscountPercentage;
             _productRepository.SaveChanges();
             return Ok();
         }

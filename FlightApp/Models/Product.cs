@@ -10,7 +10,7 @@ namespace FlightApp.Models
 {
     public class Product : INotifyPropertyChanged // Explicit implementation because DiscountPercentage notifies PriceToString()
     {
-        public int ProductId { get; private set; }
+        public int ProductId { get; set; }
 
         private string _name;
         public string Name
@@ -33,6 +33,7 @@ namespace FlightApp.Models
             set { _discountPercentage = value; OnPropertyChanged("PriceToString"); }
         }
 
+        // private double _price;
         public double Price
         {
             get
@@ -60,5 +61,7 @@ namespace FlightApp.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+
+
     }
 }

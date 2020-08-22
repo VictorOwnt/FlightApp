@@ -44,7 +44,7 @@ namespace FlightAppApi.Controllers
             Order order = new Order(passenger.PersonId);
             foreach (Product orderedProduct in orderedProducts)
             {
-                Product product = _productRepository.GetProductByName(orderedProduct.Name);
+                Product product = _productRepository.GetProductById(orderedProduct.ProductId);
                 order.Orderlines.Add(new Orderline(product));
 
             }

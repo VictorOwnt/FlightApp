@@ -34,8 +34,21 @@ namespace FlightApp.DataService
                 var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(result);
                 return products;
             }
-            //TODO error handling
-            return new List<Product>();
+            else
+            {
+                throw new Exception();
+            }
+
+        }
+
+        public async void SaveDiscountChanges(IEnumerable<Product> products)
+        {
+            var productsJson = JsonConvert.SerializeObject(products);
+            var response = await client.PutAsync(new Uri("http://localhost:5000/api/steward/products/discount"), new HttpStringContent(productsJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception();
+            }
         }
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
@@ -55,6 +68,11 @@ namespace FlightApp.DataService
             var productsJson = JsonConvert.SerializeObject(products);
 
             var response = await client.PostAsync(new Uri("http://localhost:5000/api/product"), new HttpStringContent(productsJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception();
+            }
         }
     }
 }

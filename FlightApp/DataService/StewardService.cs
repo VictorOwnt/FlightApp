@@ -53,16 +53,6 @@ namespace FlightApp.DataService
             else throw new Exception();
         }
 
-        public async Task SetDiscount(Product product)
-        {
-            var productJson = JsonConvert.SerializeObject(product);
-            var response = await client.PutAsync(new Uri("http://localhost:5000/api/steward/product/discount"), new HttpStringContent(productJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception();
-            }
-        }
-
         public async Task<IEnumerable<Passenger>> GetPassengersIncludeOrders()
         {
             var response = await client.GetAsync(new Uri("http://localhost:5000/api/steward/passengers/orders"));
