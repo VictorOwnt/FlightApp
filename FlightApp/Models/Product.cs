@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FlightApp.Models
 {
-    public class Product
+    public class Product : INotifyPropertyChanged // Explicit implementation because DiscountPercentage notifies PriceToString()
     {
         public int ProductId { get; private set; }
 
@@ -20,7 +22,16 @@ namespace FlightApp.Models
 
         public double BasePrice { get; set; }
 
-        public double DiscountPercentage { get; set; }
+        private double _discountPercentage;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public double DiscountPercentage
+        {
+
+            get { return _discountPercentage; }
+            set { _discountPercentage = value; OnPropertyChanged("PriceToString"); }
+        }
 
         public double Price
         {
@@ -30,17 +41,24 @@ namespace FlightApp.Models
                 {
                     return BasePrice;
                 }
+                else if (DiscountPercentage == 100)
+                {
+                    return 0;
+                }
                 else
                 {
-                    return BasePrice * DiscountPercentage;
+                    return BasePrice * ((100 - DiscountPercentage) / 100);
                 }
             }
         }
 
         public string PriceToString()
         {
-            return "€" + Price.ToString();
+            return "€" + Math.Round(Price, 2).ToString();
         }
-
+        private void OnPropertyChanged(string prop)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
 }

@@ -8,7 +8,7 @@
     xmlns:local="using:FlightApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="LightSteelBlue"
     mc:Ignorable="d">
 
     <Page.Resources>

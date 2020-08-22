@@ -41,11 +41,7 @@ namespace FlightApp.View
             if (sender is Slider slider)
             {
                 Product product = (Product)slider.DataContext;
-                double distanceFromMin = (slider.Value - slider.Minimum);
-                double sliderRange = (slider.Maximum - slider.Minimum);
-                double sliderPercent = 100 * (distanceFromMin / sliderRange);
-
-                ViewModel.SetDiscountPercentage(product, sliderPercent);
+                ViewModel.SetDiscountPercentage(product, slider.Value);
 
             }
         }

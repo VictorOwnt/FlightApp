@@ -5,10 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:FlightApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="LightSteelBlue"
     mc:Ignorable="d">
 
-    <RelativePanel Background="LightSteelBlue">
+    <RelativePanel>
         <TextBox
             x:Name="PassengerSeat1"
             Width="200"
