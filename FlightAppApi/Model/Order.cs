@@ -17,6 +17,16 @@ namespace FlightAppApi.Model
         [Required]
         public bool IsDelivered { get; set; }
 
+        public double OrderCost { get; set; }
+        public void SetOrderCost()
+        {
+            double cost = 0;
+            foreach (Orderline orderline in Orderlines)
+            {
+                cost += orderline.Product.Price;
+            }
+            OrderCost = cost;
+        }
         public Order()
         {
         }
@@ -26,5 +36,7 @@ namespace FlightAppApi.Model
             PassengerId = passengerId;
             IsDelivered = false;
         }
+
+
     }
 }

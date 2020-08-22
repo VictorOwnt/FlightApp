@@ -11,21 +11,12 @@ namespace FlightApp.Models
         public int OrderId { get; set; }
         public ICollection<Orderline> Orderlines { get; set; }
         public bool IsDelivered { get; set; }
-
-        public double CalculateOrderCost()
-        {
-            double cost = 0;
-            foreach (Orderline orderline in Orderlines)
-            {
-                cost += orderline.Product.Price;
-            }
-            return cost;
-        }
+        public double OrderCost { get; set; }
 
         public string OrderCostToString()
         {
-            double totalCost = CalculateOrderCost();
-            return "Total cost:" + " €" + totalCost.ToString();
+
+            return "Total cost:" + " €" + OrderCost.ToString();
         }
 
         public string IsDeliveredToString()

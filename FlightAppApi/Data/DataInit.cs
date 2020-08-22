@@ -91,10 +91,14 @@ namespace FlightAppApi.Data
 
                 #region init products
                 Product water = new Product { Name = "water", ImagePath = "/Assets/water.png", BasePrice = 0.80 };
+                water.SetPrice();
                 Product cola = new Product { Name = "cola", ImagePath = "/Assets/cola.jpg", BasePrice = 1.00 };
+                cola.SetPrice();
                 Product tea = new Product { Name = "ice tea", ImagePath = "/Assets/ice_tea.png", BasePrice = 1.00 };
+                tea.SetPrice();
 
                 Product hotdog = new Product { Name = "hotdog", ImagePath = "/Assets/hotdog.jpg", BasePrice = 2.50 };
+                hotdog.SetPrice();
 
                 _dbContext.Products.AddRange(water, cola, tea, hotdog);
                 #endregion
@@ -117,12 +121,14 @@ namespace FlightAppApi.Data
                 Orderline orderline2 = new Orderline(tea);
                 order1.Orderlines.Add(orderline1);
                 order1.Orderlines.Add(orderline2);
+                order1.SetOrderCost();
 
                 Order order2 = new Order(1);
                 Orderline orderline3 = new Orderline(hotdog);
                 Orderline orderline4 = new Orderline(cola);
                 order2.Orderlines.Add(orderline3);
                 order2.Orderlines.Add(orderline4);
+                order2.SetOrderCost();
 
                 _dbContext.Orders.AddRange(order1, order2);
                 #endregion

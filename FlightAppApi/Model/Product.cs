@@ -21,9 +21,25 @@ namespace FlightAppApi.Model
         [Required]
         public double DiscountPercentage { get; set; }
 
+        public double Price { get; set; }
         public Product()
         {
             DiscountPercentage = 0;
+        }
+        public void SetPrice()
+        {
+            if (DiscountPercentage == 0)
+            {
+                Price = BasePrice;
+            }
+            else if (DiscountPercentage == 100)
+            {
+                Price = 0;
+            }
+            else
+            {
+                Price = BasePrice * ((100 - DiscountPercentage) / 100);
+            }
         }
     }
 }

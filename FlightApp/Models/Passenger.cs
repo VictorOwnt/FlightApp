@@ -23,7 +23,7 @@ namespace FlightApp.Models
             double cost = 0;
             foreach (Order order in Orders)
             {
-                cost += order.CalculateOrderCost();
+                cost += order.OrderCost;
             }
             return "Total Cost: " + cost.ToString() + "€";
         }

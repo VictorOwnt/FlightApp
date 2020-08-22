@@ -65,6 +65,7 @@ namespace FlightApp.View
         {
             // Register for PrintTaskRequested event
             printMan = PrintManager.GetForCurrentView();
+
             printMan.PrintTaskRequested += PrintTaskRequested;
 
             // Build a PrintDocument and register for callbacks

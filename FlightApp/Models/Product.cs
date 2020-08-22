@@ -33,7 +33,6 @@ namespace FlightApp.Models
             set { _discountPercentage = value; OnPropertyChanged("PriceToString"); }
         }
 
-        // private double _price;
         public double Price
         {
             get

@@ -106,6 +106,7 @@ namespace FlightAppApi.Controllers
                     return NotFound();
                 }
                 productToChange.DiscountPercentage = product.DiscountPercentage;
+                productToChange.SetPrice();
             }
             _productRepository.SaveChanges();
             return Ok();

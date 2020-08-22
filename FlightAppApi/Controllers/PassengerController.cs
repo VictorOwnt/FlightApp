@@ -46,6 +46,7 @@ namespace FlightAppApi.Controllers
             {
                 Product product = _productRepository.GetProductById(orderedProduct.ProductId);
                 order.Orderlines.Add(new Orderline(product));
+                order.SetOrderCost();
 
             }
             passenger.Orders.Add(order);
