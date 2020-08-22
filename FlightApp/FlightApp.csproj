@@ -145,6 +145,7 @@
     <Compile Include="ViewModels\ChangeSeatsViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ContactsOverviewViewModel.cs" />
+    <Compile Include="ViewModels\DiscountViewViewModel.cs" />
     <Compile Include="ViewModels\FlightsInfoModel.cs" />
     <Compile Include="ViewModels\EntertainmentViewModel.cs" />
     <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
@@ -159,6 +160,9 @@
     </Compile>
     <Compile Include="View\ContactsOverview.xaml.cs">
       <DependentUpon>ContactsOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DiscountView.xaml.cs">
+      <DependentUpon>DiscountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FlightInfoPage.xaml.cs">
       <DependentUpon>FlightInfoPage.xaml</DependentUpon>
@@ -267,6 +271,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContactsOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DiscountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

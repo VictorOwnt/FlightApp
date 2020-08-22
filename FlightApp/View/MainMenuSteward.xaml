@@ -16,9 +16,13 @@
         SelectionChanged="NavigationViewStewardMenu_SelectionChanged">
         <muxc:NavigationView.MenuItems>
             <muxc:NavigationViewItem
-                Content="View Orders"
+                Content="View orders"
                 Icon="Shop"
                 Tag="OrdersOverview" />
+            <muxc:NavigationViewItem
+                Content="View discounts"
+                Icon="Calculator"
+                Tag="DiscountView" />
             <NavigationViewItem Content="Send notification" Tag="FlightInfoPage">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7E7;" />

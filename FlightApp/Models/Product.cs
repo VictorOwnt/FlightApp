@@ -20,7 +20,7 @@ namespace FlightApp.Models
 
         public double BasePrice { get; set; }
 
-        public int DiscountPercentage { get; set; }
+        public double DiscountPercentage { get; set; }
 
         public double Price
         {

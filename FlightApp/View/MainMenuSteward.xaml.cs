@@ -40,6 +40,9 @@ namespace FlightApp.View
                 case "OrdersOverview":
                     PageFrame.Navigate(typeof(OrdersOverview));
                     break;
+                case "DiscountView":
+                    PageFrame.Navigate(typeof(DiscountView));
+                    break;
                 case "Logout":
                     Frame.Navigate(typeof(MainPage));
                     ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
