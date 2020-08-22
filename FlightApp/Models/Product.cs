@@ -32,14 +32,14 @@ namespace FlightApp.Models
                 }
                 else
                 {
-                    return Price * DiscountPercentage;
+                    return BasePrice * DiscountPercentage;
                 }
             }
         }
 
-        public string PriceToString(double price)
+        public string PriceToString()
         {
-            return "€" + price.ToString();
+            return "€" + Price.ToString();
         }
 
     }

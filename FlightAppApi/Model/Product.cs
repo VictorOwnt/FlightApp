@@ -31,7 +31,7 @@ namespace FlightAppApi.Model
                 }
                 else
                 {
-                    return Price * DiscountPercentage;
+                    return BasePrice * DiscountPercentage;
                 }
             }
         }

@@ -46,7 +46,7 @@
                                     <TextBlock
                                         Width="280"
                                         FontSize="16"
-                                        Text="{x:Bind PriceToString(Price), , Mode=OneWay}" />
+                                        Text="{x:Bind PriceToString(), Mode=OneWay}" />
                                     <Image
                                         Width="200"
                                         Height="200"
