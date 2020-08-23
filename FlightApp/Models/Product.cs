@@ -61,6 +61,11 @@ namespace FlightApp.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
+        public string DiscountToString()
+        {
+            return DiscountPercentage + "%" + " on " + Name;
+        }
+
 
     }
 }

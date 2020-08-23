@@ -1,17 +1,28 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
 using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 
 namespace FlightApp.ViewModels
 {
     public class ProductsOverviewViewModel : BindableBase
     {
+
+        #region fields and properties
         private IEnumerable<Product> _products;
         public IEnumerable<Product> Products
         {
             get { return _products; }
             set { SetProperty(ref _products, value); }
+        }
+
+        private Dictionary<int, Product> _discountedProductsDictionary;
+        private IEnumerable<Product> _discountedProducts;
+        public IEnumerable<Product> DiscountedProducts
+        {
+            get { return _discountedProducts; }
+            set { SetProperty(ref _discountedProducts, value); }
         }
         private double _totalCost;
         public double TotalCost
@@ -19,13 +30,53 @@ namespace FlightApp.ViewModels
             get { return _totalCost; }
             set { SetProperty(ref _totalCost, value); }
         }
+
+        private string _discountHeaderString;
+        public string DiscountHeaderString
+        {
+            get { return _discountHeaderString; }
+            set { SetProperty(ref _discountHeaderString, value); }
+        }
         public HashSet<Product> SelectedProducts { get; set; } = new HashSet<Product>();
 
         private readonly ProductService productService = new ProductService();
 
+        #endregion
+        #region methods
+
+        public ProductsOverviewViewModel()
+        {
+            _discountedProductsDictionary = new Dictionary<int, Product>();
+        }
         public async void SetProductsOfCategoryAsync(string categoryName)
         {
             Products = await productService.GetProductsOfCategory(categoryName);
+            SetDiscountedProducts();
+        }
+
+        private void SetDiscountedProducts()
+        {
+            foreach (Product product in Products)
+            {
+                if (product.DiscountPercentage != 0 && !_discountedProductsDictionary.ContainsKey(product.ProductId))
+                {
+                    _discountedProductsDictionary.Add(product.ProductId, product);
+                }
+                else if (product.DiscountPercentage == 0 && _discountedProductsDictionary.ContainsKey(product.ProductId))
+                {
+                    _discountedProductsDictionary.Remove(product.ProductId);
+                }
+
+            }
+            DiscountedProducts = _discountedProductsDictionary.Values;
+            if (_discountedProductsDictionary.Count == 0)
+            {
+                DiscountHeaderString = "There are no sales actually.";
+            }
+            else
+            {
+                DiscountHeaderString = "Here are the current sales: ";
+            }
         }
 
         public async void OrderProducts(List<Product> products)
@@ -36,6 +87,7 @@ namespace FlightApp.ViewModels
         public async void SetAllProductsAsync()
         {
             Products = await productService.GetAllProductsAsync();
+            SetDiscountedProducts();
         }
 
         public string TotalCostToString(double totalCost)
@@ -56,5 +108,7 @@ namespace FlightApp.ViewModels
                 TotalCost += selectedProduct.Price;
             }
         }
+        #endregion
     }
+
 }

@@ -25,6 +25,19 @@
                 <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
             </muxc:NavigationView.MenuItems>
             <StackPanel Background="LightSkyBlue">
+                <TextBlock Text="{x:Bind ViewModel.DiscountHeaderString, Mode=OneWay}"/>
+                <ListView
+                    x:Name="Discount_Products_ListView"
+                    IsItemClickEnabled="False"
+                    SelectionMode="None"
+                    ItemsSource="{x:Bind ViewModel.DiscountedProducts,Mode=OneWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="data:Product">
+                            <TextBlock Text="{x:Bind DiscountToString()}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Rectangle HorizontalAlignment="Stretch" Stroke="Lavender" StrokeThickness="5" Height="2" Margin="0,5"/>
                 <GridView
                     x:Name="Products_GridView"
                     IsItemClickEnabled="True"
@@ -65,6 +78,7 @@
                     Style="{StaticResource DefaultButtonStyle}" />
             </StackPanel>
         </muxc:NavigationView>
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
