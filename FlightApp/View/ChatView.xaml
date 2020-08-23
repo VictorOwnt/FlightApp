@@ -6,10 +6,10 @@
     xmlns:local="using:FlightApp.View"
     xmlns:local1="using:FlightApp.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="LightSkyBlue"
     mc:Ignorable="d">
 
-    <RelativePanel Background="LightSkyBlue">
+    <RelativePanel >
         <ListView
             x:Name="messagesListView"
             Margin="0,48,0,0"

@@ -52,6 +52,7 @@ namespace FlightApp.ViewModels
         {
             Products = await productService.GetProductsOfCategory(categoryName);
             SetDiscountedProducts();
+            ResetOrder();
         }
 
         private void SetDiscountedProducts()
@@ -88,6 +89,7 @@ namespace FlightApp.ViewModels
         {
             Products = await productService.GetAllProductsAsync();
             SetDiscountedProducts();
+            ResetOrder();
         }
 
         public string TotalCostToString(double totalCost)
@@ -107,6 +109,12 @@ namespace FlightApp.ViewModels
                 SelectedProducts.Add(selectedProduct);
                 TotalCost += selectedProduct.Price;
             }
+        }
+
+        private void ResetOrder()
+        {
+            TotalCost = 0;
+            SelectedProducts = new HashSet<Product>();
         }
         #endregion
     }

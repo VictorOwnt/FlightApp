@@ -7,7 +7,7 @@
     xmlns:local="using:FlightApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Windows.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="LightSkyBlue"
     mc:Ignorable="d">
 
 
@@ -24,8 +24,8 @@
                 <muxc:NavigationViewItem Content="Food" Tag="food" />
                 <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
             </muxc:NavigationView.MenuItems>
-            <StackPanel Background="LightSkyBlue">
-                <TextBlock Text="{x:Bind ViewModel.DiscountHeaderString, Mode=OneWay}"/>
+            <StackPanel >
+                <TextBlock Text="{x:Bind ViewModel.DiscountHeaderString, Mode=OneWay}" FontSize="24" FontWeight="Bold"/>
                 <ListView
                     x:Name="Discount_Products_ListView"
                     IsItemClickEnabled="False"

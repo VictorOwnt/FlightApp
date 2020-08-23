@@ -45,16 +45,13 @@ namespace FlightApp.View
             switch (item.Tag.ToString().ToLower())
             {
                 case "food":
-                    SetAlreadyChosenProducts();
                     ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
                     break;
                 case "drinks":
                     ViewModel.SetProductsOfCategoryAsync(item.Tag.ToString());
-                    SetAlreadyChosenProducts();
                     break;
                 case "all":
                     ViewModel.SetAllProductsAsync();
-                    SetAlreadyChosenProducts();
                     break;
                 default:
                     Console.WriteLine("Default case");
@@ -80,15 +77,6 @@ namespace FlightApp.View
         {
             Product selectedProduct = e.ClickedItem as Product;
             ViewModel.ChangeSelectedProducts(selectedProduct);
-        }
-
-        private void SetAlreadyChosenProducts()
-        {
-
-            /*foreach (Product selectedProduct in ViewModel.SelectedProducts)
-            {
-                Products_GridView.SelectedItems.Add(selectedProduct);
-            }*/
         }
     }
 }

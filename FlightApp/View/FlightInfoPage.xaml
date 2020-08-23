@@ -6,14 +6,14 @@
     xmlns:data="using:FlightApp.Models"
     xmlns:local="using:FlightApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="LightSkyBlue"
     mc:Ignorable="d">
 
     <Grid
         Margin="0,0,0,0"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
-        Background="LightSkyBlue">
+        >
         <StackPanel Margin="16,48,0,0">
             <ContentControl Content="{x:Bind ViewModel.Flight, Mode=OneWay}">
                 <ContentControl.ContentTemplate>
@@ -28,10 +28,14 @@
                                         <Paragraph>
                                             <Span>
                                                 <Run Text="{x:Bind Airline.Name, Mode=OneWay}" />
-                                                welcomes you aboard on flight<Run Text="{x:Bind FlightNr, Mode=OneWay}" />
-                                                departing from<Run Text="{x:Bind FlightDetail.DepartingAirport.Name, Mode=OneWay}" />
-                                                with destination<Run Text="{x:Bind FlightDetail.ArrivalAirport.Name, Mode=OneWay}" />
-                                                .</Span>
+                                                welcomes you aboard on flight
+                                                <Run Text="{x:Bind FlightNr, Mode=OneWay}" />
+                                                departing from
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Name, Mode=OneWay}" />
+                                                with destination
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Name, Mode=OneWay}" />
+                                                .
+                                            </Span>
                                         </Paragraph>
                                         <Paragraph>
                                             <Run AutomationProperties.HeadingLevel="Level2" FontSize="22">Details</Run>
@@ -56,11 +60,16 @@
                                     <RichTextBlock>
                                         <Paragraph>
                                             <Span>
-                                                Departed on<Run Text="{x:Bind FlightDetail.DepartingTime}" />
-                                                from the<Run Text="{x:Bind FlightDetail.DepartingAirport.Name}" />
-                                                in<Run Text="{x:Bind FlightDetail.DepartingAirport.Location.City}" />
-                                                ,<Run Text="{x:Bind FlightDetail.DepartingAirport.Location.Country}" />
-                                                .</Span>
+                                                Departed on
+                                                <Run Text="{x:Bind FlightDetail.DepartingTime}" />
+                                                from the
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Name}" />
+                                                in
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Location.City}" />
+                                                ,
+                                                <Run Text="{x:Bind FlightDetail.DepartingAirport.Location.Country}" />
+                                                .
+                                            </Span>
                                         </Paragraph>
                                     </RichTextBlock>
                                     <StackPanel Orientation="Horizontal">
@@ -82,11 +91,16 @@
                                     <RichTextBlock>
                                         <Paragraph>
                                             <Span>
-                                                Arrival scheduled on<Run Text="{x:Bind FlightDetail.ArrivalTime}" />
-                                                in the<Run Text="{x:Bind FlightDetail.ArrivalAirport.Name}" />
-                                                in<Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.City}" />
-                                                ,<Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.Country}" />
-                                                .</Span>
+                                                Arrival scheduled on
+                                                <Run Text="{x:Bind FlightDetail.ArrivalTime}" />
+                                                in the
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Name}" />
+                                                in
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.City}" />
+                                                ,
+                                                <Run Text="{x:Bind FlightDetail.ArrivalAirport.Location.Country}" />
+                                                .
+                                            </Span>
                                         </Paragraph>
                                     </RichTextBlock>
                                 </StackPanel>
