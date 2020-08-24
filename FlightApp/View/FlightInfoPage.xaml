@@ -9,12 +9,11 @@
     Background="LightSkyBlue"
     mc:Ignorable="d">
 
-    <Grid
-        Margin="0,0,0,0"
+    <Grid        
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
         >
-        <StackPanel Margin="16,48,0,0">
+        <StackPanel>
             <ContentControl Content="{x:Bind ViewModel.Flight, Mode=OneWay}">
                 <ContentControl.ContentTemplate>
                     <DataTemplate x:DataType="data:Flight">

@@ -13,8 +13,7 @@
 
     <ScrollViewer>
         <muxc:NavigationView
-            x:Name="ShoppingMenu"
-            Margin="0,40,0,0"
+            x:Name="ShoppingMenu"            
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
             PaneDisplayMode="Top"
@@ -77,20 +76,7 @@
                     Content="Order products"
                     Style="{StaticResource DefaultButtonStyle}" />
             </StackPanel>
-        </muxc:NavigationView>
-
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="ShoppingMenu.Margin" Value="0" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        </muxc:NavigationView>        
     </ScrollViewer>
 
 </Page>

@@ -8,7 +8,6 @@
     xmlns:muxc="using:Windows.UI.Xaml.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
-
     <muxc:NavigationView
         x:Name="navigationViewPassengerMenu"
         IsBackButtonVisible="Collapsed"
@@ -44,14 +43,26 @@
                 Icon="Back"
                 Tag="Logout" />
         </muxc:NavigationView.MenuItems>
-        <Frame x:Name="ContentFrame">
+        <Frame x:Name="ContentFrame" Margin="0,40,0,0">
             <Frame.ContentTransitions>
                 <TransitionCollection>
                     <NavigationThemeTransition />
                 </TransitionCollection>
             </Frame.ContentTransitions>
         </Frame>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="620" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="0,0,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </muxc:NavigationView>
-
-
+    
 </Page>

@@ -6,13 +6,12 @@
     xmlns:data="using:FlightApp.Models"
     xmlns:local="using:FlightApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="LightSkyBlue"
     mc:Ignorable="d">
 
     <RelativePanel x:Name="PassengerOrders" Background="LightSkyBlue">
         <ListView
-            x:Name="Orders_List"
-            Margin="16,48,0,0"
+            x:Name="Orders_List"            
             ItemContainerStyle="{StaticResource BorderedItem}"
             ItemsSource="{x:Bind ViewModel.Passenger.Orders, Mode=OneWay}"
             SelectionMode="None">

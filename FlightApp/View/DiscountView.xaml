@@ -9,7 +9,7 @@
     Background="LightSteelBlue"
     mc:Ignorable="d">
 
-    <StackPanel Margin="16,48,0,0">
+    <StackPanel Margin="16,0">
         <ListView
             x:Name="Products_ListView"
             IsItemClickEnabled="False"

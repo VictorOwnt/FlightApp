@@ -10,8 +10,7 @@
     mc:Ignorable="d">
 
     <ListView
-        x:Name="Contacts_List"
-        Margin="16,48,0,0"
+        x:Name="Contacts_List"        
         ItemsSource="{x:Bind ViewModel.Contacts, Mode=OneWay}"
         SelectionMode="None">
         <ListView.ItemTemplate>

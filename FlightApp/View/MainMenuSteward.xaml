@@ -38,6 +38,20 @@
                 Tag="Logout" />
         </muxc:NavigationView.MenuItems>
 
-        <Frame x:Name="PageFrame" />
+        <Frame x:Name="PageFrame" Margin="0,40,0,0" />
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="620" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="PageFrame.Margin" Value="0,0,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </muxc:NavigationView>
+
 </Page>
