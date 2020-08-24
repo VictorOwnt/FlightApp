@@ -26,6 +26,7 @@ namespace FlightApp.View
         public MainMenuSteward()
         {
             this.InitializeComponent();
+            navigationViewStewardMenu.SelectedItem = navigationViewStewardMenu.MenuItems[0]; // Set to View orders
         }
 
         private void NavigationViewStewardMenu_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

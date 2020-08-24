@@ -11,7 +11,7 @@
 
     <RelativePanel x:Name="PassengerOrders" Background="LightSkyBlue">
         <ListView
-            x:Name="Orders_List"            
+            x:Name="Orders_List"
             ItemContainerStyle="{StaticResource BorderedItem}"
             ItemsSource="{x:Bind ViewModel.Passenger.Orders, Mode=OneWay}"
             SelectionMode="None">
