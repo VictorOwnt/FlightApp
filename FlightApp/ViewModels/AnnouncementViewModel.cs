@@ -16,9 +16,12 @@ namespace FlightApp.ViewModels
 
         private readonly StewardService stewardService = new StewardService();
 
+        private HubConnection hubConnection;
+
         public AnnouncementViewModel()
         {
             GetAllPassengersAsync();
+            hubConnection = new HubConnectionBuilder().WithUrl($"http://localhost:5000/announcementHub").Build();
         }
 
         public async void GetAllPassengersAsync()
@@ -33,6 +36,11 @@ namespace FlightApp.ViewModels
             {
                 await DialogService.ShowDefaultErrorMessageAsync();
             }
+        }
+
+        public async Task SendAnnouncement(string title, string content, string receiver)
+        {
+            await hubConnection.InvokeAsync("SendAnnouncement", title, content, receiver);
         }
     }
 }

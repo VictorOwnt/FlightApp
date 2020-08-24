@@ -19,7 +19,9 @@ namespace FlightApp.View
 
         private async void Send_Announcement_Button_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var selected = ReceiverSelectionList.SelectedItem.ToString();
+            // string[] s = selected.Split(" ");
+            await ViewModel.SendAnnouncement(AnnouncementTitle.Text, AnnouncementContent.Text, selected);
         }
     }
 }
