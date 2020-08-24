@@ -1,4 +1,5 @@
-﻿using FlightApp.ViewModels;
+﻿using FlightApp.Util;
+using FlightApp.ViewModels;
 using System;
 using Windows.ApplicationModel.Core;
 using Windows.Graphics.Printing;
@@ -40,25 +41,14 @@ namespace FlightApp.View
                 catch
                 {
                     // Printing cannot proceed at this time
-                    ContentDialog noPrintingDialog = new ContentDialog()
-                    {
-                        Title = "Printing error",
-                        Content = "\nSorry, printing can' t proceed at this time.",
-                        PrimaryButtonText = "OK"
-                    };
-                    await noPrintingDialog.ShowAsync();
+                    await DialogService.ShowCustomMessageAsync("Sorry printing can't proceed at this time.", "Printing error");
                 }
             }
             else
             {
                 // Printing is not supported on this device
-                ContentDialog noPrintingDialog = new ContentDialog()
-                {
-                    Title = "Printing not supported",
-                    Content = "\nSorry, printing is not supported on this device.",
-                    PrimaryButtonText = "OK"
-                };
-                await noPrintingDialog.ShowAsync();
+                await DialogService.ShowCustomMessageAsync("Sorry printing is not supported on this device", "Printing not supported");
+
             }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)

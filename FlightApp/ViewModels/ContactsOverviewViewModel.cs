@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using FlightApp.Util;
 using Microsoft.AspNetCore.SignalR.Client;
 using Prism.Mvvm;
 using System;
@@ -32,7 +33,15 @@ namespace FlightApp.ViewModels
         }
         public async void SetContacts()
         {
-            Contacts = await passengerService.GetContactsOfLoggedInPassenger();
+            try
+            {
+                Contacts = await passengerService.GetContactsOfLoggedInPassenger();
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
         }
 
 

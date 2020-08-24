@@ -4,13 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="using:FlightApp.Models"
-    xmlns:local="using:FlightApp.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="LightSkyBlue"
     mc:Ignorable="d">
 
     <ListView
-        x:Name="Contacts_List"        
+        x:Name="Contacts_List"
         ItemsSource="{x:Bind ViewModel.Contacts, Mode=OneWay}"
         SelectionMode="None">
         <ListView.ItemTemplate>

@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using FlightApp.Util;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,15 @@ namespace FlightApp.ViewModels
         }
         public async void GetPassengersWithAllOrders()
         {
-            Passenger = await passengerService.GetPassengerIncludeOrders();
+            try
+            {
+                Passenger = await passengerService.GetPassengerIncludeOrders();
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using FlightApp.Util;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,6 @@ namespace FlightApp.ViewModels
 {
     public class ChangeSeatsViewModel : BindableBase
     {
-        //Replace Passenger 1 + 2 with list?
         private Passenger _passenger1;
         public Passenger Passenger1
         {
@@ -29,9 +29,18 @@ namespace FlightApp.ViewModels
 
         public async void ChangeSeatsAsync(int seat1, int seat2)
         {
-            List<Passenger> passengers = await StewardService.ChangeSeats(seat1, seat2);
-            Passenger1 = passengers[0];
-            Passenger2 = passengers[1];
+            try
+            {
+                List<Passenger> passengers = await StewardService.ChangeSeats(seat1, seat2);
+                Passenger1 = passengers[0];
+                Passenger2 = passengers[1];
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
+
         }
     }
 }

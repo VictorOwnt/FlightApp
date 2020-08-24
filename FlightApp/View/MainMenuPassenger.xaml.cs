@@ -14,11 +14,10 @@ namespace FlightApp.View
     public sealed partial class MainMenuPassenger : Page
     {
 
-        public MainMenuPassengerViewModel ViewModel { get; set; }
+
         public MainMenuPassenger()
         {
             InitializeComponent();
-            ViewModel = new MainMenuPassengerViewModel();
 
             navigationViewPassengerMenu.SelectedItem = navigationViewPassengerMenu.MenuItems[1]; // Set to flight info
             if (Instance is null)

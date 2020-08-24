@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using FlightApp.Util;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,15 @@ namespace FlightApp.ViewModels
         }
         public async void SetProductsOfCategoryAsync(string categoryName)
         {
-            Products = await productService.GetProductsOfCategory(categoryName);
+            try
+            {
+                Products = await productService.GetProductsOfCategory(categoryName);
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
             SetDiscountedProducts();
             ResetOrder();
         }
@@ -82,12 +91,28 @@ namespace FlightApp.ViewModels
 
         public async void OrderProducts(List<Product> products)
         {
-            await productService.OrderProductsAsync(products);
+            try
+            {
+                await productService.OrderProductsAsync(products);
+            }
+            catch
+            {
+                await DialogService.ShowCustomMessageAsync("Something went wrong, couldn't order these products. Please try again later", "Order error");
+            }
+
         }
 
         public async void SetAllProductsAsync()
         {
-            Products = await productService.GetAllProductsAsync();
+            try
+            {
+                Products = await productService.GetAllProductsAsync();
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
             SetDiscountedProducts();
             ResetOrder();
         }

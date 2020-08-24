@@ -1,7 +1,6 @@
 ﻿using FlightApp.Models;
 using FlightApp.ViewModels;
 using System;
-using System.Windows.Input;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

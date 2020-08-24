@@ -1,5 +1,7 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using FlightApp.Util;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FlightApp.ViewModels
 {
-    public class DiscountViewViewModel : Prism.Mvvm.BindableBase
+    public class DiscountViewViewModel : BindableBase
     {
         private IEnumerable<Product> _products;
         public IEnumerable<Product> Products
@@ -26,7 +28,15 @@ namespace FlightApp.ViewModels
         }
         public async void SetAllProductsAsync()
         {
-            Products = await productService.GetAllProductsAsync();
+            try
+            {
+                Products = await productService.GetAllProductsAsync();
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
         }
 
         public void SetDiscountPercentage(Product product, double discountPercentage)
@@ -44,11 +54,19 @@ namespace FlightApp.ViewModels
 
         }
 
-        public void SaveDiscountChanges()
+        public async void SaveDiscountChanges()
         {
             if (changedProducts.Count() != 0)
             {
-                productService.SaveDiscountChanges(changedProducts.Values.ToList());
+                try
+                {
+                    productService.SaveDiscountChanges(changedProducts.Values.ToList());
+                }
+                catch
+                {
+                    await DialogService.ShowCustomMessageAsync("Could not save your changes. Please check your internet connection and try again.", "Error saving changes");
+                }
+
             }
 
         }

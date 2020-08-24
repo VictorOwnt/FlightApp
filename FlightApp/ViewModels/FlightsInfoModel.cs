@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using FlightApp.Util;
 using Prism.Mvvm;
 using System;
 using Windows.System;
@@ -25,7 +26,15 @@ namespace FlightApp.ViewModels
 
         public async void SetFlightAsync()
         {
-            Flight = await flightService.GetFlightAsync();
+            try
+            {
+                Flight = await flightService.GetFlightAsync();
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
         }
     }
 }

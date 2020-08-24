@@ -13,7 +13,7 @@
 
     <ScrollViewer>
         <muxc:NavigationView
-            x:Name="ShoppingMenu"            
+            x:Name="ShoppingMenu"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
             PaneDisplayMode="Top"
@@ -23,20 +23,28 @@
                 <muxc:NavigationViewItem Content="Food" Tag="food" />
                 <muxc:NavigationViewItem Content="Drinks" Tag="drinks" />
             </muxc:NavigationView.MenuItems>
-            <StackPanel >
-                <TextBlock Text="{x:Bind ViewModel.DiscountHeaderString, Mode=OneWay}" FontSize="24" FontWeight="Bold"/>
+            <StackPanel>
+                <TextBlock
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Text="{x:Bind ViewModel.DiscountHeaderString, Mode=OneWay}" />
                 <ListView
                     x:Name="Discount_Products_ListView"
                     IsItemClickEnabled="False"
-                    SelectionMode="None"
-                    ItemsSource="{x:Bind ViewModel.DiscountedProducts,Mode=OneWay}">
+                    ItemsSource="{x:Bind ViewModel.DiscountedProducts, Mode=OneWay}"
+                    SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="data:Product">
                             <TextBlock Text="{x:Bind DiscountToString()}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Rectangle HorizontalAlignment="Stretch" Stroke="Lavender" StrokeThickness="5" Height="2" Margin="0,5"/>
+                <Rectangle
+                    Height="2"
+                    Margin="0,5"
+                    HorizontalAlignment="Stretch"
+                    Stroke="Lavender"
+                    StrokeThickness="5" />
                 <GridView
                     x:Name="Products_GridView"
                     IsItemClickEnabled="True"
@@ -76,7 +84,7 @@
                     Content="Order products"
                     Style="{StaticResource DefaultButtonStyle}" />
             </StackPanel>
-        </muxc:NavigationView>        
+        </muxc:NavigationView>
     </ScrollViewer>
 
 </Page>

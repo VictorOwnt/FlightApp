@@ -1,5 +1,6 @@
 ﻿using FlightApp.DataService;
 using FlightApp.Models;
+using FlightApp.Util;
 using Microsoft.AspNetCore.SignalR.Client;
 using Prism.Mvvm;
 using System;
@@ -40,7 +41,6 @@ namespace FlightApp.ViewModels
             Messages = new ObservableCollection<ChatMessage>();
             IsConnected = false;
             hubConnection = new HubConnectionBuilder().WithUrl($"http://localhost:5000/chatHub").Build();
-            //Connect();
 
             hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
             {
@@ -63,19 +63,25 @@ namespace FlightApp.ViewModels
 
         public async Task Disconnect()
         {
-            //await hubConnection.InvokeAsync("LeaveChat", "TO REPLACE");
             await hubConnection.StopAsync();
-
             IsConnected = false;
         }
 
         public async void SetMessages(string contactEmail)
         {
-            IEnumerable<ChatMessage> help = await passengerService.GetMessagesOfPassengerWithContact(contactEmail);
-            foreach (ChatMessage message in help)
+            try
             {
-                Messages.Add(message);
+                IEnumerable<ChatMessage> help = await passengerService.GetMessagesOfPassengerWithContact(contactEmail);
+                foreach (ChatMessage message in help)
+                {
+                    Messages.Add(message);
+                }
             }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
         }
         #endregion
     }

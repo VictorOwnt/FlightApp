@@ -3,9 +3,6 @@ using FlightApp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Web.Http;
@@ -74,7 +71,7 @@ namespace FlightApp.DataService
                 var passengers = JsonConvert.DeserializeObject<IEnumerable<Passenger>>(result);
                 return passengers;
             }
-            else throw new Exception(); //Throw general exception because class Windows.Web.Http has no specific exception, only system.http. More info https://stackoverflow.com/questions/27031408/why-are-network-exceptions-raised-by-windows-web-http-httpclient-of-type-system
+            else throw new Exception();
         }
 
     }
