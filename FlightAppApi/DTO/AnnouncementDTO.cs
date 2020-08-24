@@ -9,6 +9,7 @@ namespace FlightAppApi.DTO
 {
     public class AnnouncementDTO : AnnouncementCreateDTO
     {
+        /*
         [Required]
         public int AnnouncementId { get; set; }
         [Required]
@@ -24,6 +25,6 @@ namespace FlightAppApi.DTO
                 Content = announcement.Content,
                 PassengerId = announcement.Receiver?.SeatNumber
             };
-        }
+        }*/
     }
 }

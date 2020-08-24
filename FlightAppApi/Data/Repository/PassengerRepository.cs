@@ -47,6 +47,11 @@ namespace FlightAppApi.Data.Repository
             return _passengers.Include(p => p.Contacts).ThenInclude(c => c.ChatMessages).Include(p => p.Contacts).ThenInclude(c => c.Contact).ThenInclude(c => c.Contacts).ThenInclude(c => c.ChatMessages).SingleOrDefault(p => p.Email == email);
         }
 
+        public IEnumerable<Passenger> GetAllPassengers()
+        {
+            return _passengers;
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

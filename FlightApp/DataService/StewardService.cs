@@ -61,6 +61,7 @@ namespace FlightApp.DataService
             }
             else throw new Exception(); //Throw general exception because class Windows.Web.Http has no specific exception, only system.http. More info https://stackoverflow.com/questions/27031408/why-are-network-exceptions-raised-by-windows-web-http-httpclient-of-type-system
         }
+
         public async Task<IEnumerable<Passenger>> GetPassengersWithFilteredOrders(bool delivery)
         {
             string url = string.Format("http://localhost:5000/api/steward/passengers/orders/deliver?delivery={0}", delivery);
@@ -73,6 +74,22 @@ namespace FlightApp.DataService
             }
             else throw new Exception();
         }
+
+        public async Task<IEnumerable<Passenger>> GetAllPassengersAsync()
+        {
+            var response = await client.GetAsync(new Uri("http://localhost:5000/api/steward/passengers"));
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetResults();
+                var passengers = JsonConvert.DeserializeObject<IEnumerable<Passenger>>(result);
+                return passengers;
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+
 
     }
 }

@@ -68,6 +68,7 @@ namespace FlightApp.DataService
                 throw new Exception();
             }
         }
+
         public async Task<Passenger> GetPassengerIncludeOrders()
         {
             var response = await client.GetAsync(new Uri("http://localhost:5000/api/passenger/orders"));

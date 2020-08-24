@@ -17,6 +17,8 @@ namespace FlightAppApi.Model
         [Required]
         [MaxLength(255)]
         public string Content { get; set; }
+
+        /*
         [Required]
         public Steward Sender { get; set; }
 
@@ -27,5 +29,6 @@ namespace FlightAppApi.Model
         {
             Timestamp = DateTime.Now;
         }
+        */
     }
 }

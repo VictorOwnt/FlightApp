@@ -31,6 +31,9 @@ namespace FlightApp.View
                 case "DiscountView":
                     PageFrame.Navigate(typeof(DiscountView));
                     break;
+                case "SendAnnouncementView":
+                    PageFrame.Navigate(typeof(SendAnnouncementView));
+                    break;
                 case "Logout":
                     Frame.Navigate(typeof(MainPage));
                     ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;

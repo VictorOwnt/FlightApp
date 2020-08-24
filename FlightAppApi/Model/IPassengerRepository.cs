@@ -13,6 +13,7 @@ namespace FlightAppApi.Model
         IEnumerable<Passenger> GetPassengersWithOrders();
         void SaveChanges();
         Passenger GetPassengerByEmailWithContacts(string name);
+        IEnumerable<Passenger> GetAllPassengers();
         Passenger GetPassengerByEmailWithChatMessages(string email);
     }
 }

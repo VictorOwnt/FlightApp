@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="FlightApp.View.SendAnnouncementView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="LightSteelBlue">
+
+    <RelativePanel>
+        <TextBox
+            x:Name="AnnouncementTitle"
+            Width="200"
+            Height="60"
+            Header="Title"
+            Margin="16,48,0,0"
+            InputScope="Text"
+            PlaceholderText="Announcement Title"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="AnnouncementContent"
+            Header="Content"
+            Width="200"
+            Height="60"
+            Margin="16,24,0,0"
+            InputScope="Text"
+            PlaceholderText="Announcement Content"
+            RelativePanel.Below="AnnouncementTitle"
+            TextWrapping="Wrap" />
+
+        <ComboBox 
+            x:Name="ReceiverSelectionList"
+            Header="Receivers" 
+            Margin="16,24,0,0"
+            PlaceholderText="Select the receiver(s)" 
+            Width="200" 
+            RelativePanel.Below="AnnouncementContent"
+            ItemsSource="{x:Bind ViewModel.Passengers}"/>
+
+        <Button
+            x:Name="Send_Announcement_Button"
+            Margin="16,24"
+            Click="Send_Announcement_Button_Click"
+            Content="Send Announcement"
+            RelativePanel.Below="ReceiverSelectionList" />
+    </RelativePanel>
+</Page>

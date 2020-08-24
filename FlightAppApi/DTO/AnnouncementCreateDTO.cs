@@ -8,6 +8,7 @@ namespace FlightAppApi.DTO
 {
     public class AnnouncementCreateDTO
     {
+        /*
         [Required]
         [MaxLength(100)]
         public string Title { get; set; }
@@ -16,5 +17,6 @@ namespace FlightAppApi.DTO
         public string Content { get; set; }
 
         public int? PassengerId { get; set; }
+        */
     }
 }
