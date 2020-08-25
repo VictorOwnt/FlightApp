@@ -112,5 +112,15 @@ namespace FlightAppApi.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Get all passengers
+        /// </summary> 
+        [HttpGet("/api/steward/passengers")]
+        public IEnumerable<Passenger> GetAllPassengers()
+        {
+            IEnumerable<Passenger> passengers = _passengerRepository.GetAllPassengers();
+            return passengers;
+        }
+
     }
 }

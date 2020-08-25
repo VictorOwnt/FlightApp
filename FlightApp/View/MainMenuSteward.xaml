@@ -23,7 +23,7 @@
                 Content="View discounts"
                 Icon="Calculator"
                 Tag="DiscountView" />
-            <NavigationViewItem Content="Send notification" Tag="FlightInfoPage">
+            <NavigationViewItem Content="Send notification" Tag="Notification">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7E7;" />
                 </NavigationViewItem.Icon>

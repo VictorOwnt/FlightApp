@@ -74,5 +74,20 @@ namespace FlightApp.DataService
             else throw new Exception();
         }
 
+        public async Task<IEnumerable<Passenger>> GetAllPassengersAsync()
+        {
+            var response = await client.GetAsync(new Uri("http://localhost:5000/api/steward/passengers"));
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetResults();
+                var passengers = JsonConvert.DeserializeObject<IEnumerable<Passenger>>(result);
+                return passengers;
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+
     }
 }

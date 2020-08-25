@@ -51,5 +51,10 @@ namespace FlightAppApi.Data.Repository
         {
             _context.SaveChanges();
         }
+
+        public IEnumerable<Passenger> GetAllPassengers()
+        {
+            return _passengers;
+        }
     }
 }

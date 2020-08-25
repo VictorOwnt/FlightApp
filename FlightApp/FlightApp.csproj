@@ -152,6 +152,7 @@
     <Compile Include="ViewModels\OrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengerOrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\ProductsOverviewViewModel.cs" />
+    <Compile Include="ViewModels\SendAnnouncementViewModel.cs" />
     <Compile Include="View\ChangeSeatsView.xaml.cs">
       <DependentUpon>ChangeSeatsView.xaml</DependentUpon>
     </Compile>
@@ -191,6 +192,9 @@
     </Compile>
     <Compile Include="View\MoviePlayerView.xaml.cs">
       <DependentUpon>MoviePlayerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SendAnnouncementView.xaml.cs">
+      <DependentUpon>SendAnnouncementView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +315,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MoviePlayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SendAnnouncementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
