@@ -54,7 +54,7 @@ namespace FlightApp.ViewModels
 
         public async void SendAnnouncementAsync(string title, string content, Passenger selectedPassenger, bool isChecked)
         {
-            await hubConnection.InvokeAsync("SendNotification", title, content, selectedPassenger, isChecked);
+            await hubConnection.InvokeAsync("SendNotification", title, content, selectedPassenger.Email, isChecked);
         }
 
         public async void Connect()

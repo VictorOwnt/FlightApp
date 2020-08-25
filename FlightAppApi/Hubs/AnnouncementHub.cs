@@ -34,15 +34,16 @@ namespace FlightAppApi.Hubs
             return Groups.RemoveFromGroupAsync(Context.ConnectionId, CreateNotificationRoomName(passengerEmail));
         }
 
-        public async Task SendNotification(string title, string content, Passenger selectedPassenger, bool isChecked)
+        public async Task SendNotification(string title, string content, string passengerEmail, bool isChecked)
         {
+            Passenger passenger = _passengerRepository.GetPassengerByEmail(passengerEmail);
             if (isChecked)
             {
-                await Clients.All.SendAsync("ReceiveMessage", title, content);
+                await Clients.All.SendAsync("ReceiveNotification", title, content);
             }
-            else
+            else if (passengerEmail != null)
             {
-                await Clients.Group(selectedPassenger.NotificationRoom).SendAsync("ReceiveNotification", title, content);
+                await Clients.Group(passenger.NotificationRoom).SendAsync("ReceiveNotification", title, content);
             }
 
         }
