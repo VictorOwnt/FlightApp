@@ -114,7 +114,6 @@ namespace FlightAppApi.Data
                 _dbContext.SaveChanges();
                 #endregion
 
-
                 #region init orders
                 Order order1 = new Order(1);
                 Orderline orderline1 = new Orderline(water);
@@ -150,9 +149,7 @@ namespace FlightAppApi.Data
                 _dbContext.Flights.Add(flight);
                 #endregion
 
-
-
-                //// Movies
+                #region init movies
                 List<Movie> movies = new List<Movie> {
                     new Movie("Star Wars: The Rise of Skywalker", DateTime.Parse("2019/12/19"), 141, "The surviving Resistance faces the First Order once more in the final chapter of the Skywalker saga.", "J.J. Abrams", "https://m.media-amazon.com/images/M/MV5BMDljNTQ5ODItZmQwMy00M2ExLTljOTQtZTVjNGE2NTg0NGIxXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_UX182_CR0,0,182,268_AL_.jpg", "https://www.youtube.com/embed/8Qn_spdM5Zg"),
                     new Movie("The Shawshank Redemption", DateTime.Parse("1995/2/17"), 142, "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. ", "F. Darabont", "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg", "https://www.youtube.com/embed/6hB3S9bIaco"),
@@ -165,8 +162,9 @@ namespace FlightAppApi.Data
                     new Movie("Pulp Fiction", DateTime.Parse("1994/10/24"), 154, "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption. ", "Q. Tarantino", "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY268_CR1,0,182,268_AL_.jpg", "https://www.youtube.com/embed/s7EdQ4FqbhY")
                 };
                 movies.ForEach(m => _dbContext.Movies.Add(m));
+                #endregion
 
-                //// Music
+                #region init music
                 List<Music> music = new List<Music> {
                     new Music("God's Plan", "Drake", "https://charts-static.billboard.com/img/2018/01/drake-hq6-87x87.jpg"),
                     new Music("Perfect", "Ed Sheeran", "https://charts-static.billboard.com/img/2017/03/ed-sheeran-buv-87x87.jpg"),
@@ -180,7 +178,7 @@ namespace FlightAppApi.Data
                     new Music("Girls Like You", "Maroon 5", "https://charts-static.billboard.com/img/2018/06/maroon-5-9st-girls-like-you-32b-87x87.jpg")
                 };
                 music.ForEach(m => _dbContext.Music.Add(m));
-
+                #endregion
 
                 _dbContext.SaveChanges();
             }

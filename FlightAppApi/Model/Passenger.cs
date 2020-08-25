@@ -72,6 +72,5 @@ namespace FlightAppApi.Model
 
             return messages;
         }
-        public IList<Announcement> ReceivedAnnouncements { get; set; }
     }
 }

@@ -149,6 +149,7 @@
     <Compile Include="ViewModels\DiscountViewViewModel.cs" />
     <Compile Include="ViewModels\FlightsInfoModel.cs" />
     <Compile Include="ViewModels\EntertainmentViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuPassengerViewModel.cs" />
     <Compile Include="ViewModels\OrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\PassengerOrdersOverviewViewModel.cs" />
     <Compile Include="ViewModels\ProductsOverviewViewModel.cs" />
