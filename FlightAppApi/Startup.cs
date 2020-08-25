@@ -140,6 +140,7 @@ namespace FlightAppApi
             app.UseSignalR((routes) =>
             {
                 routes.MapHub<ChatHub>("/chathub");
+                routes.MapHub<AnnouncementHub>("/announcementhub");
             });
             app.UseMvc();
 

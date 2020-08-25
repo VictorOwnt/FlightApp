@@ -2,6 +2,7 @@
 using FlightApp.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,10 +23,13 @@ namespace FlightApp.View
         private void Send_Announcement_Button_Click(object sender, RoutedEventArgs e)
         {
             Passenger selectedPassenger = Receiver_Selection_Combobox.SelectedItem as Passenger;
-            ViewModel.SendAnnouncement(Announcement_Title.Text, Announcement_Content.Text, selectedPassenger, Send_All_Checkbox.IsChecked);
+            ViewModel.SendAnnouncementAsync(Announcement_Title.Text, Announcement_Content.Text, selectedPassenger, (bool)Send_All_Checkbox.IsChecked);
         }
 
-
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            ViewModel.Connect();
+        }
 
 
     }
