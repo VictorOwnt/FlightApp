@@ -44,10 +44,12 @@ Steward:
 
 ## Built With
 
+* [UWP](https://docs.microsoft.com/en-us/windows/uwp/)
 * [ASP.NET](https://dotnet.microsoft.com/apps/aspnet)
 * [Entity Framework](https://docs.microsoft.com/en-us/ef/)
 * [SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr)
 * [Prism](https://prismlibrary.com/docs/)
+* [NSwag](https://github.com/RicoSuter/NSwag)
 
 ## Team
 
