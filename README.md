@@ -44,7 +44,10 @@ Steward:
 
 ## Built With
 
-TODO of SKIP?
+* [ASP.NET](https://dotnet.microsoft.com/apps/aspnet)
+* [Entity Framework](https://docs.microsoft.com/en-us/ef/)
+* [SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr)
+* [Prism](https://prismlibrary.com/docs/)
 
 ## Team
 
