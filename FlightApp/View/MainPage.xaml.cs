@@ -1,23 +1,14 @@
 ﻿using FlightApp.DTO;
+using FlightApp.Util;
 using FlightApp.View;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Windows.Web.Http;
+using Windows.Web.Http.Headers;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -28,9 +19,10 @@ namespace FlightApp
     /// </summary>    
     public sealed partial class MainPage : Page
     {
+        private readonly HttpClient client = new HttpClient();
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
 
@@ -39,13 +31,35 @@ namespace FlightApp
             LoginDTO login = new LoginDTO(Email.Text, Password.Password);
             var loginJson = JsonConvert.SerializeObject(login);
 
-            HttpClient client = new HttpClient();
-            var res = await client.PostAsync("http://localhost:5000/api/account/", new StringContent(loginJson, System.Text.Encoding.UTF8, "application/json"));
-            var token = await res.Content.ReadAsStringAsync();
-            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            Object value = localSettings.Values["Token"] = token;
-            string help = "";
-            Frame.Navigate(typeof(MainMenu));
+            try
+            {
+                var res = await client.PostAsync(new Uri("http://localhost:5000/api/account/"), new HttpStringContent(loginJson, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+                var token = await res.Content.ReadAsStringAsync();
+                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                localSettings.Values["Token"] = token;
+                client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
+
+                res = await client.GetAsync(new Uri("http://localhost:5000/api/Person"));
+                string value = await res.Content.ReadAsStringAsync();
+                bool isSteward = Convert.ToBoolean(value);
+                if (isSteward)
+                {
+                    Frame.Navigate(typeof(MainMenuSteward));
+                }
+                else
+                {
+                    Frame.Navigate(typeof(MainMenuPassenger));
+                }
+            }
+            catch
+            {
+                await DialogService.ShowDefaultErrorMessageAsync();
+            }
+
+
+
+
+
         }
 
 

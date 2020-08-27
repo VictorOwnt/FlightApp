@@ -11,10 +11,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using FlightAppApi.Data;
 using FlightAppApi.Model;
-using FlightAppApi.Repository;
 using NSwag.SwaggerGeneration.Processors.Security;
 using NSwag;
 using System.Security.Claims;
+using FlightAppApi.Data.Repository;
+using Microsoft.AspNetCore.Rewrite;
+using FlightAppApi.Hubs;
 
 namespace FlightAppApi
 {
@@ -30,18 +32,24 @@ namespace FlightAppApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<FlightDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddScoped<DataInit>();
             services.AddScoped<IPassengerRepository, PassengerRepository>();
             services.AddScoped<IStewardRepository, StewardRepository>();
-            services.AddScoped<DataInit>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IFlightRepository, FlightRepository>();
+
+            services.AddScoped<IEntertainmentRepository, EntertainmentRepository>();
 
             services.AddOpenApiDocument(c =>
             {
                 c.DocumentName = "apidocs";
-                c.Title = "Recipe API";
+                c.Title = "FlightApp API";
                 c.Version = "v1";
-                c.Description = "The Recipe API documentation description.";
+                c.Description = "The FlightApp API documentation description.";
                 c.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT Token", new SwaggerSecurityScheme
                 {
                     Type = SwaggerSecuritySchemeType.ApiKey,
@@ -101,10 +109,16 @@ namespace FlightAppApi
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("StewardOnly", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
+                options.AddPolicy("Steward", policy => policy.RequireClaim(ClaimTypes.Role, "steward"));
                 options.AddPolicy("Passenger", policy => policy.RequireClaim(ClaimTypes.Role, "passenger"));
             });
+            services.AddSingleton<PassengerRepository>(); // Singleton needed to access repository in chathub
+            services.AddSignalR();
+
+
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataInit dataInit)
@@ -123,11 +137,15 @@ namespace FlightAppApi
             app.UseCors("AllowAllOrigins");
             app.UseAuthentication();
 
+            app.UseSignalR((routes) =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+                routes.MapHub<AnnouncementHub>("/announcementhub");
+            });
             app.UseMvc();
 
             app.UseSwaggerUi3();
             app.UseOpenApi();
-
             dataInit.InitializeData().Wait();
         }
     }

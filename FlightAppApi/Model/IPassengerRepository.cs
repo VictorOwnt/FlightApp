@@ -8,6 +8,12 @@ namespace FlightAppApi.Model
     public interface IPassengerRepository
     {
         Passenger GetPassengerByEmail(string email);
+        Passenger GetPassengerByEmailWithOrders(string email);
+        Passenger GetPassengerBySeatNumber(int seatNumber);
+        IEnumerable<Passenger> GetPassengersWithOrders();
         void SaveChanges();
+        Passenger GetPassengerByEmailWithContacts(string name);
+        Passenger GetPassengerByEmailWithChatMessages(string email);
+        IEnumerable<Passenger> GetAllPassengers();
     }
 }

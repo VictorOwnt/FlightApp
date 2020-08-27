@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="FlightApp.View.ChangeSeatsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:FlightApp.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="LightSteelBlue"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+        <TextBox
+            x:Name="PassengerSeat1"
+            Width="200"
+            Height="40"
+            Margin="16,48,0,0"
+            InputScope="Number"
+            PlaceholderText="Seat number"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="PassengerSeat2"
+            Width="200"
+            Height="40"
+            Margin="16,24,0,0"
+            InputScope="Number"
+            PlaceholderText="Seat number"
+            RelativePanel.Below="PassengerSeat1"
+            TextWrapping="Wrap" />
+        <TextBlock
+            x:Name="PassengerName1"
+            Margin="16,0"
+            RelativePanel.RightOf="PassengerSeat1"
+            Text="{x:Bind Path=ViewModel.Passenger1.Name, Mode=OneWay}"
+            TextWrapping="Wrap" />
+        <TextBlock
+            x:Name="PassengerName2"
+            Margin="16,0"
+            RelativePanel.Below="PassengerSeat1"
+            RelativePanel.RightOf="PassengerSeat2"
+            Text="{x:Bind Path=ViewModel.Passenger2.Name, Mode=OneWay}"
+            TextWrapping="Wrap" />
+
+        <Button
+            x:Name="Change_Seats_Button"
+            Margin="16,24"
+            Click="Change_Seats_Button_Click"
+            Content="Change seats"
+            RelativePanel.Below="PassengerSeat2" />
+
+
+    </RelativePanel>
+</Page>

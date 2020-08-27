@@ -6,12 +6,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlightAppApi.Repository
+namespace FlightAppApi.Data.Repository
 {
     public class StewardRepository : IStewardRepository
     {
         private readonly FlightDbContext _context;
         private readonly DbSet<Steward> _stewards;
+
+        public StewardRepository(FlightDbContext dbContext)
+        {
+            _context = dbContext;
+            _stewards = dbContext.Stewards;
+        }
 
         public Steward GetStewardByEmail(string email)
         {
