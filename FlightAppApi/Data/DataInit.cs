@@ -24,16 +24,14 @@ namespace FlightAppApi.Data
             if (_dbContext.Database.EnsureCreated())
             {
                 #region init users
-                Steward steward1 = new Steward { Email = "sebastienwojtyla@gmail.com", FirstName = "Sebastien", LastName = "Wojtyla" };
+                // Stewards
+                Steward steward = new Steward { Email = "steward@gmail.com", FirstName = "Sebastien", LastName = "Wojtyla" };
 
-                await CreateSteward(steward1.Email, "Azertyuiop@1");
+                await CreateSteward(steward.Email, "Azertyuiop@1");
 
-                Steward steward2 = new Steward { Email = "julienwojtyla@gmail.com", FirstName = "Julien", LastName = "Wojtyla" };
+                _dbContext.Stewards.Add(steward);
 
-                await CreateSteward(steward2.Email, "Azertyuiop@1");
-
-                _dbContext.Stewards.AddRange(steward1, steward2);
-
+                // Passengers
                 Passenger passenger1 = new Passenger { Email = "marielouise@gmail.com", FirstName = "Marie", LastName = "Louise", SeatNumber = 1 };
 
                 await CreatePassenger(passenger1.Email, "Azertyuiop@1");
@@ -58,10 +56,27 @@ namespace FlightAppApi.Data
 
                 await CreatePassenger(passenger6.Email, "Azertyuiop@1");
 
-                _dbContext.Passengers.AddRange(passenger1, passenger2);
+                Passenger passenger7 = new Passenger { Email = "maartendeur@gmail.com", FirstName = "Maarten", LastName = "Deur", SeatNumber = 7 };
+
+                await CreatePassenger(passenger7.Email, "Azertyuiop@1");
+
+                Passenger passenger8 = new Passenger { Email = "nancybel@gmail.com", FirstName = "Nancy", LastName = "Bel", SeatNumber = 8 };
+
+                await CreatePassenger(passenger8.Email, "Azertyuiop@1");
+
+                Passenger passenger9 = new Passenger { Email = "emileds@gmail.com", FirstName = "Emile", LastName = "Desmet", SeatNumber = 9 };
+
+                await CreatePassenger(passenger9.Email, "Azertyuiop@1");
+
+                Passenger passenger10 = new Passenger { Email = "aaronmeskens@gmail.com", FirstName = "Aaron", LastName = "Meskens", SeatNumber = 10 };
+
+                await CreatePassenger(passenger10.Email, "Azertyuiop@1");
+
+                _dbContext.Passengers.AddRange(passenger1, passenger2, passenger3, passenger4, passenger5, passenger6, passenger7, passenger8, passenger9, passenger10);
                 #endregion
 
                 #region set contacts
+                // Passenger 1 kent 3 & 4
                 PassengerContact passengerContact1 = new PassengerContact { Passenger = passenger1, PassengerId = passenger1.PersonId, Contact = passenger3, ContactId = passenger3.PersonId };
                 PassengerContact passengerContact2 = new PassengerContact { Passenger = passenger1, PassengerId = passenger1.PersonId, Contact = passenger4, ContactId = passenger4.PersonId };
                 List<PassengerContact> passengerContacts1 = new List<PassengerContact>
@@ -70,22 +85,89 @@ namespace FlightAppApi.Data
                     passengerContact2
                 };
                 passenger1.Contacts = passengerContacts1;
-                //passenger2.ContactOf = passengerContacts1;
 
-
-                PassengerContact passengerContact3 = new PassengerContact { Passenger = passenger3, PassengerId = passenger3.PersonId, Contact = passenger1, ContactId = passenger1.PersonId };
+                // Passenger 2 kent 5
+                PassengerContact passengerContact3 = new PassengerContact { Passenger = passenger2, PassengerId = passenger2.PersonId, Contact = passenger5, ContactId = passenger5.PersonId };
                 List<PassengerContact> passengerContacts2 = new List<PassengerContact>
                 {
                     passengerContact3
                 };
-                passenger3.Contacts = passengerContacts2;
+                passenger2.Contacts = passengerContacts2;
 
-                PassengerContact passengerContact4 = new PassengerContact { Passenger = passenger4, PassengerId = passenger4.PersonId, Contact = passenger1, ContactId = passenger1.PersonId };
+                // Passenger 3 kent 1 & 4
+                PassengerContact passengerContact4 = new PassengerContact { Passenger = passenger3, PassengerId = passenger3.PersonId, Contact = passenger1, ContactId = passenger1.PersonId };
+                PassengerContact passengerContact5 = new PassengerContact { Passenger = passenger3, PassengerId = passenger3.PersonId, Contact = passenger4, ContactId = passenger4.PersonId };
                 List<PassengerContact> passengerContacts3 = new List<PassengerContact>
                 {
-                    passengerContact4
+                    passengerContact4,
+                    passengerContact5
                 };
-                passenger4.Contacts = passengerContacts3;
+                passenger3.Contacts = passengerContacts3;
+
+                // Passenger 4 kent 1 & 3
+                PassengerContact passengerContact6 = new PassengerContact { Passenger = passenger4, PassengerId = passenger4.PersonId, Contact = passenger1, ContactId = passenger1.PersonId };
+                PassengerContact passengerContact7 = new PassengerContact { Passenger = passenger4, PassengerId = passenger4.PersonId, Contact = passenger3, ContactId = passenger3.PersonId };
+                List<PassengerContact> passengerContacts4 = new List<PassengerContact>
+                {
+                    passengerContact6,
+                    passengerContact7
+                };
+                passenger4.Contacts = passengerContacts4;
+
+                // Passenger 5 kent 2
+                PassengerContact passengerContact8 = new PassengerContact { Passenger = passenger5, PassengerId = passenger5.PersonId, Contact = passenger2, ContactId = passenger2.PersonId };
+                List<PassengerContact> passengerContacts5 = new List<PassengerContact>
+                {
+                    passengerContact8
+                };
+                passenger5.Contacts = passengerContacts5;
+
+                // Passenger 6 kent 9 & 10
+                PassengerContact passengerContact9 = new PassengerContact { Passenger = passenger6, PassengerId = passenger6.PersonId, Contact = passenger9, ContactId = passenger9.PersonId };
+                PassengerContact passengerContact10 = new PassengerContact { Passenger = passenger6, PassengerId = passenger6.PersonId, Contact = passenger10, ContactId = passenger10.PersonId };
+                List<PassengerContact> passengerContacts6 = new List<PassengerContact>
+                {
+                    passengerContact9,
+                    passengerContact10
+                };
+                passenger6.Contacts = passengerContacts6;
+
+                // Passenger 7 kent 8
+                PassengerContact passengerContact11 = new PassengerContact { Passenger = passenger7, PassengerId = passenger7.PersonId, Contact = passenger8, ContactId = passenger8.PersonId };
+                List<PassengerContact> passengerContacts7 = new List<PassengerContact>
+                {
+                    passengerContact11
+                };
+                passenger7.Contacts = passengerContacts7;
+
+                // Passenger 8 kent 7
+                PassengerContact passengerContact12 = new PassengerContact { Passenger = passenger8, PassengerId = passenger8.PersonId, Contact = passenger7, ContactId = passenger7.PersonId };
+                List<PassengerContact> passengerContacts8 = new List<PassengerContact>
+                {
+                    passengerContact12
+                };
+                passenger8.Contacts = passengerContacts8;
+
+                // Passenger 9 kent 6 & 10
+                PassengerContact passengerContact13 = new PassengerContact { Passenger = passenger9, PassengerId = passenger9.PersonId, Contact = passenger6, ContactId = passenger6.PersonId };
+                PassengerContact passengerContact14 = new PassengerContact { Passenger = passenger9, PassengerId = passenger9.PersonId, Contact = passenger10, ContactId = passenger10.PersonId };
+                List<PassengerContact> passengerContacts9 = new List<PassengerContact>
+                {
+                    passengerContact13,
+                    passengerContact14
+                };
+                passenger9.Contacts = passengerContacts9;
+
+                // Passenger 10 kent 6 & 9
+                PassengerContact passengerContact15 = new PassengerContact { Passenger = passenger10, PassengerId = passenger10.PersonId, Contact = passenger6, ContactId = passenger6.PersonId };
+                PassengerContact passengerContact16 = new PassengerContact { Passenger = passenger10, PassengerId = passenger10.PersonId, Contact = passenger9, ContactId = passenger9.PersonId };
+                List<PassengerContact> passengerContacts10 = new List<PassengerContact>
+                {
+                    passengerContact15,
+                    passengerContact16
+                };
+                passenger10.Contacts = passengerContacts10;
+
                 _dbContext.SaveChanges();
                 #endregion
 
@@ -96,18 +178,30 @@ namespace FlightAppApi.Data
                 cola.SetPrice();
                 Product tea = new Product { Name = "ice tea", ImagePath = "/Assets/ice_tea.png", BasePrice = 1.00 };
                 tea.SetPrice();
+                Product coffee = new Product { Name = "coffee", ImagePath = "/Assets/coffee.jpg", BasePrice = 1.50 };
+                coffee.SetPrice();
+                Product orangina = new Product { Name = "orangina", ImagePath = "/Assets/orangina.png", BasePrice = 1.00 };
+                orangina.SetPrice();
 
                 Product hotdog = new Product { Name = "hotdog", ImagePath = "/Assets/hotdog.jpg", BasePrice = 2.50 };
                 hotdog.SetPrice();
+                Product hamburger = new Product { Name = "hamburger", ImagePath = "/Assets/hamburger.jpg", BasePrice = 3.00 };
+                hamburger.SetPrice();
+                Product panini = new Product { Name = "panini", ImagePath = "/Assets/panini.jpg", BasePrice = 2.50 };
+                panini.SetPrice();
+                Product donut = new Product { Name = "donut", ImagePath = "/Assets/donut.jpg", BasePrice = 1.50 };
+                donut.SetPrice();
+                Product chips = new Product { Name = "chips", ImagePath = "/Assets/chips.jpg", BasePrice = 2.00 };
+                chips.SetPrice();
 
-                _dbContext.Products.AddRange(water, cola, tea, hotdog);
+                _dbContext.Products.AddRange(water, cola, tea, coffee, orangina, hotdog, hamburger, panini, donut, chips);
                 #endregion
 
                 #region init categories
-                List<Product> drinklist = new List<Product>() { water, cola, tea };
+                List<Product> drinklist = new List<Product>() { water, cola, tea, coffee, orangina };
                 Category drinks = new Category { Name = "drinks", Products = drinklist };
 
-                List<Product> foodlist = new List<Product>() { hotdog };
+                List<Product> foodlist = new List<Product>() { hotdog, hamburger, panini, donut, chips };
                 Category food = new Category { Name = "food", Products = foodlist };
 
                 _dbContext.Categories.AddRange(drinks, food);
@@ -115,21 +209,62 @@ namespace FlightAppApi.Data
                 #endregion
 
                 #region init orders
-                Order order1 = new Order(1);
+                // Orderlines - drinks
                 Orderline orderline1 = new Orderline(water);
-                Orderline orderline2 = new Orderline(tea);
+                Orderline orderline2 = new Orderline(cola);
+                Orderline orderline3 = new Orderline(tea);
+                Orderline orderline4 = new Orderline(coffee);
+                Orderline orderline5 = new Orderline(orangina);
+                // Orderlines - food
+                Orderline orderline6 = new Orderline(hotdog);
+                Orderline orderline7 = new Orderline(hamburger);
+                Orderline orderline8 = new Orderline(panini);
+                Orderline orderline9 = new Orderline(donut);
+                Orderline orderline10 = new Orderline(chips);
+
+                // Orders
+                Order order1 = new Order(1);
                 order1.Orderlines.Add(orderline1);
-                order1.Orderlines.Add(orderline2);
+                order1.Orderlines.Add(orderline6);
                 order1.SetOrderCost();
 
                 Order order2 = new Order(1);
-                Orderline orderline3 = new Orderline(hotdog);
-                Orderline orderline4 = new Orderline(cola);
                 order2.Orderlines.Add(orderline3);
-                order2.Orderlines.Add(orderline4);
+                order2.Orderlines.Add(orderline9);
                 order2.SetOrderCost();
+                
+                Order order3 = new Order(2);
+                order3.Orderlines.Add(orderline5);
+                order3.Orderlines.Add(orderline6);
+                order3.SetOrderCost();
 
-                _dbContext.Orders.AddRange(order1, order2);
+                Order order4 = new Order(5);
+                order4.Orderlines.Add(orderline4);
+                order4.Orderlines.Add(orderline9);
+                order4.Orderlines.Add(orderline1);
+                order4.SetOrderCost();
+
+                Order order5 = new Order(6);
+                order5.Orderlines.Add(orderline2);
+                order5.Orderlines.Add(orderline7);
+                order5.Orderlines.Add(orderline8);
+                order5.SetOrderCost();
+
+                Order order6 = new Order(7);
+                order6.Orderlines.Add(orderline4);
+                order6.Orderlines.Add(orderline7);
+                order6.SetOrderCost();
+
+                Order order7 = new Order(8);
+                order7.Orderlines.Add(orderline1);
+                order7.SetOrderCost();
+
+                Order order8 = new Order(9);
+                order8.Orderlines.Add(orderline5);
+                order8.Orderlines.Add(orderline10);
+                order8.SetOrderCost();
+                
+                _dbContext.Orders.AddRange(order1, order2, order3, order4, order5, order6, order7, order8);
                 #endregion
 
                 #region init flightInfo

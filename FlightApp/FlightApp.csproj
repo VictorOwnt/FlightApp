@@ -206,9 +206,15 @@
   <ItemGroup>
     <Content Include="Assets\aircraft.jpg" />
     <Content Include="Assets\airline.png" />
+    <Content Include="Assets\chips.jpg" />
+    <Content Include="Assets\coffee.jpg" />
     <Content Include="Assets\cola.jpg" />
+    <Content Include="Assets\donut.jpg" />
+    <Content Include="Assets\hamburger.jpg" />
     <Content Include="Assets\hotdog.jpg" />
     <Content Include="Assets\ice_tea.png" />
+    <Content Include="Assets\orangina.png" />
+    <Content Include="Assets\panini.jpg" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
