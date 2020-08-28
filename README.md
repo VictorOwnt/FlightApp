@@ -17,6 +17,7 @@ This project is part of the [Native Apps II: mobile apps voor Windows](https://b
     <img src="screenshots/contactscreen.png?raw=true" width="512px">
     <img src="screenshots/entertainmentscreen.png?raw=true" width="512px">
 </p>
+
 ### Steward View
 <p align="center">
      <img src="screenshots/loginscreen.png?raw=true" width="512px">
