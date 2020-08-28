@@ -36,7 +36,7 @@ This project is part of the [Native Apps II: mobile apps voor Windows](https://b
 1. Clone this repo
 
     ```bash
-    git clone https://github.com/SWojtyla/FlightApp
+    git clone https://github.com/VictorOwnt/FlightApp/
     ```
 
 2. Open the project in Visual Studio
