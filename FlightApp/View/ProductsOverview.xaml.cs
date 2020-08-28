@@ -57,6 +57,7 @@ namespace FlightApp.View
             }
 
             ViewModel.OrderProducts(products);
+            Products_GridView.SelectedItems.Clear();
         }
 
         private void Products_GridView_ItemClick(object sender, ItemClickEventArgs e)

@@ -99,6 +99,10 @@ namespace FlightApp.ViewModels
             {
                 await DialogService.ShowCustomMessageAsync("Something went wrong, couldn't order these products. Please try again later", "Order error");
             }
+            finally
+            {
+                await DialogService.ShowCustomMessageAsync("Your products were successfully ordered", "Products ordered");
+            }
 
         }
 
