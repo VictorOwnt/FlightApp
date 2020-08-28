@@ -8,13 +8,22 @@ The purpose of this app is to entertain, inform, chat or order products during a
 This project is part of the [Native Apps II: mobile apps voor Windows](https://bamaflexweb.hogent.be/BMFUIDetailxOLOD.aspx?a=110485&b=1&c=1) course for the Bachelor of Applied Informatics at the Ghent University College [HoGent](https://www.hogent.be/en/) (Academic year 2019-2020).
 
 ## Screenshots
+### Passenger View
 <p align="center">
-     <img src="screenshots/loginscreen.png?raw=true" width="256px">
-    <img src="screenshots/aboutusscreen.png?raw=true" width="256px">
-    <img src="screenshots/orderproductsscreen.png?raw=true" width="256px">
-    <img src="screenshots/viewordersscreen.png?raw=true" width="256px">
-    <img src="screenshots/contactscreen.png?raw=true" width="256px">
-    <img src="screenshots/entertainmentscreen.png?raw=true" width="256px">
+     <img src="screenshots/loginscreen.png?raw=true" width="512px">
+    <img src="screenshots/aboutusscreen.png?raw=true" width="512px">
+    <img src="screenshots/orderproductsscreen.png?raw=true" width="512px">
+    <img src="screenshots/viewordersscreen.png?raw=true" width="512px">
+    <img src="screenshots/contactscreen.png?raw=true" width="512px">
+    <img src="screenshots/entertainmentscreen.png?raw=true" width="512px">
+</p>
+### Steward View
+<p align="center">
+     <img src="screenshots/loginscreen.png?raw=true" width="512px">
+    <img src="screenshots/stewardviewordersscreen.png?raw=true" width="512px">
+    <img src="screenshots/stewarddiscountscreen.png?raw=true" width="512px">
+    <img src="screenshots/stewardnotificationscreen.png?raw=true" width="512px">
+    <img src="screenshots/stewardchangeseatsscreen.png?raw=true" width="512px">
 </p>
 
 ---
