@@ -210,60 +210,67 @@ namespace FlightAppApi.Data
 
                 #region init orders
                 // Orderlines - drinks
-                Orderline orderline1 = new Orderline(water);
-                Orderline orderline2 = new Orderline(cola);
-                Orderline orderline3 = new Orderline(tea);
-                Orderline orderline4 = new Orderline(coffee);
-                Orderline orderline5 = new Orderline(orangina);
+                Orderline orderlineWater1 = new Orderline(water);
+                Orderline orderlineWater2 = new Orderline(water);
+                Orderline orderlineWater3 = new Orderline(water);
+                Orderline orderlineCola1 = new Orderline(cola);
+                Orderline orderlineTea1 = new Orderline(tea);
+                Orderline orderlineCoffee1 = new Orderline(coffee);
+                Orderline orderlineCoffee2 = new Orderline(coffee);
+                Orderline orderlineOrangina1 = new Orderline(orangina);
+                Orderline orderlineOrangina2 = new Orderline(orangina);
                 // Orderlines - food
-                Orderline orderline6 = new Orderline(hotdog);
-                Orderline orderline7 = new Orderline(hamburger);
-                Orderline orderline8 = new Orderline(panini);
-                Orderline orderline9 = new Orderline(donut);
-                Orderline orderline10 = new Orderline(chips);
+                Orderline orderlineHotdog1 = new Orderline(hotdog);
+                Orderline orderlineHotdog2 = new Orderline(hotdog);
+                Orderline orderlineHamburger1 = new Orderline(hamburger);
+                Orderline orderlineHamburger2 = new Orderline(hamburger);
+                Orderline orderlinePanini1 = new Orderline(panini);
+                Orderline orderlineDonut1 = new Orderline(donut);
+                Orderline orderlineDonut2 = new Orderline(donut);
+                Orderline orderlineChips1 = new Orderline(chips);
 
                 // Orders
                 Order order1 = new Order(1);
-                order1.Orderlines.Add(orderline1);
-                order1.Orderlines.Add(orderline6);
+                order1.Orderlines.Add(orderlineWater1);
+                order1.Orderlines.Add(orderlineHotdog1);
                 order1.SetOrderCost();
 
                 Order order2 = new Order(1);
-                order2.Orderlines.Add(orderline3);
-                order2.Orderlines.Add(orderline9);
+                order2.Orderlines.Add(orderlineTea1);
+                order2.Orderlines.Add(orderlineDonut1);
                 order2.SetOrderCost();
-                
+
                 Order order3 = new Order(2);
-                order3.Orderlines.Add(orderline5);
-                order3.Orderlines.Add(orderline6);
+                order3.Orderlines.Add(orderlineOrangina1);
+                order3.Orderlines.Add(orderlineHotdog2);
                 order3.SetOrderCost();
 
                 Order order4 = new Order(5);
-                order4.Orderlines.Add(orderline4);
-                order4.Orderlines.Add(orderline9);
-                order4.Orderlines.Add(orderline1);
+                order4.Orderlines.Add(orderlineCoffee1);
+                order4.Orderlines.Add(orderlineDonut2);
+                order4.Orderlines.Add(orderlineWater2);
                 order4.SetOrderCost();
 
                 Order order5 = new Order(6);
-                order5.Orderlines.Add(orderline2);
-                order5.Orderlines.Add(orderline7);
-                order5.Orderlines.Add(orderline8);
+                order5.Orderlines.Add(orderlineCola1);
+                order5.Orderlines.Add(orderlineHamburger1);
+                order5.Orderlines.Add(orderlinePanini1);
                 order5.SetOrderCost();
 
                 Order order6 = new Order(7);
-                order6.Orderlines.Add(orderline4);
-                order6.Orderlines.Add(orderline7);
+                order6.Orderlines.Add(orderlineCoffee2);
+                order6.Orderlines.Add(orderlineHamburger2);
                 order6.SetOrderCost();
 
                 Order order7 = new Order(8);
-                order7.Orderlines.Add(orderline1);
+                order7.Orderlines.Add(orderlineWater3);
                 order7.SetOrderCost();
 
                 Order order8 = new Order(9);
-                order8.Orderlines.Add(orderline5);
-                order8.Orderlines.Add(orderline10);
+                order8.Orderlines.Add(orderlineOrangina2);
+                order8.Orderlines.Add(orderlineChips1);
                 order8.SetOrderCost();
-                
+
                 _dbContext.Orders.AddRange(order1, order2, order3, order4, order5, order6, order7, order8);
                 #endregion
 
