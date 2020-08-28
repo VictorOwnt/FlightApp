@@ -26,7 +26,7 @@ namespace FlightApp.View
         public PassengerOrdersOverview()
         {
             ViewModel = new PassengerOrdersOverviewViewModel();
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private async void InvokePrintingButton_Click(object sender, RoutedEventArgs e)
@@ -56,7 +56,15 @@ namespace FlightApp.View
             // Register for PrintTaskRequested event
             printMan = PrintManager.GetForCurrentView();
 
-            printMan.PrintTaskRequested += PrintTaskRequested;
+            try
+            {
+                printMan.PrintTaskRequested += PrintTaskRequested;
+            }
+            catch
+            {
+                printMan.PrintTaskRequested -= PrintTaskRequested;
+
+            }
 
             // Build a PrintDocument and register for callbacks
             printDoc = new PrintDocument();
@@ -95,7 +103,7 @@ namespace FlightApp.View
         }
         private void AddPages(object sender, AddPagesEventArgs e)
         {
-            printDoc.AddPage(this.Orders_List);
+            printDoc.AddPage(Orders_List);
 
             // Indicate that all of the print pages have been provided
             printDoc.AddPagesComplete();
@@ -129,9 +137,8 @@ namespace FlightApp.View
             printDoc.Paginate -= Paginate;
             printDoc.GetPreviewPage -= GetPreviewPage;
             printDoc.AddPages -= AddPages;
-
-            PrintManager printMan = PrintManager.GetForCurrentView();
             printMan.PrintTaskRequested -= PrintTaskRequested;
+            base.OnNavigatedFrom(e);
         }
     }
 }

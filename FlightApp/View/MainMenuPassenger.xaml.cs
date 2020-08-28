@@ -1,6 +1,8 @@
 ﻿using FlightApp.Models;
 using FlightApp.ViewModels;
 using Microsoft.Toolkit.Uwp.Helpers;
+using Microsoft.Toolkit.Uwp.UI.Extensions;
+using System.Linq;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -74,5 +76,6 @@ namespace FlightApp.View
             }
             ViewModel.Connect(Passenger.Email);
         }
+
     }
 }
